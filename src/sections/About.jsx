@@ -17,7 +17,7 @@ const About = () => {
         start: "top top",
         end: "bottom bottom",
         scrub: 1,
-        markers: true, // Enable markers for main timeline
+        // markers: true, // Enable markers for main timeline
         id: "main-timeline", // Add unique ID for debugging
       },
     });
@@ -68,12 +68,20 @@ const About = () => {
           start: "top 10%", // Changed from 80% to avoid conflict
           end: "bottom 30%", // Changed from 20% to avoid conflict
           scrub: 1,
-          markers: true,
+          // markers: true,
           id: "word-animation", // Add unique ID for debugging
         },
       });
-      gsap.to(pinRef.current, {
-        pin: true,
+
+      // Create a separate ScrollTrigger for pinning the content
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "bottom bottom", // Unpin when section bottom reaches viewport top
+        pin: pinRef.current,
+        pinSpacing: false,
+        markers: true,
+        id: "pin-animation",
       });
     }
 
@@ -84,9 +92,7 @@ const About = () => {
   }, []);
 
   return (
-    <div style={{ height: "100vh" }}>
-      {" "}
-      {/* Extra height for scroll */}
+    <div>
       <section
         ref={sectionRef}
         className="py-16 px-4 bg-blue-500 h-[200vh] flex items-start"
@@ -97,9 +103,7 @@ const About = () => {
             <h2
               ref={titleRef}
               className="text-4xl font-bold text-gray-900 mb-4"
-            >
-              About
-            </h2>
+            ></h2>
           </div>
 
           {/* Two-column layout */}

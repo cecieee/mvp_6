@@ -7,7 +7,7 @@ export default function LandingPage() {
     <>
       <div className="h-screen bg-secondary"></div>
       <About />
-      <Rules />
+      <Rules  />
     </>
   );
 }
