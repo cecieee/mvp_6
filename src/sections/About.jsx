@@ -9,79 +9,88 @@ const About = () => {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    // Create a timeline for the scroll-triggered animations
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top center",
-        end: "bottom bottom",
-        scrub: 1,
-        // markers: true, // Enable markers for main timeline
-        id: "main-timeline", // Add unique ID for debugging
-      },
-    });
-
-    // Initial setup - hide elements
-    gsap.set([textRef.current], {
-      opacity: 0,
-      y: 50,
-    });
-
-    // Animate title first
-    tl.to(
-      textRef.current,
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power2.out",
-      },
-      "-=0.1"
-    );
-
-    // Finally animate the image
-
-    // Create a separate animation for text reveal effect
-    const textContent = textRef.current;
-    if (textContent) {
-      const words = textContent.textContent.split(" ");
-      textContent.innerHTML = words
-        .map((word) => `<span class="word" style="opacity: 0;">${word}</span>`)
-        .join(" ");
-
-      const wordElements = textContent.querySelectorAll(".word");
-
-      // Create a separate ScrollTrigger for word animation with different trigger points
-      gsap.to(wordElements, {
-        opacity: 1,
-        duration: 0.01,
-        stagger: 0.05,
-        ease: "none",
+    
+    // Wait for Lenis to be initialized
+    const initializeAnimations = () => {
+      // Create a timeline for the scroll-triggered animations
+      const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: textRef.current,
-          start: "top center", // Changed from 80% to avoid conflict
-          end: "bottom top", // Changed from 20% to avoid conflict
+          trigger: sectionRef.current,
+          start: "top center",
+          end: "bottom bottom",
           scrub: 1,
-          // markers: true,
-          id: "word-animation", // Add unique ID for debugging
+          // markers: true, // Enable markers for main timeline
+          id: "main-timeline", // Add unique ID for debugging
         },
       });
 
-      // Create a separate ScrollTrigger for pinning the content
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: "top top",
-        end: "bottom bottom",
-        pin: pinRef.current,
-        pinSpacing: false,
-        pinType: "fixed", // This ensures smooth pinning without jumping
-        // markers: true,
-        id: "pin-animation",
+      // Initial setup - hide elements
+      gsap.set([textRef.current], {
+        opacity: 0,
+        y: 50,
       });
-    }
+
+      // Animate title first
+      tl.to(
+        textRef.current,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+        },
+        "-=0.1"
+      );
+
+      // Create a separate animation for text reveal effect
+      const textContent = textRef.current;
+      if (textContent) {
+        const words = textContent.textContent.split(" ");
+        textContent.innerHTML = words
+          .map((word) => `<span class="word" style="opacity: 0;">${word}</span>`)
+          .join(" ");
+
+        const wordElements = textContent.querySelectorAll(".word");
+
+        // Create a separate ScrollTrigger for word animation with different trigger points
+        gsap.to(wordElements, {
+          opacity: 1,
+          duration: 0.01,
+          stagger: 0.05,
+          ease: "none",
+          scrollTrigger: {
+            trigger: textRef.current,
+            start: "top center",
+            end: "bottom top",
+            scrub: 1,
+            // markers: true,
+            id: "word-animation",
+          },
+        });
+
+        // Create a separate ScrollTrigger for pinning the content
+        ScrollTrigger.create({
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom bottom",
+          pin: pinRef.current,
+          pinSpacing: false,
+          pinType: "fixed",
+          // markers: true,
+          id: "pin-animation",
+        });
+      }
+    };
+
+    // Small delay to ensure Lenis is initialized
+    const timer = setTimeout(() => {
+      initializeAnimations();
+      ScrollTrigger.refresh();
+    }, 100);
 
     // Cleanup function
     return () => {
+      clearTimeout(timer);
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);

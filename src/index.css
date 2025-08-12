@@ -4,3 +4,33 @@
   --color-primary: #10101b; /* Blue 700 */
   --color-secondary: #feac0b; /* Purple 700 */
 }
+
+/* Lenis smooth scroll styles */
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Ensure proper scrolling on touch devices */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}

@@ -40,8 +40,8 @@ const MainNavbar = () => {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
-            <NavbarButton variant="secondary">Login</NavbarButton>
-            <NavbarButton variant="primary">Sign Up</NavbarButton>
+            {/* <NavbarButton variant="secondary">Login</NavbarButton> */}
+            <NavbarButton variant="primary">Register Now</NavbarButton>
           </div>
         </NavBody>
 
