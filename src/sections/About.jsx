@@ -5,7 +5,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const About = () => {
   const sectionRef = useRef(null);
   const textRef = useRef(null);
-  const titleRef = useRef(null);
   const pinRef = useRef(null);
 
   useEffect(() => {
@@ -14,7 +13,7 @@ const About = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: "top top",
+        start: "top center",
         end: "bottom bottom",
         scrub: 1,
         // markers: true, // Enable markers for main timeline
@@ -23,18 +22,13 @@ const About = () => {
     });
 
     // Initial setup - hide elements
-    gsap.set([titleRef.current, textRef.current], {
+    gsap.set([textRef.current], {
       opacity: 0,
       y: 50,
     });
 
     // Animate title first
-    tl.to(titleRef.current, {
-      opacity: 1,
-      y: 0,
-      duration: 0.5,
-      ease: "power2.out",
-    }).to(
+    tl.to(
       textRef.current,
       {
         opacity: 1,
@@ -60,13 +54,13 @@ const About = () => {
       // Create a separate ScrollTrigger for word animation with different trigger points
       gsap.to(wordElements, {
         opacity: 1,
-        duration: 0.1,
+        duration: 0.01,
         stagger: 0.05,
         ease: "none",
         scrollTrigger: {
           trigger: textRef.current,
-          start: "top 10%", // Changed from 80% to avoid conflict
-          end: "bottom 30%", // Changed from 20% to avoid conflict
+          start: "top center", // Changed from 80% to avoid conflict
+          end: "bottom top", // Changed from 20% to avoid conflict
           scrub: 1,
           // markers: true,
           id: "word-animation", // Add unique ID for debugging
@@ -77,10 +71,11 @@ const About = () => {
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top top",
-        end: "bottom bottom", // Unpin when section bottom reaches viewport top
+        end: "bottom bottom",
         pin: pinRef.current,
         pinSpacing: false,
-        markers: true,
+        pinType: "fixed", // This ensures smooth pinning without jumping
+        // markers: true,
         id: "pin-animation",
       });
     }
@@ -95,15 +90,13 @@ const About = () => {
     <div>
       <section
         ref={sectionRef}
-        className="py-16 px-4 bg-blue-500 h-[200vh] flex items-start"
+        className="px-4 bg-blue-500 h-[200vh] flex items-start pt-0"
       >
-        <div className="max-w-7xl mx-auto w-full" ref={pinRef}>
+        <div className="max-w-7xl mx-auto w-full pt-30" ref={pinRef}>
           {/* Title */}
           <div className="text-left mb-12">
-            <h2
-              ref={titleRef}
-              className="text-4xl font-bold text-gray-900 mb-4"
-            ></h2>
+            {/* implement title if needed */}
+            <h2 className="text-4xl font-bold text-gray-900 mb-4"></h2>
           </div>
 
           {/* Two-column layout */}
@@ -112,16 +105,20 @@ const About = () => {
             <div className="space-y-6">
               <p
                 ref={textRef}
-                className="text-gray-600 text-4xl leading-relaxed"
+                className="text-gray-600 text-2xl sm:text-4xl leading-relaxed font-semibold"
+                style={{
+                  fontFamily: '"Instrument Sans", sans-serif',
+                  fontStyle: "normal",
+                  fontWeight: 600,
+                }}
               >
-                IEEE Student Branch College of Engineering Chengannur (60451) is
-                organizing MVP - Micro Volunteering Programme for IEEE members,
-                to focus on the development of volunteering skills, to enable
-                networking and socialising with fellow members from the Student
-                Branch. The program looks forward to build a trailblazing
-                platform for the student leaders to interact across regions to
-                share their knowledge, find their best applications, cultivate
-                different ideas and much more.
+                IEEE Student Branch College of Engineering Chengannur is
+                organizing MVP – Micro Volunteering Programme for IEEE members,
+                aimed at enhancing volunteering skills, fostering networking and
+                socializing within the Student Branch. The program aspires to
+                create a dynamic platform for student leaders to connect across
+                regions, share knowledge, explore applications, and cultivate
+                innovative ideas.
               </p>
             </div>
           </div>
