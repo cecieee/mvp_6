@@ -9,7 +9,7 @@ const About = () => {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+
     // Wait for Lenis to be initialized
     const initializeAnimations = () => {
       // Create a timeline for the scroll-triggered animations
@@ -47,7 +47,9 @@ const About = () => {
       if (textContent) {
         const words = textContent.textContent.split(" ");
         textContent.innerHTML = words
-          .map((word) => `<span class="word" style="opacity: 0;">${word}</span>`)
+          .map(
+            (word) => `<span class="word" style="opacity: 0;">${word}</span>`
+          )
           .join(" ");
 
         const wordElements = textContent.querySelectorAll(".word");
@@ -99,7 +101,7 @@ const About = () => {
     <div>
       <section
         ref={sectionRef}
-        className="px-4 bg-blue-500 h-[200vh] flex items-start pt-0"
+        className="px-4 bg-black h-[200vh] flex items-start pt-0"
       >
         <div className="max-w-7xl mx-auto w-full pt-30" ref={pinRef}>
           {/* Title */}

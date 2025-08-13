@@ -2,7 +2,7 @@ import React from "react";
 
 function Rules() {
   return (
-    <div className="py-16 px-4 bg-black-500 h-screen flex items-center justify-center">
+    <div className="relative h-screen bg-gradient-to-b from-black to-white flex justify-center items-center overflow-hidden">
       <h1>RULES section</h1>
     </div>
   );
