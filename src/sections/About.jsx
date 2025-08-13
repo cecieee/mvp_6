@@ -10,7 +10,6 @@ const About = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Wait for Lenis to be initialized
     const initializeAnimations = () => {
       // Create a timeline for the scroll-triggered animations
       const tl = gsap.timeline({
@@ -19,8 +18,7 @@ const About = () => {
           start: "top center",
           end: "bottom bottom",
           scrub: 1,
-          // markers: true, // Enable markers for main timeline
-          id: "main-timeline", // Add unique ID for debugging
+          id: "main-timeline",
         },
       });
 
@@ -30,7 +28,7 @@ const About = () => {
         y: 50,
       });
 
-      // Animate title first
+      // Animate container first
       tl.to(
         textRef.current,
         {
@@ -42,35 +40,39 @@ const About = () => {
         "-=0.1"
       );
 
-      // Create a separate animation for text reveal effect
+      // Enhanced typing effect with smooth animation
       const textContent = textRef.current;
       if (textContent) {
+        // Split text into words and preserve spaces
         const words = textContent.textContent.split(" ");
         textContent.innerHTML = words
           .map(
-            (word) => `<span class="word" style="opacity: 0;">${word}</span>`
+            (word) =>
+              `<span class="word" style="opacity: 0; display: inline;">${word}</span>`
           )
           .join(" ");
 
         const wordElements = textContent.querySelectorAll(".word");
 
-        // Create a separate ScrollTrigger for word animation with different trigger points
+        // Smooth typing effect animation
         gsap.to(wordElements, {
           opacity: 1,
-          duration: 0.01,
-          stagger: 0.05,
-          ease: "none",
+          duration: 0.1, // Quick fade for each word
+          stagger: {
+            amount: 3, // Total duration for typing effect (3 seconds)
+            ease: "none", // Linear for consistent typing rhythm
+          },
+          ease: "none", // No easing for crisp typing effect
           scrollTrigger: {
             trigger: textRef.current,
             start: "top center",
             end: "bottom top",
             scrub: 1,
-            // markers: true,
             id: "word-animation",
           },
         });
 
-        // Create a separate ScrollTrigger for pinning the content
+        // Pin animation
         ScrollTrigger.create({
           trigger: sectionRef.current,
           start: "top top",
@@ -78,13 +80,12 @@ const About = () => {
           pin: pinRef.current,
           pinSpacing: false,
           pinType: "fixed",
-          // markers: true,
           id: "pin-animation",
         });
       }
     };
 
-    // Small delay to ensure Lenis is initialized
+    // Initialize animations with a small delay
     const timer = setTimeout(() => {
       initializeAnimations();
       ScrollTrigger.refresh();
@@ -106,7 +107,6 @@ const About = () => {
         <div className="max-w-7xl mx-auto w-full pt-30" ref={pinRef}>
           {/* Title */}
           <div className="text-left mb-12">
-            {/* implement title if needed */}
             <h2 className="text-4xl font-bold text-gray-900 mb-4"></h2>
           </div>
 
