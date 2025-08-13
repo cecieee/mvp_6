@@ -40,6 +40,16 @@ const About = () => {
         "-=0.1"
       );
 
+      // Animate gradient position
+      tl.to(
+        textRef.current,
+        {
+          backgroundPosition: "200% center",
+          ease: "none",
+        },
+        0
+      );
+
       // Enhanced typing effect with smooth animation
       const textContent = textRef.current;
       if (textContent) {
@@ -116,9 +126,10 @@ const About = () => {
             <div className="space-y-6">
               <p
                 ref={textRef}
-                className="text-gray-600 text-2xl sm:text-4xl leading-relaxed font-semibold"
+                className="gradient-text text-2xl sm:text-4xl leading-relaxed font-semibold"
                 style={{
-                  fontFamily: '"Instrument Sans", sans-serif',
+                  fontFamily:
+                    '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                   fontStyle: "normal",
                   fontWeight: 600,
                 }}
