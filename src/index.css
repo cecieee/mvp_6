@@ -3,4 +3,22 @@
 @theme {
   --color-primary: #10101b; /* Blue 700 */
   --color-secondary: #feac0b; /* Purple 700 */
+  --font-family-frontline: Frontline, sans-serif;
+  --font-family-jersey: JerseyM54, sans-serif;
+}
+
+@font-face {
+  font-family: "Frontline";
+  src: url("/src/assets/fonts/FrontLines.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JerseyM54";
+  src: url("/src/assets/fonts/JerseyM54.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
