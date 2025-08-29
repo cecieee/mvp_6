@@ -1,6 +1,35 @@
 @import "tailwindcss";
 
-@theme {
-  --color-primary: #10101b; /* Blue 700 */
-  --color-secondary: #feac0b; /* Purple 700 */
+@font-face {
+  font-family: "JerseyM54";
+  src: url("./assets/fonts/JerseyM54.ttf") format("truetype");
+  font-display: swap;
 }
+
+@font-face {
+  font-family: "FrontLines";
+  src: url("./assets/fonts/FrontLines.otf") format("opentype");
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --color-primary: #1B1436;  /* Slate - 900 */
+    --color-secondary: #4B3791; /* Violet-900 */
+  }
+}
+
+@layer utilities {
+  .font-jersey {
+    font-family: "JerseyM54", system-ui, sans-serif;
+  }
+  
+  .font-frontlines {
+    font-family: "FrontLines", system-ui, sans-serif;
+  }
+}
+
+.leaderboard {
+  font-family:'Poppins', sans-serif;
+}
+
