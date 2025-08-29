@@ -22,3 +22,41 @@
   font-style: normal;
   font-display: swap;
 }
+
+/* Lenis smooth scroll styles */
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Ensure proper scrolling on touch devices */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #ec4899, #8b5cf6, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
