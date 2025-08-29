@@ -8,45 +8,45 @@ export default function Tasks() {
     active: [
       {
         title: "Develop User",
-        status: "Active",
+        status: "Upcoming",
         desc: "Implement user login, registration, and profile management system.",
-        due: "2025-08-25",
+        due: "2025-09-10",
       },
       {
         title: "Design",
-        status: "Active",
+        status: "Upcoming",
         desc: "Create detailed UI mockups and style guidelines.",
-        due: "2025-08-26",
+        due: "2025-09-11",
       },
       {
         title: "Refactor",
-        status: "Active",
+        status: "Upcoming",
         desc: "Optimize application modules and improve scalability.",
-        due: "2025-08-27",
+        due: "2025-09-12",
       },
       {
         title: "Conduct",
-        status: "Active",
+        status: "Upcoming",
         desc: "Assess application performance and security.",
-        due: "2025-08-28",
+        due: "2025-09-13",
       },
       {
         title: "Implement",
-        status: "Active",
+        status: "Upcoming",
         desc: "Integrate Google Analytics and monitor user activity.",
-        due: "2025-08-29",
+        due: "2025-09-14",
       },
       {
         title: "Review",
-        status: "Active",
+        status: "Upcoming",
         desc: "Address review feedback and finalize documentation.",
-        due: "2025-08-30",
+        due: "2025-09-15",
       },
       {
         title: "Integrate",
-        status: "Active",
+        status: "Upcoming",
         desc: "Connect app with payment processing APIs.",
-        due: "2025-08-31",
+        due: "2025-09-16",
       },
     ],
     upcoming: [
@@ -54,25 +54,25 @@ export default function Tasks() {
         title: "Prepare Q3",
         status: "Upcoming",
         desc: "Develop comprehensive quarterly roadmap.",
-        due: "2025-09-01",
+        due: "2025-09-17",
       },
       {
         title: "Set Up CI/CD",
         status: "Upcoming",
         desc: "Configure automated build, test & deployment pipelines.",
-        due: "2025-09-02",
+        due: "2025-09-18",
       },
       {
         title: "Update Project",
         status: "Upcoming",
         desc: "Release updates and bug fixes.",
-        due: "2025-09-03",
+        due: "2025-09-19",
       },
       {
         title: "Plan Next",
         status: "Upcoming",
         desc: "Organize priorities for next development sprint.",
-        due: "2025-09-04",
+        due: "2025-09-20",
       },
     ],
   };
@@ -84,17 +84,30 @@ export default function Tasks() {
 
   const normalizeStatus = (task) => {
     const dueDate = normalizeDate(new Date(task.due));
+    
+    // If task is originally upcoming, keep it upcoming
     if (task.status === "Upcoming") return { ...task, status: "Upcoming" };
-    return dueDate < todayNormalized
-      ? { ...task, status: "Expired" }
-      : { ...task, status: "Active" };
+    
+    // For active tasks, check if they're expired
+    if (dueDate < todayNormalized) {
+      return { ...task, status: "Expired" };
+    }
+    
+    return { ...task, status: "Active" };
   };
 
   const allActive = tasks.active.map(normalizeStatus);
   const allUpcoming = tasks.upcoming.map(normalizeStatus);
 
-  const totalTasks = allActive.length + allUpcoming.length;
-  const progress = totalTasks ? Math.round((allActive.length / totalTasks) * 100) : 0;
+  // Separate tasks by their actual status from both arrays
+  const allTasks = [...allActive, ...allUpcoming];
+  const activeTasks = allTasks.filter((t) => t.status === "Active");
+  const upcomingTasks = allTasks.filter((t) => t.status === "Upcoming");
+  const expiredTasks = allTasks.filter((t) => t.status === "Expired");
+
+  const totalTasks = allTasks.length;
+  const completedTasks = activeTasks.length + expiredTasks.length; // Tasks that have been worked on
+  const progress = totalTasks ? Math.round((completedTasks / totalTasks) * 100) : 0;
 
   const radius = 45;
   const circumference = 2 * Math.PI * radius;
@@ -118,16 +131,24 @@ export default function Tasks() {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 p-6">
       {/* Center aligned title with gradient */}
-      <h1
-        className="text-3xl font-bold mb-12 text-center"
-        style={{
-          background: "linear-gradient(90deg, #1B1436, #4B3791)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        }}
-      >
-        Task
-      </h1>
+      <div className="text-center pt-16 pb-8 px-4">
+        <h1
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold mb-6"
+          style={{
+            fontFamily: "Frontline, sans-serif",
+            background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            letterSpacing: "2px",
+          }}
+        >
+          TASKS
+        </h1>
+        
+        {/* Decorative line */}
+        <div className="w-24 h-1 bg-gradient-to-r from-[#7152DE] to-[#4B3791] mx-auto rounded-full mb-8"></div>
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Sidebar */}
@@ -158,7 +179,7 @@ export default function Tasks() {
                 </span>
               </div>
               <p className="text-gray-600 text-sm">
-                Active & Expired: {allActive.length} / {totalTasks}
+                Completed: {completedTasks} / {totalTasks}
               </p>
             </div>
           </div>
@@ -173,7 +194,7 @@ export default function Tasks() {
                 </div>
                 <div>
                   <p className="font-medium text-indigo-700">Upcoming</p>
-                  <p className="text-sm text-gray-500">{allUpcoming.length} tasks</p>
+                  <p className="text-sm text-gray-500">{upcomingTasks.length} tasks</p>
                 </div>
               </li>
               <li className="flex items-center gap-3 text-gray-700">
@@ -182,9 +203,7 @@ export default function Tasks() {
                 </div>
                 <div>
                   <p className="font-medium text-purple-700">Active</p>
-                  <p className="text-sm text-gray-500">
-                    {allActive.filter((t) => t.status === "Active").length} tasks
-                  </p>
+                  <p className="text-sm text-gray-500">{activeTasks.length} tasks</p>
                 </div>
               </li>
               <li className="flex items-center gap-3 text-gray-700">
@@ -193,9 +212,7 @@ export default function Tasks() {
                 </div>
                 <div>
                   <p className="font-medium text-red-700">Expired</p>
-                  <p className="text-sm text-gray-500">
-                    {allActive.filter((t) => t.status === "Expired").length} tasks
-                  </p>
+                  <p className="text-sm text-gray-500">{expiredTasks.length} tasks</p>
                 </div>
               </li>
             </ul>
@@ -204,44 +221,71 @@ export default function Tasks() {
 
         {/* Main Section */}
         <div className="lg:col-span-3 space-y-6">
-          {/* Active & Expired Tasks */}
-          <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-              {allActive.map((task, index) => (
-                <div
-                  key={index}
-                  className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${borderShadowStyles[task.status]}`}
-                >
-                  <span className={`px-3 py-1 text-xs font-medium rounded-full ${statusStyles[task.status]}`}>
-                    {task.status}
-                  </span>
-                  <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">{task.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{task.desc}</p>
-                  <div className="text-xs text-gray-500">Due: {task.due}</div>
-                </div>
-              ))}
+          {/* Active Tasks */}
+          {activeTasks.length > 0 && (
+            <div>
+              <h2 className="text-xl font-bold mb-4 text-gray-800">Active Tasks</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                {activeTasks.map((task, index) => (
+                  <div
+                    key={index}
+                    className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${borderShadowStyles[task.status]}`}
+                  >
+                    <span className={`px-3 py-1 text-xs font-medium rounded-full ${statusStyles[task.status]}`}>
+                      {task.status}
+                    </span>
+                    <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">{task.title}</h3>
+                    <p className="text-gray-600 text-sm mb-4">{task.desc}</p>
+                    <div className="text-xs text-gray-500">Due: {task.due}</div>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Upcoming Tasks */}
-          <div>
-            <h2 className="text-xl font-bold mb-4 text-gray-800">Upcoming Tasks</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-              {allUpcoming.map((task, index) => (
-                <div
-                  key={index}
-                  className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${borderShadowStyles[task.status]}`}
-                >
-                  <span className={`px-3 py-1 text-xs font-medium rounded-full ${statusStyles[task.status]}`}>
-                    {task.status}
-                  </span>
-                  <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">{task.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{task.desc}</p>
-                  <div className="text-xs text-gray-500">Due: {task.due}</div>
-                </div>
-              ))}
+          {upcomingTasks.length > 0 && (
+            <div>
+              <h2 className="text-xl font-bold mb-4 text-gray-800">Upcoming Tasks</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                {upcomingTasks.map((task, index) => (
+                  <div
+                    key={index}
+                    className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${borderShadowStyles[task.status]}`}
+                  >
+                    <span className={`px-3 py-1 text-xs font-medium rounded-full ${statusStyles[task.status]}`}>
+                      {task.status}
+                    </span>
+                    <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">{task.title}</h3>
+                    <p className="text-gray-600 text-sm mb-4">{task.desc}</p>
+                    <div className="text-xs text-gray-500">Due: {task.due}</div>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
+
+          {/* Expired Tasks */}
+          {expiredTasks.length > 0 && (
+            <div>
+              <h2 className="text-xl font-bold mb-4 text-gray-800">Expired Tasks</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                {expiredTasks.map((task, index) => (
+                  <div
+                    key={index}
+                    className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${borderShadowStyles[task.status]}`}
+                  >
+                    <span className={`px-3 py-1 text-xs font-medium rounded-full ${statusStyles[task.status]}`}>
+                      {task.status}
+                    </span>
+                    <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">{task.title}</h3>
+                    <p className="text-gray-600 text-sm mb-4">{task.desc}</p>
+                    <div className="text-xs text-gray-500">Due: {task.due}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
