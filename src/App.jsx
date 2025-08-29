@@ -15,10 +15,26 @@ import Tasks from "./pages/Tasks";
 import Contact from "./pages/Contact";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => {
+    // Clear session storage on page reload and show loading screen
+    const isPageReload =
+      performance.navigation?.type === 1 ||
+      performance.getEntriesByType("navigation")[0]?.type === "reload";
+
+    if (isPageReload) {
+      sessionStorage.removeItem("appLoaded");
+      return true;
+    }
+
+    // Check if the app has already loaded in this session
+    return !sessionStorage.getItem("appLoaded");
+  });
 
   useEffect(() => {
     if (isLoading) return; // Don't run logic if loading
+
+    // Mark app as loaded in session storage
+    sessionStorage.setItem("appLoaded", "true");
 
     // Initialize Lenis
     const lenis = new Lenis({
@@ -63,23 +79,21 @@ function App() {
     setIsLoading(false);
   };
 
+  if (isLoading) {
+    return <LoadingScreen onLoadingComplete={handleLoadingComplete} />;
+  }
+
   return (
-    <>
-      {isLoading ? (
-        <LoadingScreen onLoadingComplete={handleLoadingComplete} />
-      ) : (
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route path="/tasks" element={<Tasks />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-          {/* <Footer /> */}
-        </Router>
-      )}
-    </>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/tasks" element={<Tasks />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+      {/* <Footer /> */}
+    </Router>
   );
 }
 
