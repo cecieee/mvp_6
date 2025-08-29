@@ -35,26 +35,25 @@ function Rules() {
       id="rules"
       className="relative min-h-screen flex justify-center items-center py-20 px-4 overflow-hidden"
       style={{
-        background: "#f5f5f5",
+        background: "#fff",
         position: "relative",
       }}
     >
-      {/* Black grid background matching Hero */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
           backgroundImage: `
             repeating-linear-gradient(
               to right,
-              rgba(0,0,0,0.04) 0px,
-              rgba(0,0,0,0.04) 1.5px,
+              rgba(0,0,0,0.08) 0px,
+              rgba(0,0,0,0.08) 1.5px,
               transparent 1.5px,
               transparent 64px
             ),
             repeating-linear-gradient(
               to bottom,
-              rgba(0,0,0,0.04) 0px,
-              rgba(0,0,0,0.04) 1.5px,
+              rgba(0,0,0,0.08) 0px,
+              rgba(0,0,0,0.08) 1.5px,
               transparent 1.5px,
               transparent 64px
             )
