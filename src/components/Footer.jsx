@@ -1,11 +1,13 @@
 import React from "react";
-import { FiPhone, FiMail, FiInstagram, FiLinkedin } from "react-icons/fi";
+import { FiPhone, FiMail, FiInstagram, FiLinkedin, FiMapPin } from "react-icons/fi";
 
 export default function Footer() {
   return (
     <footer
       className="relative text-white overflow-hidden py-10"
-      style={{ background: "#1B1436" }}
+      style={{
+        background: "linear-gradient(to right, #3A2F5A, #2A1F4A, #3A2F5A)",
+      }}
     >
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#7152DE] via-[#4B3791] to-[#7152DE]"></div>
 
@@ -56,10 +58,10 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <div>
               <h3
-                className="text-2xl font-frontline font-bold"
+                className="text-3xl font-frontline mb-2"
                 style={{
-                  background:
-                    "linear-gradient(90deg, #7152DE 0%, #4B3791 100%)",
+                  fontFamily: "Frontline, sans-serif",
+                  background: "linear-gradient(90deg, #7152DE 0%, #4B3791 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -116,7 +118,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col items-end md:items-end text-right gap-1">
+          <div className="flex flex-col items-start md:items-start text-left gap-1">
             <span className="flex items-center text-white/90 text-sm">
               <FiPhone className="w-4 h-4 mr-2 text-[#7152DE]" />
               +91 12345 67890
@@ -125,7 +127,10 @@ export default function Footer() {
               <FiMail className="w-4 h-4 mr-2 text-[#7152DE]" />
               ieee@ceconline.edu
             </span>
-            <p className="text-white/70 text-xs">CE Chengannur</p>
+            <span className="flex items-center text-white/90 text-sm">
+              <FiMapPin className="w-4 h-4 mr-2 text-[#7152DE]" />
+              CE Chengannur
+            </span>
           </div>
         </div>
 
