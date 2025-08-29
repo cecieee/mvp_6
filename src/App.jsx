@@ -92,7 +92,7 @@ function App() {
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 }

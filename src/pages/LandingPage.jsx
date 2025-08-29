@@ -12,7 +12,6 @@ export default function LandingPage() {
       <About />
       <Task />
       <Rules />
-      <Footer />
     </>
   );
 }
