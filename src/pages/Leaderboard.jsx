@@ -205,10 +205,28 @@ const EventLeaderboard = () => {
 
   if (loading) {
     return (
-      <div className=" font-jersey min-h-screen bg-gradient-to-tr from-violet-900 to-slate-900 text-white flex items-center justify-center px-4">
-        <div className="flex items-center space-x-3 bg-gradient-to-b from-violet-900 to-violet-800 backdrop-blur-xl border border-violet-600 rounded-2xl p-4 sm:p-6">
-          <FaTrophy className="animate-pulse text-2xl sm:text-3xl text-amber-300" />
-          <span className="text-lg italic sm:text-xl">Loading leaderboard...</span>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+        <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
+          <div className="flex items-center space-x-4 bg-white/90 backdrop-blur-xl border border-[#7152DE]/20 rounded-2xl p-6 sm:p-8 shadow-2xl">
+            <FaTrophy className="animate-pulse text-3xl sm:text-4xl text-[#7152DE]" />
+            <div className="text-center">
+              <span 
+                className="text-xl sm:text-2xl font-bold"
+                style={{
+                  fontFamily: "Frontline, sans-serif",
+                  background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Loading Leaderboard...
+              </span>
+              <div className="mt-2 text-[#4B3791] text-sm font-medium">
+                Please wait while we fetch the latest rankings
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -224,34 +242,52 @@ const EventLeaderboard = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
       <div className="relative z-10">
          {/* Header */}
-        <div className="flex items-center justify-between p-4 pt-8 sm:pt-12">
-          <div></div>
-          <div className="text-center px-4 sm:px-8">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-br from-slate-900 to-violet-700 font-bold font-frontlines tracking-[2px] px-2 py-1">
-              LEADERBOARD
-            </h1>
-            <div className="h-1 w-[80vw] mx-auto bg-violet-300 rounded-full opacity-80 ml-5 mb-10 mt-10"></div>
+        <div className="text-center pt-25 pb-6 px-4">
+          <h1 
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl font-frontline mb-5"
+            style={{
+              fontFamily: "Frontline, sans-serif",
+              background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            LEADERBOARD
+          </h1>
+        </div>
+
+        {/* Subtitle section */}
+        <div className="text-center mb-12 px-4">  
+          <div className="w-24 h-0.5 bg-gradient-to-r from-[#7152DE] to-[#4B3791] mx-auto rounded-full mt-8 opacity-60 mb-5"></div>
+          <div className="max-w-4xl mx-auto space-y-6">
+            <p 
+              className="text-lg sm:text-xl md:text-2xl italic font-medium text-[#1C1538]"
+              style={{ fontFamily: "serif" }}
+            >
+              "The difference between ordinary and extraordinary is that little extra."  <br />- Jimmy Johnson
+            </p>
+            <p 
+              className="text-sm sm:text-base md:text-lg text-[#4B3791]"
+              style={{ fontFamily: "JerseyM54, sans-serif" }}
+            >
+              Real-time recognition of those who refuse to settle for average. Every position earned, every point a stepping stone to greatness.
+            </p>
           </div>
-          <div className="w-6"></div>
+          
+          {/* Bottom decorative line */}
+          <div className="w-24 h-0.5 bg-gradient-to-r from-[#7152DE] to-[#4B3791] mx-auto rounded-full mt-8 opacity-60"></div>
         </div>
 
-        {/* Subtitle section with glassmorphism */}
-        <div className="text-center mb-6 sm:mb-8 px-4">          
-            <div className="text-sm sm:text-base lg:text-xl space-y-3 sm:space-y-4">
-              <div className="text-violet-900 w-[80vw] m-auto italic text-2xl font-medium mb-5">
-                "The difference between ordinary and extraordinary is that little extra." - Jimmy Johnson
-              </div>
-              <div className="text-violet-800 w-[80vw] m-auto text-xs sm:text-sm lg:text-xl leaderboard">
-                Real-time recognition of those who refuse to settle for average. Every position earned, every point a stepping stone to greatness.
-              </div>
-            </div>
-           <div className="h-1 w-[80vw] mx-auto bg-violet-300 rounded-full opacity-80 mb-5 mt-15"></div>
-        </div>
-
-        {/* Top 3 Cards Section - Fixed container to prevent layout shifts */}
+        {/* Top 3 Cards Section */}
         {cardOrder.length > 0 && (
           <div className="px-2 sm:px-4 py-4 sm:py-6 overflow-hidden font-jersey">
-            <h2 className="text-center text-slate-600 font-semibold mb-4 sm:mb-6 text-base sm:text-4xl mr-6">🏆 Top Performers</h2>
+            <h2 
+              className="text-center text-[#4B3791] font-bold mb-8 text-xl sm:text-3xl md:text-4xl"
+              style={{ fontFamily: "Frontline, sans-serif" }}
+            >
+              🏆 Top Performers
+            </h2>
             <div className="flex justify-center items-end gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-8 min-h-[200px] sm:min-h-[240px] md:min-h-[280px] lg:min-h-[320px] xl:min-h-[360px] px-4">
               {cardOrder.map((item) => getTopThreeCard(item))}
             </div>
