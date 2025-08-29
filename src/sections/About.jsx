@@ -112,7 +112,7 @@ const About = () => {
     <div>
       <section
         ref={sectionRef}
-        className="px-4 bg-black h-[200vh] flex items-start pt-0"
+        className="px-4 bg-white h-[200vh] flex items-start pt-0"
       >
         <div className="max-w-7xl mx-auto w-full pt-30" ref={pinRef}>
           {/* Title */}

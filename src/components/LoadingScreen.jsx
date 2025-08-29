@@ -115,7 +115,7 @@ export default function LoadingScreen({ onLoadingComplete }) {
       </div>
 
       <div className="relative z-10 text-center">
-        <LoadingText />
+        <LoadingText />                                                                                                                                     
         <ProgressBar progress={progress} />
       </div>
 

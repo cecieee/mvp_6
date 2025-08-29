@@ -17,15 +17,9 @@ import Contact from "./pages/Contact";
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
-  const handleLoadingComplete = () => {
-    setIsLoading(false);
-  };
-
-  if (isLoading) {
-    return <LoadingScreen onLoadingComplete={handleLoadingComplete} />;
-  }
-
   useEffect(() => {
+    if (isLoading) return; // Don't run logic if loading
+
     // Initialize Lenis
     const lenis = new Lenis({
       duration: 1.2,
@@ -63,20 +57,28 @@ function App() {
     return () => {
       lenis.destroy();
     };
-  }, []);
+  }, [isLoading]); // Rerun when isLoading changes
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
 
   return (
     <>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/tasks" element={<Tasks />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-        {/* <Footer /> */}
-      </Router>
+      {isLoading ? (
+        <LoadingScreen onLoadingComplete={handleLoadingComplete} />
+      ) : (
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="/tasks" element={<Tasks />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+          {/* <Footer /> */}
+        </Router>
+      )}
     </>
   );
 }
