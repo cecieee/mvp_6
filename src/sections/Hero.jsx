@@ -1,32 +1,55 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 export default function Hero() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [smoothMousePosition, setSmoothMousePosition] = useState({
-    x: 0,
-    y: 0,
+  const [smoothMousePosition, setSmoothMousePosition] = useState({ x: 0, y: 0 });
+  const mousePositionRef = useRef({ x: 0, y: 0 });
+
+  const [viewport, setViewport] = useState({
+    width: typeof window !== "undefined" ? window.innerWidth : 375,
+    height: typeof window !== "undefined" ? window.innerHeight : 667,
   });
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 2 - 1,
-        y: -(e.clientY / window.innerHeight) * 2 + 1,
+    const handleResize = () => {
+      setViewport({
+        width: window.innerWidth,
+        height: window.innerHeight,
       });
     };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    let ticking = false;
+    const handleMouseMove = (e) => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          mousePositionRef.current = {
+            x: (e.clientX / viewport.width) * 2 - 1,
+            y: -(e.clientY / viewport.height) * 2 + 1,
+          };
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [viewport.width, viewport.height]);
+
+  useEffect(() => {
+    let animationFrameId;
+    const animate = () => {
       setSmoothMousePosition((prev) => ({
-        x: prev.x + (mousePosition.x - prev.x) * 0.1,
-        y: prev.y + (mousePosition.y - prev.y) * 0.1,
+        x: prev.x + (mousePositionRef.current.x - prev.x) * 0.1,
+        y: prev.y + (mousePositionRef.current.y - prev.y) * 0.1,
       }));
-    }, 16);
-    return () => clearInterval(interval);
-  }, [mousePosition]);
+      animationFrameId = requestAnimationFrame(animate);
+    };
+    animate();
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
 
   return (
     <section
@@ -60,43 +83,26 @@ export default function Hero() {
           zIndex: 0,
         }}
       />
-
       {/* Particle dots */}
       {Array.from({ length: 15 }).map((_, i) => {
-        const vw = typeof window !== "undefined" ? window.innerWidth : 375;
-        const vh = typeof window !== "undefined" ? window.innerHeight : 667;
+        const vw = viewport.width;
+        const vh = viewport.height;
         const baseX = (((i * 7 + 10) % 100) / 100) * vw;
         const baseY = (((i * 11 + 15) % 100) / 100) * vh;
-        const offsetX =
-          smoothMousePosition.x *
-          (vw < 640 ? 12 : 32) *
-          (i % 3 === 0 ? 1 : -0.5);
-        const offsetY =
-          smoothMousePosition.y *
-          (vw < 640 ? 12 : 32) *
-          (i % 2 === 0 ? 1 : -0.5);
-        const scale =
-          1 +
-          Math.abs(smoothMousePosition.x * smoothMousePosition.y) *
-            (vw < 640 ? 0.4 : 0.7);
-        const glowIntensity =
-          (vw < 640 ? 8 : 12) +
-          Math.abs(smoothMousePosition.x + smoothMousePosition.y) *
-            (vw < 640 ? 12 : 24);
+        const scale = 1 + ((i % 3) * 0.2);
+        const glowIntensity = (vw < 640 ? 8 : 12) + (i % 5) * (vw < 640 ? 4 : 8);
         return (
           <div
             key={i}
             className="absolute w-2 h-2 rounded-full transition-all duration-200 ease-out animate-pulse"
             style={{
-              left: `${baseX + offsetX}px`,
-              top: `${baseY + offsetY}px`,
+              left: `${baseX}px`,
+              top: `${baseY}px`,
               animationDelay: `${i * 0.12}s`,
               transform: `scale(${scale})`,
               boxShadow: `0 0 ${glowIntensity}px #7152DE`,
               background: "#7152DE",
-              filter: `blur(${
-                Math.abs(smoothMousePosition.x) * (vw < 640 ? 0.4 : 0.7)
-              }px)`,
+              filter: `blur(${(i % 4) * (vw < 640 ? 0.2 : 0.4)}px)`,
             }}
           />
         );
@@ -104,29 +110,23 @@ export default function Hero() {
 
       {/* Floating particles */}
       {Array.from({ length: 10 }).map((_, i) => {
-        const vw = typeof window !== "undefined" ? window.innerWidth : 375;
-        const vh = typeof window !== "undefined" ? window.innerHeight : 667;
+        const vw = viewport.width;
+        const vh = viewport.height;
         const baseTop = (((i * 13 + 20) % 90) / 100) * vh;
         const baseLeft = (((i * 17 + 25) % 90) / 100) * vw;
-        const offsetX =
-          smoothMousePosition.x * (vw < 640 ? 18 : 48) * Math.sin(i);
-        const offsetY =
-          smoothMousePosition.y * (vw < 640 ? 18 : 48) * Math.cos(i);
-        const scale =
-          1 + Math.abs(smoothMousePosition.x * (vw < 640 ? 0.6 : 1.1));
-        const rotation =
-          smoothMousePosition.x * smoothMousePosition.y * (vw < 640 ? 40 : 90);
+        const scale = 1 + ((i % 4) * 0.15);
+        const rotation = (i % 6) * 15;
         return (
           <div
             key={`floating-${i}`}
             className="absolute w-3 h-3 rounded-full animate-ping transition-all duration-200 ease-out"
             style={{
-              top: `${baseTop + offsetY}px`,
-              left: `${baseLeft + offsetX}px`,
+              top: `${baseTop}px`,
+              left: `${baseLeft}px`,
               animationDelay: `${i * 0.18}s`,
               animationDuration: `${2.5 + i * 0.15}s`,
               transform: `scale(${scale}) rotate(${rotation}deg)`,
-              opacity: 0.4 + Math.abs(smoothMousePosition.y) * 0.5,
+              opacity: 0.5,
               background: "#4B3791",
               boxShadow: "0 0 20px #4B3791",
             }}

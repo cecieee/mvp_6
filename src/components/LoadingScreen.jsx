@@ -82,7 +82,7 @@ export default function LoadingScreen({ onLoadingComplete }) {
         }
         return Math.min(prev + Math.random() * 3 + 1, 100)
       })
-    }, 120)
+    }, 80)
 
     return () => clearInterval(interval)
   }, [onLoadingComplete])
@@ -95,7 +95,7 @@ export default function LoadingScreen({ onLoadingComplete }) {
       }}
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(12)].map((_, i) => (
           <div
             key={i}
             className="absolute rounded-full"
