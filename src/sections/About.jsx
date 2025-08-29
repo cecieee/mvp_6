@@ -111,6 +111,7 @@ const About = () => {
   return (
     <div>
       <section
+        id="about"
         ref={sectionRef}
         className="px-4 bg-white h-[200vh] flex items-start pt-0"
       >

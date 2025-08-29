@@ -51,6 +51,13 @@ export default function Hero() {
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
@@ -214,7 +221,10 @@ export default function Hero() {
                 />
               </svg>
             </button>
-            <button className="group px-8 py-3 font-semibold rounded-full border-2 border-[#4B3791] text-[#4B3791] bg-white shadow-md hover:bg-[#4B3791] hover:text-white transition-all duration-300 flex items-center gap-3 relative overflow-hidden">
+            <button 
+              onClick={scrollToAbout}
+              className="group px-8 py-3 font-semibold rounded-full border-2 border-[#4B3791] text-[#4B3791] bg-white shadow-md hover:bg-[#4B3791] hover:text-white transition-all duration-300 flex items-center gap-3 relative overflow-hidden"
+            >
               <span className="relative z-10">About Us</span>
               <svg
                 className="w-5 h-5 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110"
