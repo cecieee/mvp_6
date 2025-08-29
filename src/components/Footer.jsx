@@ -1,10 +1,13 @@
 import React from "react";
+import { FiPhone, FiMail, FiInstagram, FiLinkedin, FiMapPin } from "react-icons/fi";
 
 export default function Footer() {
   return (
     <footer
       className="relative text-white overflow-hidden py-10"
-      style={{ background: "#1B1436" }}
+      style={{
+        background: "linear-gradient(to right, #3A2F5A, #2A1F4A, #3A2F5A)",
+      }}
     >
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#7152DE] via-[#4B3791] to-[#7152DE]"></div>
 
@@ -55,10 +58,10 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <div>
               <h3
-                className="text-2xl font-frontline font-bold"
+                className="text-3xl font-frontline mb-2"
                 style={{
-                  background:
-                    "linear-gradient(90deg, #7152DE 0%, #4B3791 100%)",
+                  fontFamily: "Frontline, sans-serif",
+                  background: "linear-gradient(90deg, #7152DE 0%, #4B3791 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -97,13 +100,7 @@ export default function Footer() {
                 target="_blank"
                 className="w-8 h-8 rounded-full flex items-center justify-center bg-[#7152DE]/20 hover:bg-[#7152DE]/40 transition-all duration-300"
               >
-                <svg
-                  className="w-4 h-4 text-[#7152DE]"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5zm5.25.75a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                </svg>
+                <FiInstagram className="w-6 h-6 text-[#7152DE]" />
               </a>
               <a
                 href="https://www.linkedin.com/company/cecieee/"
@@ -111,7 +108,7 @@ export default function Footer() {
                 className="w-8 h-8 rounded-full flex items-center justify-center bg-[#4B3791]/20 hover:bg-[#4B3791]/40 transition-all duration-300"
               >
                 <svg
-                  className="w-4 h-4 text-[#4B3791]"
+                  className="w-6 h-6 text-[#4B3791]"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -121,10 +118,19 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col items-end md:items-end text-right gap-1">
-            <p className="text-white/90 text-sm">📱 +91 12345 67890</p>
-            <p className="text-white/90 text-sm">📧 ieee@ceconline.edu</p>
-            <p className="text-white/70 text-xs">CE Chengannur</p>
+          <div className="flex flex-col items-start md:items-start text-left gap-1">
+            <span className="flex items-center text-white/90 text-sm">
+              <FiPhone className="w-4 h-4 mr-2 text-[#7152DE]" />
+              +91 12345 67890
+            </span>
+            <span className="flex items-center text-white/90 text-sm">
+              <FiMail className="w-4 h-4 mr-2 text-[#7152DE]" />
+              ieee@ceconline.edu
+            </span>
+            <span className="flex items-center text-white/90 text-sm">
+              <FiMapPin className="w-4 h-4 mr-2 text-[#7152DE]" />
+              CE Chengannur
+            </span>
           </div>
         </div>
 
