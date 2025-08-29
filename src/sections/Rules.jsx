@@ -33,36 +33,104 @@ function Rules() {
   return (
     <section
       id="rules"
-      className="relative min-h-screen bg-gradient-to-b from-black via-purple-900 to-slate-900 flex justify-center items-center py-20 px-4"
+      className="relative min-h-screen flex justify-center items-center py-20 px-4 overflow-hidden"
+      style={{
+        background: "#f5f5f5",
+        position: "relative",
+      }}
     >
-      {/* Enhanced Background Effects */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/6 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-1/3 right-1/6 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-pink-500/25 rounded-full blur-3xl animate-pulse delay-500"></div>
-        <div className="absolute top-1/2 right-1/2 w-32 h-32 bg-cyan-400/20 rounded-full blur-xl animate-pulse delay-2000"></div>
+      {/* Black grid background matching Hero */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          backgroundImage: `
+            repeating-linear-gradient(
+              to right,
+              rgba(0,0,0,0.04) 0px,
+              rgba(0,0,0,0.04) 1.5px,
+              transparent 1.5px,
+              transparent 64px
+            ),
+            repeating-linear-gradient(
+              to bottom,
+              rgba(0,0,0,0.04) 0px,
+              rgba(0,0,0,0.04) 1.5px,
+              transparent 1.5px,
+              transparent 64px
+            )
+          `,
+          backgroundSize: "64px 64px",
+          zIndex: 0,
+        }}
+      />
 
-        {/* Floating particles */}
-        {[...Array(20)].map((_, i) => (
-          <motion.div
+      {/* Particle dots matching Hero theme */}
+      {Array.from({ length: 15 }).map((_, i) => {
+        const baseX =
+          (((i * 7 + 10) % 100) / 100) *
+          (typeof window !== "undefined" ? window.innerWidth : 1200);
+        const baseY =
+          (((i * 11 + 15) % 100) / 100) *
+          (typeof window !== "undefined" ? window.innerHeight : 800);
+        const scale = 1 + (i % 3) * 0.2;
+        const glowIntensity = 12 + (i % 5) * 8;
+        return (
+          <div
             key={i}
-            className="absolute w-1 h-1 bg-white/30 rounded-full"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-            }}
-            animate={{
-              y: [0, -100, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
+            className="absolute w-2 h-2 rounded-full transition-all duration-200 ease-out animate-pulse"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${baseX}px`,
+              top: `${baseY}px`,
+              animationDelay: `${i * 0.12}s`,
+              transform: `scale(${scale})`,
+              boxShadow: `0 0 ${glowIntensity}px #7152DE`,
+              background: "#7152DE",
+              filter: `blur(${(i % 4) * 0.4}px)`,
+            }}
+          />
+        );
+      })}
+
+      {/* Floating particles */}
+      {Array.from({ length: 10 }).map((_, i) => {
+        const baseTop =
+          (((i * 13 + 20) % 90) / 100) *
+          (typeof window !== "undefined" ? window.innerHeight : 800);
+        const baseLeft =
+          (((i * 17 + 25) % 90) / 100) *
+          (typeof window !== "undefined" ? window.innerWidth : 1200);
+        const scale = 1 + (i % 4) * 0.15;
+        const rotation = (i % 6) * 15;
+        return (
+          <div
+            key={`floating-${i}`}
+            className="absolute w-3 h-3 rounded-full animate-ping transition-all duration-200 ease-out"
+            style={{
+              top: `${baseTop}px`,
+              left: `${baseLeft}px`,
+              animationDelay: `${i * 0.18}s`,
+              animationDuration: `${2.5 + i * 0.15}s`,
+              transform: `scale(${scale}) rotate(${rotation}deg)`,
+              opacity: 0.5,
+              background: "#4B3791",
+              boxShadow: "0 0 20px #4B3791",
+            }}
+          />
+        );
+      })}
+
+      {/* Matrix lines */}
+      <div className="absolute inset-0 opacity-5">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-px bg-gradient-to-b from-transparent via-[#7152DE] to-transparent animate-pulse transition-all duration-500 ease-out"
+            style={{
+              left: `${i * 5 + 2}%`,
+              height: "100%",
+              animationDuration: `${4 + i * 0.2}s`,
+              animationDelay: `${i * 0.1}s`,
+              opacity: 0.03,
             }}
           />
         ))}
@@ -75,10 +143,26 @@ function Rules() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h1 className="text-6xl font-bold bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent mb-4">
-            Competition Rules
+          <h1
+            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4"
+            style={{
+              fontFamily: "Frontline, sans-serif",
+              background: "linear-gradient(90deg, #1C1538 0%, #4B3791 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              color: "#1C1538",
+            }}
+          >
+            Rules
           </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p
+            className="text-xl max-w-2xl mx-auto"
+            style={{
+              fontFamily: "JerseyM54, sans-serif",
+              color: "#4B3791",
+            }}
+          >
             Follow these guidelines to ensure a fair and rewarding experience
             for all participants
           </p>
