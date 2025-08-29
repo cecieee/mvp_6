@@ -58,7 +58,7 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <div>
               <h3
-                className="text-3xl font-frontline mb-2"
+                className="text-3xl font-frontline mt-5 mb-2"
                 style={{
                   fontFamily: "Frontline, sans-serif",
                   background: "linear-gradient(90deg, #7152DE 0%, #4B3791 100%)",
@@ -69,9 +69,6 @@ export default function Footer() {
               >
                 MVP 6.0
               </h3>
-              <p className="text-[#7152DE] font-semibold text-sm">
-                IEEE Student Branch CEC
-              </p>
             </div>
           </div>
 
