@@ -82,7 +82,7 @@ export default function Task() {
         ))}
       </div>
 
-      <div className="container mx-auto px-6 text-center relative z-10">
+      <div className="container mx-auto px-6 text-center md:mt-[15vw] lg:mt-0 relative z-10">
         <h2
           className="text-4xl md:text-5xl font-bold mb-4"
           style={{

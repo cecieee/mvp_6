@@ -244,7 +244,7 @@ const EventLeaderboard = () => {
          {/* Header */}
         <div className="text-center pt-25 pb-6 px-4">
           <h1 
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl font-frontline mb-5"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-5xl font-frontline mb-5"
             style={{
               fontFamily: "Frontline, sans-serif",
               background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
