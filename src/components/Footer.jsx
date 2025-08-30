@@ -70,13 +70,15 @@ export default function Footer() {
           <div className="text-center md:text-left">
             <button onClick={() => navigate("/")} className="cursor-pointer">
               <h3
-                className="text-2xl sm:text-3xl font-frontline mb-2"
+                className="text-2xl sm:text-3xl font-frontline mb-2 px-3 py-1 rounded-md"
                 style={{
                   fontFamily: "Frontline, sans-serif",
-                  background: "linear-gradient(90deg, #7152DE 0%, #4B3791 100%)",
+                  background: "linear-gradient(90deg, #FFFFFF 0%, #E8E0FF 50%, #FFFFFF 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
+                  textShadow: "0 0 20px rgba(255,255,255,0.5)",
+                  filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))",
                 }}
               >
                 MVP 6.0
@@ -104,18 +106,18 @@ export default function Footer() {
                 href="https://www.instagram.com/ieee_sb_cec/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full flex items-center justify-center bg-[#7152DE]/20 hover:bg-[#7152DE]/40 transition-all duration-300"
+                className="w-10 h-10 rounded-full flex items-center justify-center bg-white/15 backdrop-blur-sm border border-white/20 hover:bg-[#7152DE]/60 hover:border-[#7152DE]/50 transition-all duration-300 shadow-lg"
               >
-                <FiInstagram className="w-5 h-5 text-[#7152DE]" />
+                <FiInstagram className="w-5 h-5 text-white" />
               </a>
               <a
                 href="https://www.linkedin.com/company/cecieee/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full flex items-center justify-center bg-[#7152DE]/20 hover:bg-[#7152DE]/40 transition-all duration-300"
+                className="w-10 h-10 rounded-full flex items-center justify-center bg-white/15 backdrop-blur-sm border border-white/20 hover:bg-[#7152DE]/60 hover:border-[#7152DE]/50 transition-all duration-300 shadow-lg"
               >
                 <svg
-                  className="w-5 h-5 text-[#7152DE]"
+                  className="w-5 h-5 text-white"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
