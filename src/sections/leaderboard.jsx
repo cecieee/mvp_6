@@ -113,7 +113,7 @@ const LandingLeaderboard = () => {
   }
 
   return (
-    <div className="w-[80vw] m-auto mb-10 bg-gradient-to-br from-violet-900 via-purple-800 to-violet-900 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl relative overflow-hidden">
+    <div className="w-[90vw] lg:w-[70vw] m-auto mb-10 bg-gradient-to-br from-violet-900 via-purple-800 to-violet-900 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl relative overflow-hidden">
       {/* Glass border highlight effect */}
       <div className="absolute inset-0 rounded-2xl border border-white/25 opacity-50"></div>
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
@@ -123,23 +123,38 @@ const LandingLeaderboard = () => {
       
       {/* Header */}
       <div className="bg-violet-900/80 backdrop-blur-sm rounded-t-2xl p-4 border-b border-white/20 relative z-10">
-        <div className="flex items-center justify-between">
-          <div>
+        <div className="flex">
+          <div className='text-center flex-1'>
             <h3 
               className="text-xl sm:text-2xl font-bold text-white mb-1"
               style={{ fontFamily: "Frontline, sans-serif" }}
             >
               🏆 Live Rankings
             </h3>
-            <p className="text-purple-200 text-sm leaderboard">Top 5 Performers</p>
+            <p className="text-purple-300 text-sm text-center leaderboard">Top 5 Performers</p>
           </div>
-          <Link 
+          {/* <Link 
             to="/leaderboard" 
             className="group flex items-center space-x-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 py-2 transition-all duration-300 hover:scale-105"
           >
+            
             <span className="text-white text-sm font-medium tracking-[1px] font-jersey">View Full</span>
             <FaChevronRight className="text-white text-xs group-hover:translate-x-1 transition-transform duration-300" />
+          </Link> */}
+          <div className="mt-2">
+          <Link 
+            to="/leaderboard"
+            className="group w-full bg-gradient-to-r from-purple-400/50 to-purple-400/50 hover:from-purple-500/70 hover:to-purple-500/70 backdrop-blur-sm border border-white/30 rounded-xl py-3 px-4 transition-all duration-300 hover:scale-[1.02] relative overflow-hidden block"
+          >
+            {/* Shining animation overlay */}
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-transform duration-700 ease-out"></div>
+            
+            <div className="flex items-center justify-center space-x-1 relative z-10">
+              <span className="text-white font-jersey tracking-[1px] font-semibold">View Full</span>
+              <FaChevronRight className="text-white text-sm group-hover:translate-x-1 transition-transform duration-300" />
+            </div>
           </Link>
+        </div>
         </div>
       </div>
       
@@ -219,20 +234,20 @@ const LandingLeaderboard = () => {
         })}
         
         {/* View All Button */}
-        <div className="mt-4 pt-4 border-t border-white/20">
+        {/* <div className="mt-4 pt-4 border-t border-white/20">
           <Link 
             to="/leaderboard"
             className="group w-full bg-gradient-to-r from-purple-600/50 to-violet-800/50 hover:from-purple-500/70 hover:to-indigo-500/70 backdrop-blur-sm border border-white/30 rounded-xl py-3 px-4 transition-all duration-300 hover:scale-[1.02] relative overflow-hidden block"
-          >
+          > */}
             {/* Shining animation overlay */}
-            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-transform duration-700 ease-out"></div>
+            {/* <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-transform duration-700 ease-out"></div>
             
             <div className="flex items-center justify-center space-x-2 relative z-10">
               <span className="text-white font-jersey tracking-[1px] font-semibold">View Full Leaderboard</span>
               <FaChevronRight className="text-white text-sm group-hover:translate-x-1 transition-transform duration-300" />
             </div>
           </Link>
-        </div>
+        </div> */}
         
         {/* Status */}
         <div className="mt-4 text-center">
