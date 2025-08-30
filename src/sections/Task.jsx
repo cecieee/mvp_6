@@ -6,6 +6,9 @@ export default function Task() {
 
   const handleExploreTask = () => {
     navigate("/tasks");
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
   };
 
   return (

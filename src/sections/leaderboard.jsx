@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaUser, FaStar, FaTrophy, FaAward, FaGem, FaShieldAlt, FaBolt, FaMedal, FaCrown, FaChevronRight } from 'react-icons/fa';
 
 const LandingLeaderboard = () => {
+  const navigate = useNavigate();
   const [leaderboardData, setLeaderboardData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -93,6 +94,13 @@ const LandingLeaderboard = () => {
     }
   };
 
+  const handleViewFullClick = () => {
+    navigate('/leaderboard');
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
+  };
+
   if (loading) {
     return (
       <div className="bg-gradient-to-br from-violet-900/95 via-purple-800/95 to-indigo-900/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-6 relative overflow-hidden">
@@ -142,8 +150,8 @@ const LandingLeaderboard = () => {
             <FaChevronRight className="text-white text-xs group-hover:translate-x-1 transition-transform duration-300" />
           </Link> */}
           <div className="mt-2">
-          <Link 
-            to="/leaderboard"
+          <button 
+            onClick={handleViewFullClick}
             className="group w-full bg-gradient-to-r from-purple-400/50 to-purple-400/50 hover:from-purple-500/70 hover:to-purple-500/70 backdrop-blur-sm border border-white/30 rounded-xl py-3 px-4 transition-all duration-300 hover:scale-[1.02] relative overflow-hidden block"
           >
             {/* Shining animation overlay */}
@@ -153,7 +161,7 @@ const LandingLeaderboard = () => {
               <span className="text-white font-jersey tracking-[1px] font-semibold">View Full</span>
               <FaChevronRight className="text-white text-sm group-hover:translate-x-1 transition-transform duration-300" />
             </div>
-          </Link>
+          </button>
         </div>
         </div>
       </div>
