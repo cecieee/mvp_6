@@ -169,7 +169,7 @@ export default function Hero() {
       <div className="container mx-auto px-6 relative z-30">
         <div className="text-center">
           <h1
-            className="text-5xl md:text-7xl lg:text-8xl font-frontline mb-6 animate-fade-in-up"
+            className="text-4xl md:text-6xl lg:text-7xl font-frontline mb-4 pr-3 animate-fade-in-up"
             style={{
               fontFamily: "Frontline, sans-serif",
               background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
@@ -178,32 +178,45 @@ export default function Hero() {
               backgroundClip: "text",
               color: "#7152DE",
               animation: "fadeInUp 1.2s ease-out",
+              letterSpacing: "-0.02em",
             }}
           >
             MVP 6.0
           </h1>
 
           <p
-            className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="text-2xl md:text-3xl lg:text-4xl mb-3 max-w-4xl mx-auto leading-relaxed font-bold"
             style={{
-              fontFamily: "JerseyM54, sans-serif",
+              fontFamily: "Inter, system-ui, sans-serif",
               color: "#1C1538",
               background: "linear-gradient(90deg, #7152DE 0%, #4B3791 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
+              letterSpacing: "-0.01em",
             }}
           >
-            <span className="font-bold">Innovate</span>
-            <span className="mx-2">•</span>
-            <span className="font-bold">Connect</span>
-            <span className="mx-2">•</span>
-            <span className="font-bold">Inspire</span>
+            <span className="font-bold">INNOVATE</span>
+            <span className="mx-3 text-[#7152DE] opacity-100">•</span>
+            <span className="font-bold">CONNECT</span>
+            <span className="mx-3 text-[#7152DE] opacity-100">•</span>
+            <span className="font-bold">INSPIRE</span>
+          </p>
+
+          <p
+            className="text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed opacity-80"
+            style={{
+              fontFamily: "Inter, system-ui, sans-serif",
+              color: "#4B3791",
+              animation: "fadeInUp 1.2s ease-out 0.3s both",
+            }}
+          >
+            Join us for an extraordinary journey of innovation and discovery
           </p>
 
           <div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
-            style={{ animation: "fadeInUp 1.2s ease-out 1s both" }}
+            style={{ animation: "fadeInUp 1.2s ease-out 0.6s both" }}
           >
             <button className="group px-8 py-3 font-semibold rounded-full border-2 border-[#7152DE] text-[#7152DE] bg-white shadow-md hover:bg-[#7152DE] hover:text-white transition-all duration-300 flex items-center gap-3 relative overflow-hidden">
               <span className="relative z-10">Register Now</span>
