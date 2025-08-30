@@ -1,131 +1,119 @@
 import React from "react";
-import { FaTasks, FaExclamationCircle, FaClock } from "react-icons/fa";
+import { FaTasks, FaExclamationCircle, FaClock, FaCheckCircle } from "react-icons/fa";
 
 export default function Tasks() {
   const today = new Date();
 
-  const tasks = {
-    active: [
-      {
-        title: "Develop User",
-        status: "Upcoming",
-        desc: "Implement user login, registration, and profile management system.",
-        due: "2025-09-10",
-      },
-      {
-        title: "Design",
-        status: "Upcoming",
-        desc: "Create detailed UI mockups and style guidelines.",
-        due: "2025-09-11",
-      },
-      {
-        title: "Refactor",
-        status: "Upcoming",
-        desc: "Optimize application modules and improve scalability.",
-        due: "2025-09-12",
-      },
-      {
-        title: "Conduct",
-        status: "Upcoming",
-        desc: "Assess application performance and security.",
-        due: "2025-09-13",
-      },
-      {
-        title: "Implement",
-        status: "Upcoming",
-        desc: "Integrate Google Analytics and monitor user activity.",
-        due: "2025-09-14",
-      },
-      {
-        title: "Review",
-        status: "Upcoming",
-        desc: "Address review feedback and finalize documentation.",
-        due: "2025-09-15",
-      },
-      {
-        title: "Integrate",
-        status: "Upcoming",
-        desc: "Connect app with payment processing APIs.",
-        due: "2025-09-16",
-      },
-    ],
-    upcoming: [
-      {
-        title: "Prepare Q3",
-        status: "Upcoming",
-        desc: "Develop comprehensive quarterly roadmap.",
-        due: "2025-09-17",
-      },
-      {
-        title: "Set Up CI/CD",
-        status: "Upcoming",
-        desc: "Configure automated build, test & deployment pipelines.",
-        due: "2025-09-18",
-      },
-      {
-        title: "Update Project",
-        status: "Upcoming",
-        desc: "Release updates and bug fixes.",
-        due: "2025-09-19",
-      },
-      {
-        title: "Plan Next",
-        status: "Upcoming",
-        desc: "Organize priorities for next development sprint.",
-        due: "2025-09-20",
-      },
-    ],
-  };
+  const tasks = [
+    // Completed Tasks (past due dates)
+    {
+      title: "Setup Development Environment",
+      status: "Completed",
+      desc: "Install and configure development tools, IDE, and project dependencies.",
+      due: "2025-01-05",
+      completed: true,
+    },
+    {
+      title: "Database Schema Design",
+      status: "Completed",
+      desc: "Design and implement the database structure for user management.",
+      due: "2025-01-08",
+      completed: true,
+    },
+    {
+      title: "User Authentication System",
+      status: "Completed",
+      desc: "Implement user login, registration, and session management.",
+      due: "2025-01-12",
+      completed: true,
+    },
 
-  const normalizeDate = (date) =>
-    new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    // Active Tasks (current/recent due dates)
+    {
+      title: "Frontend Dashboard Design",
+      status: "Active",
+      desc: "Create responsive dashboard UI with modern design principles.",
+      due: "2025-01-20",
+      completed: false,
+    },
+    {
+      title: "API Integration",
+      status: "Active",
+      desc: "Connect frontend with backend APIs and handle data flow.",
+      due: "2025-01-22",
+      completed: false,
+    },
+    {
+      title: "User Profile Management",
+      status: "Active",
+      desc: "Implement user profile editing and settings functionality.",
+      due: "2025-01-25",
+      completed: false,
+    },
 
-  const todayNormalized = normalizeDate(today);
+    // Upcoming Tasks (future due dates)
+    {
+      title: "Performance Optimization",
+      status: "Upcoming",
+      desc: "Optimize application performance and reduce loading times.",
+      due: "2025-02-01",
+      completed: false,
+    },
+    {
+      title: "Testing & QA",
+      status: "Upcoming",
+      desc: "Conduct comprehensive testing and quality assurance.",
+      due: "2025-02-05",
+      completed: false,
+    },
+    {
+      title: "Security Implementation",
+      status: "Upcoming",
+      desc: "Implement security measures and vulnerability assessments.",
+      due: "2025-02-10",
+      completed: false,
+    },
+    {
+      title: "Documentation",
+      status: "Upcoming",
+      desc: "Create comprehensive project documentation and user guides.",
+      due: "2025-02-15",
+      completed: false,
+    },
+    {
+      title: "Deployment Setup",
+      status: "Upcoming",
+      desc: "Configure production environment and deployment pipelines.",
+      due: "2025-02-20",
+      completed: false,
+    },
+  ];
 
-  const normalizeStatus = (task) => {
-    const dueDate = normalizeDate(new Date(task.due));
-    
-    // If task is originally upcoming, keep it upcoming
-    if (task.status === "Upcoming") return { ...task, status: "Upcoming" };
-    
-    // For active tasks, check if they're expired
-    if (dueDate < todayNormalized) {
-      return { ...task, status: "Expired" };
-    }
-    
-    return { ...task, status: "Active" };
-  };
+  // Separate tasks by status
+  const activeTasks = tasks.filter((task) => task.status === "Active");
+  const completedTasks = tasks.filter((task) => task.status === "Completed");
+  const upcomingTasks = tasks.filter((task) => task.status === "Upcoming");
 
-  const allActive = tasks.active.map(normalizeStatus);
-  const allUpcoming = tasks.upcoming.map(normalizeStatus);
-
-  // Separate tasks by their actual status from both arrays
-  const allTasks = [...allActive, ...allUpcoming];
-  const activeTasks = allTasks.filter((t) => t.status === "Active");
-  const upcomingTasks = allTasks.filter((t) => t.status === "Upcoming");
-  const expiredTasks = allTasks.filter((t) => t.status === "Expired");
-
-  const totalTasks = allTasks.length;
-  const completedTasks = activeTasks.length + expiredTasks.length; // Tasks that have been worked on
-  const progress = totalTasks ? Math.round((completedTasks / totalTasks) * 100) : 0;
+  const totalTasks = tasks.length;
+  const progress = Math.round((completedTasks.length / totalTasks) * 100);
 
   const radius = 45;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (progress / 100) * circumference;
 
   const statusStyles = {
-    Active: "bg-purple-100 text-purple-800",
-    Upcoming: "bg-indigo-100 text-indigo-800",
-    Expired: "bg-red-100 text-red-800",
+    Active: "bg-blue-100 text-blue-800",
+    Completed: "bg-green-100 text-green-800",
+    Upcoming: "bg-orange-100 text-orange-800",
   };
 
   const borderShadowStyles = {
     Active:
-      "border-purple-500 shadow-[0_0_12px_rgba(139,92,246,0.3)] hover:shadow-[0_0_20px_rgba(139,92,246,0.5)]",
+      "border-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.3)] hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]",
+    Completed:
+      "border-green-500 shadow-[0_0_12px_rgba(34,197,94,0.3)] hover:shadow-[0_0_20px_rgba(34,197,94,0.5)]",
     Upcoming:
-      "border-indigo-500 shadow-[0_0_12px_rgba(99,102,241,0.3)] hover:shadow-[0_0_20px_rgba(99,102,241,0.5)]",
-    Expired:
-      "border-red-500 shadow-[0_0_12px_rgba(239,68,68,0.3)] hover:shadow-[0_0_20px_rgba(239,68,68,0.5)]",
+      "border-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.3)] hover:shadow-[0_0_20px_rgba(249,115,22,0.5)]",
   };
 
   return (
@@ -145,7 +133,7 @@ export default function Tasks() {
         >
           TASKS
         </h1>
-        
+
         {/* Decorative line */}
         <div className="w-24 h-1 bg-gradient-to-r from-[#7152DE] to-[#4B3791] mx-auto rounded-full mb-8"></div>
       </div>
@@ -155,11 +143,23 @@ export default function Tasks() {
         <div className="col-span-1 space-y-6">
           {/* Progress Circle */}
           <div className="bg-indigo-50 rounded-xl p-6 shadow-sm border border-indigo-200">
-            <h2 className="text-lg font-semibold mb-4 text-indigo-700">Overall Progress</h2>
+            <h2 className="text-lg font-semibold mb-4 text-indigo-700">
+              Overall Progress
+            </h2>
             <div className="flex flex-col items-center">
               <div className="w-28 h-28 relative mb-3">
-                <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r={radius} stroke="#f3f4f6" strokeWidth="8" fill="none" />
+                <svg
+                  className="absolute top-0 left-0 w-full h-full"
+                  viewBox="0 0 100 100"
+                >
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r={radius}
+                    stroke="#f3f4f6"
+                    strokeWidth="8"
+                    fill="none"
+                  />
                   <circle
                     cx="50"
                     cy="50"
@@ -179,40 +179,48 @@ export default function Tasks() {
                 </span>
               </div>
               <p className="text-gray-600 text-sm">
-                Completed: {completedTasks} / {totalTasks}
+                Completed: {completedTasks.length} / {totalTasks}
               </p>
             </div>
           </div>
 
           {/* Task Overview */}
           <div className="bg-purple-50 rounded-xl p-6 shadow-sm border border-purple-200">
-            <h2 className="text-lg font-semibold mb-4 text-purple-700">Task Overview</h2>
+            <h2 className="text-lg font-semibold mb-4 text-purple-700">
+              Task Overview
+            </h2>
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-gray-700">
-                <div className="p-2 bg-indigo-100 rounded-lg">
-                  <FaClock className="text-indigo-600" />
+                <div className="p-2 bg-blue-100 rounded-lg">
+                  <FaTasks className="text-blue-600" />
                 </div>
                 <div>
-                  <p className="font-medium text-indigo-700">Upcoming</p>
-                  <p className="text-sm text-gray-500">{upcomingTasks.length} tasks</p>
+                  <p className="font-medium text-blue-700">Active</p>
+                  <p className="text-sm text-gray-500">
+                    {activeTasks.length} tasks
+                  </p>
                 </div>
               </li>
               <li className="flex items-center gap-3 text-gray-700">
-                <div className="p-2 bg-purple-100 rounded-lg">
-                  <FaTasks className="text-purple-600" />
+                <div className="p-2 bg-green-100 rounded-lg">
+                  <FaCheckCircle className="text-green-600" />
                 </div>
                 <div>
-                  <p className="font-medium text-purple-700">Active</p>
-                  <p className="text-sm text-gray-500">{activeTasks.length} tasks</p>
+                  <p className="font-medium text-green-700">Completed</p>
+                  <p className="text-sm text-gray-500">
+                    {completedTasks.length} tasks
+                  </p>
                 </div>
               </li>
               <li className="flex items-center gap-3 text-gray-700">
-                <div className="p-2 bg-red-100 rounded-lg">
-                  <FaExclamationCircle className="text-red-600" />
+                <div className="p-2 bg-orange-100 rounded-lg">
+                  <FaClock className="text-orange-600" />
                 </div>
                 <div>
-                  <p className="font-medium text-red-700">Expired</p>
-                  <p className="text-sm text-gray-500">{expiredTasks.length} tasks</p>
+                  <p className="font-medium text-orange-700">Upcoming</p>
+                  <p className="text-sm text-gray-500">
+                    {upcomingTasks.length} tasks
+                  </p>
                 </div>
               </li>
             </ul>
@@ -224,19 +232,53 @@ export default function Tasks() {
           {/* Active Tasks */}
           {activeTasks.length > 0 && (
             <div>
-              <h2 className="text-xl font-bold mb-4 text-gray-800">Active Tasks</h2>
+              <h2 className="text-xl font-bold mb-4 text-gray-800">
+                Active Tasks
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                 {activeTasks.map((task, index) => (
                   <div
                     key={index}
                     className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${borderShadowStyles[task.status]}`}
                   >
-                    <span className={`px-3 py-1 text-xs font-medium rounded-full ${statusStyles[task.status]}`}>
+                    <span
+                      className={`px-3 py-1 text-xs font-medium rounded-full ${statusStyles[task.status]}`}
+                    >
                       {task.status}
                     </span>
-                    <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">{task.title}</h3>
+                    <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">
+                      {task.title}
+                    </h3>
                     <p className="text-gray-600 text-sm mb-4">{task.desc}</p>
                     <div className="text-xs text-gray-500">Due: {task.due}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Completed Tasks */}
+          {completedTasks.length > 0 && (
+            <div>
+              <h2 className="text-xl font-bold mb-4 text-gray-800">
+                Completed Tasks
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                {completedTasks.map((task, index) => (
+                  <div
+                    key={index}
+                    className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${borderShadowStyles[task.status]} opacity-90`}
+                  >
+                    <span
+                      className={`px-3 py-1 text-xs font-medium rounded-full ${statusStyles[task.status]}`}
+                    >
+                      ✓ {task.status}
+                    </span>
+                    <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">
+                      {task.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-4">{task.desc}</p>
+                    <div className="text-xs text-gray-500">Completed: {task.due}</div>
                   </div>
                 ))}
               </div>
@@ -246,39 +288,23 @@ export default function Tasks() {
           {/* Upcoming Tasks */}
           {upcomingTasks.length > 0 && (
             <div>
-              <h2 className="text-xl font-bold mb-4 text-gray-800">Upcoming Tasks</h2>
+              <h2 className="text-xl font-bold mb-4 text-gray-800">
+                Upcoming Tasks
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                 {upcomingTasks.map((task, index) => (
                   <div
                     key={index}
                     className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${borderShadowStyles[task.status]}`}
                   >
-                    <span className={`px-3 py-1 text-xs font-medium rounded-full ${statusStyles[task.status]}`}>
+                    <span
+                      className={`px-3 py-1 text-xs font-medium rounded-full ${statusStyles[task.status]}`}
+                    >
                       {task.status}
                     </span>
-                    <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">{task.title}</h3>
-                    <p className="text-gray-600 text-sm mb-4">{task.desc}</p>
-                    <div className="text-xs text-gray-500">Due: {task.due}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Expired Tasks */}
-          {expiredTasks.length > 0 && (
-            <div>
-              <h2 className="text-xl font-bold mb-4 text-gray-800">Expired Tasks</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                {expiredTasks.map((task, index) => (
-                  <div
-                    key={index}
-                    className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${borderShadowStyles[task.status]}`}
-                  >
-                    <span className={`px-3 py-1 text-xs font-medium rounded-full ${statusStyles[task.status]}`}>
-                      {task.status}
-                    </span>
-                    <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">{task.title}</h3>
+                    <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">
+                      {task.title}
+                    </h3>
                     <p className="text-gray-600 text-sm mb-4">{task.desc}</p>
                     <div className="text-xs text-gray-500">Due: {task.due}</div>
                   </div>
