@@ -1,10 +1,20 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { FiPhone, FiMail, FiInstagram, FiLinkedin, FiMapPin } from "react-icons/fi";
 
 export default function Footer() {
+  const navigate = useNavigate();
+
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "Tasks", href: "/tasks" },
+    { name: "Leaderboard", href: "/leaderboard" },
+    { name: "Contact", href: "/contact" },
+  ];
+
   return (
     <footer
-      className="relative text-white overflow-hidden py-10"
+      className="relative text-white overflow-hidden py-8"
       style={{
         background: "linear-gradient(to right, #3A2F5A, #2A1F4A, #3A2F5A)",
       }}
@@ -53,59 +63,61 @@ export default function Footer() {
         ))}
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-8">
-          <div className="flex items-center gap-4">
-            <div>
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        {/* Main content - stack on mobile, spread on desktop */}
+        <div className="flex flex-col space-y-6 md:space-y-0 md:flex-row md:justify-between md:items-start">
+          {/* Logo section */}
+          <div className="text-center md:text-left">
+            <button onClick={() => navigate("/")} className="cursor-pointer">
               <h3
-                className="text-3xl font-frontline mt-5 mb-2"
+                className="text-2xl sm:text-3xl font-frontline mb-2 px-3 py-1 rounded-md"
                 style={{
                   fontFamily: "Frontline, sans-serif",
-                  background: "linear-gradient(90deg, #7152DE 0%, #4B3791 100%)",
+                  background: "linear-gradient(90deg, #FFFFFF 0%, #E8E0FF 50%, #FFFFFF 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
+                  textShadow: "0 0 20px rgba(255,255,255,0.5)",
+                  filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))",
                 }}
               >
                 MVP 6.0
               </h3>
-            </div>
+            </button>
           </div>
 
-          {/* Quick Links */}
-          <div className="flex flex-col items-center">
-            <div className="flex gap-6 mb-2">
-              {[
-                { name: "Home", href: "/" },
-                { name: "Tasks", href: "/tasks" },
-                { name: "Leaderboard", href: "/leaderboard" },
-                { name: "Contact", href: "/contact" },
-              ].map((link, idx) => (
-                <a
+          {/* Navigation Links - centered on mobile */}
+          <div className="text-center">
+            <div className="grid grid-cols-2 gap-4 sm:flex sm:gap-6 justify-center mb-4">
+              {navLinks.map((link, idx) => (
+                <button
                   key={idx}
-                  href={link.href}
-                  className="font-semibold text-white/80 hover:text-[#7152DE] transition-colors duration-200"
+                  onClick={() => navigate(link.href)}
+                  className="font-semibold text-white/80 hover:text-[#7152DE] transition-colors duration-200 text-sm sm:text-base"
                 >
                   {link.name}
-                </a>
+                </button>
               ))}
             </div>
+
             {/* Social Media */}
-            <div className="flex gap-3 mt-2">
+            <div className="flex gap-4 justify-center">
               <a
                 href="https://www.instagram.com/ieee_sb_cec/"
                 target="_blank"
-                className="w-8 h-8 rounded-full flex items-center justify-center bg-[#7152DE]/20 hover:bg-[#7152DE]/40 transition-all duration-300"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full flex items-center justify-center bg-white/15 backdrop-blur-sm border border-white/20 hover:bg-[#7152DE]/60 hover:border-[#7152DE]/50 transition-all duration-300 shadow-lg"
               >
-                <FiInstagram className="w-6 h-6 text-[#7152DE]" />
+                <FiInstagram className="w-5 h-5 text-white" />
               </a>
               <a
                 href="https://www.linkedin.com/company/cecieee/"
                 target="_blank"
-                className="w-8 h-8 rounded-full flex items-center justify-center bg-[#4B3791]/20 hover:bg-[#4B3791]/40 transition-all duration-300"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full flex items-center justify-center bg-white/15 backdrop-blur-sm border border-white/20 hover:bg-[#7152DE]/60 hover:border-[#7152DE]/50 transition-all duration-300 shadow-lg"
               >
                 <svg
-                  className="w-6 h-6 text-[#4B3791]"
+                  className="w-5 h-5 text-white"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -115,25 +127,27 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col items-start md:items-start text-left gap-1">
-            <span className="flex items-center text-white/90 text-sm">
-              <FiPhone className="w-4 h-4 mr-2 text-[#7152DE]" />
-              +91 12345 67890
-            </span>
-            <span className="flex items-center text-white/90 text-sm">
-              <FiMail className="w-4 h-4 mr-2 text-[#7152DE]" />
-              ieee@ceconline.edu
-            </span>
-            <span className="flex items-center text-white/90 text-sm">
-              <FiMapPin className="w-4 h-4 mr-2 text-[#7152DE]" />
-              CE Chengannur
-            </span>
+          {/* Contact info - centered on mobile */}
+          <div className="text-center md:text-right space-y-2">
+            <div className="flex items-center justify-center md:justify-end text-white/90 text-sm">
+              <FiPhone className="w-4 h-4 mr-2 text-[#7152DE] flex-shrink-0" />
+              <span>+91 12345 67890</span>
+            </div>
+            <div className="flex items-center justify-center md:justify-end text-white/90 text-sm">
+              <FiMail className="w-4 h-4 mr-2 text-[#7152DE] flex-shrink-0" />
+              <span>ieee@ceconline.edu</span>
+            </div>
+            <div className="flex items-center justify-center md:justify-end text-white/90 text-sm">
+              <FiMapPin className="w-4 h-4 mr-2 text-[#7152DE] flex-shrink-0" />
+              <span>CE Chengannur</span>
+            </div>
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-8 pt-4 flex flex-col sm:flex-row justify-between items-center text-sm">
-          <p className="text-white/80 mb-2 sm:mb-0">© 2025 IEEE SB CEC</p>
-          <div className="flex items-center space-x-2 text-white/70">
+        {/* Bottom section */}
+        <div className="border-t border-white/10 mt-6 pt-4 text-center space-y-2 sm:space-y-0 sm:flex sm:justify-between sm:items-center text-sm">
+          <p className="text-white/80">© 2025 IEEE SB CEC</p>
+          <div className="flex items-center justify-center space-x-2 text-white/70">
             <span>Made with</span>
             <span className="text-[#7152DE] animate-pulse">❤️</span>
             <span>by IEEE SB CEC</span>
