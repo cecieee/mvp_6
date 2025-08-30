@@ -9,7 +9,7 @@ export default function Task() {
   };
 
   return (
-    <section className="py-17.5 bg-white relative overflow-hidden">
+    <section className="pb-17.5 bg-white relative overflow-hidden">
       {/* Particle dots matching Hero theme */}
       {Array.from({ length: 15 }).map((_, i) => {
         const baseX =
