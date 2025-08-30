@@ -1,7 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { FiPhone, FiMail, FiInstagram, FiLinkedin, FiMapPin } from "react-icons/fi";
 
 export default function Footer() {
+  const navigate = useNavigate();
+
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "Tasks", href: "/tasks" },
+    { name: "Leaderboard", href: "/leaderboard" },
+    { name: "Contact", href: "/contact" },
+  ];
+
   return (
     <footer
       className="relative text-white overflow-hidden py-8"
@@ -58,36 +68,33 @@ export default function Footer() {
         <div className="flex flex-col space-y-6 md:space-y-0 md:flex-row md:justify-between md:items-start">
           {/* Logo section */}
           <div className="text-center md:text-left">
-            <h3
-              className="text-2xl sm:text-3xl font-frontline mb-2"
-              style={{
-                fontFamily: "Frontline, sans-serif",
-                background: "linear-gradient(90deg, #7152DE 0%, #4B3791 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              MVP 6.0
-            </h3>
+            <button onClick={() => navigate("/")} className="cursor-pointer">
+              <h3
+                className="text-2xl sm:text-3xl font-frontline mb-2"
+                style={{
+                  fontFamily: "Frontline, sans-serif",
+                  background: "linear-gradient(90deg, #7152DE 0%, #4B3791 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                MVP 6.0
+              </h3>
+            </button>
           </div>
 
           {/* Navigation Links - centered on mobile */}
           <div className="text-center">
             <div className="grid grid-cols-2 gap-4 sm:flex sm:gap-6 justify-center mb-4">
-              {[
-                { name: "Home", href: "/" },
-                { name: "Tasks", href: "/tasks" },
-                { name: "Leaderboard", href: "/leaderboard" },
-                { name: "Contact", href: "/contact" },
-              ].map((link, idx) => (
-                <a
+              {navLinks.map((link, idx) => (
+                <button
                   key={idx}
-                  href={link.href}
+                  onClick={() => navigate(link.href)}
                   className="font-semibold text-white/80 hover:text-[#7152DE] transition-colors duration-200 text-sm sm:text-base"
                 >
                   {link.name}
-                </a>
+                </button>
               ))}
             </div>
 

@@ -1,5 +1,6 @@
 import { cn } from "../lib/utils";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   motion,
   AnimatePresence,
@@ -10,6 +11,9 @@ import {
 import React, { useRef, useState } from "react";
 
 const MainNavbar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  
   const navItems = [
     {
       name: "Home",
@@ -31,23 +35,32 @@ const MainNavbar = () => {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const handleNavigation = (link) => {
+    navigate(link);
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <div className="relative w-full">
       <Navbar>
         {/* Desktop Navigation */}
         <NavBody>
-          <NavbarLogo />
-          <NavItems items={navItems} />
+          <NavbarLogo onClick={() => navigate("/")} />
+          <NavItems 
+            items={navItems} 
+            onItemClick={(link) => navigate(link)}
+            currentPath={location.pathname}
+          />
           <div className="flex items-center gap-4">
             {/* <NavbarButton variant="secondary">Login</NavbarButton> */}
-            <NavbarButton variant="primary">Register Now</NavbarButton>
+            <NavbarButton variant="primary" onClick={() => navigate("/")}>Register Now</NavbarButton>
           </div>
         </NavBody>
 
         {/* Mobile Navigation */}
         <MobileNav>
           <MobileNavHeader>
-            <NavbarLogo />
+            <NavbarLogo onClick={() => navigate("/")} />
             <MobileNavToggle
               isOpen={isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -59,18 +72,17 @@ const MainNavbar = () => {
             onClose={() => setIsMobileMenuOpen(false)}
           >
             {navItems.map((item, idx) => (
-              <a
+              <button
                 key={`mobile-link-${idx}`}
-                href={item.link}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-black"
+                onClick={() => handleNavigation(item.link)}
+                className="relative text-black text-left w-full"
               >
                 <span className="block">{item.name}</span>
-              </a>
+              </button>
             ))}
             <div className="flex w-full flex-col gap-4">
               <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => handleNavigation("/")}
                 variant="primary"
                 className="w-full mt-3"
               >
@@ -145,7 +157,7 @@ const NavBody = ({ children, className, visible }) => {
   );
 };
 
-const NavItems = ({ items, className, onItemClick }) => {
+const NavItems = ({ items, className, onItemClick, currentPath }) => {
   const [hovered, setHovered] = useState(null);
 
   return (
@@ -157,12 +169,13 @@ const NavItems = ({ items, className, onItemClick }) => {
       )}
     >
       {items.map((item, idx) => (
-        <a
+        <button
           onMouseEnter={() => setHovered(idx)}
-          onClick={onItemClick}
-          className="relative px-4 py-2 text-[#1C1538] hover:text-[#7152DE] transition-colors duration-200"
+          onClick={() => onItemClick(item.link)}
+          className={`relative px-4 py-2 text-[#1C1538] hover:text-[#7152DE] transition-colors duration-200 ${
+            currentPath === item.link ? "text-[#7152DE]" : ""
+          }`}
           key={`link-${idx}`}
-          href={item.link}
         >
           {hovered === idx && (
             <motion.div
@@ -171,7 +184,7 @@ const NavItems = ({ items, className, onItemClick }) => {
             />
           )}
           <span className="relative z-20 font-semibold">{item.name}</span>
-        </a>
+        </button>
       ))}
     </motion.div>
   );
@@ -252,11 +265,11 @@ const MobileNavToggle = ({ isOpen, onClick }) => {
   );
 };
 
-const NavbarLogo = () => {
+const NavbarLogo = ({ onClick }) => {
   return (
-    <a
-      href="#"
-      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal"
+    <button
+      onClick={onClick}
+      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal cursor-pointer"
     >
       
       <span
@@ -271,16 +284,16 @@ const NavbarLogo = () => {
       >
         MVP 6.0 
       </span>
-    </a>
+    </button>
   );
 };
 
 const NavbarButton = ({
-  href,
-  as: Tag = "a",
+  as: Tag = "button",
   children,
   className,
   variant = "primary",
+  onClick,
   ...props
 }) => {
   const baseStyles =
@@ -294,7 +307,7 @@ const NavbarButton = ({
 
   return (
     <Tag
-      href={href || undefined}
+      onClick={onClick}
       className={cn(baseStyles, variantStyles[variant], className)}
       {...props}
     >
