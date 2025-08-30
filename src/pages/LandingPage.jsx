@@ -4,6 +4,7 @@ import Rules from "../sections/Rules";
 import Hero from "../sections/Hero";
 import Task from "../sections/Task";
 import Footer from "../components/Footer";
+import Leaderboard from "../sections/leaderboard";
 
 export default function LandingPage() {
   return (
@@ -12,6 +13,7 @@ export default function LandingPage() {
       <About />
       <Task />
       <Rules />
+      <Leaderboard />
     </>
   );
 }
