@@ -188,13 +188,13 @@ const MobileNav = ({ children, className, visible }) => {
         width: visible ? "90%" : "100%",
         paddingRight: visible ? "12px" : "10px",
         paddingLeft: visible ? "12px" : "10px",
-        borderRadius: !visible ? "1rem" : "2rem",
+        borderRadius: visible ? "2rem" : "1rem",
         y: visible ? 20 : 0,
       }}
       transition={{
-        type: "spring",
-        stiffness: 200,
-        damping: 50,
+        type: "tween",
+        duration: 0.2,
+        ease: "easeOut",
       }}
       className={cn(
         "mt-1 relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-white/90 px-0 py-2 lg:hidden",
@@ -221,12 +221,17 @@ const MobileNavHeader = ({ children, className }) => {
 
 const MobileNavMenu = ({ children, className, isOpen, onClose }) => {
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ opacity: 0, y: -10, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -10, scale: 0.95 }}
+          transition={{
+            type: "tween",
+            duration: 0.15,
+            ease: "easeOut"
+          }}
           className={cn(
             "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-white/95 px-4 py-8 shadow-[0_0_24px_rgba(113,82,222,0.1)]",
             className
