@@ -229,8 +229,8 @@ const LandingLeaderboard = () => {
                 </div>
                 
                 {/* Name and Points */}
-                <div className="flex-1 min-w-0 mr-3">
-                  <h4 className={`text-white font-jersey sm:tracking-[2px] font-semibold text-base capitalize truncate transition-all duration-300 ${
+                <div className="flex-1 min-w-0 mr-2 sm:mr-3">
+                  <h4 className={`text-white font-jersey tracking-[0px] sm:tracking-[2px] text-sm sm:text-base capitalize transition-all duration-300 leading-tight ${
                     isActive ? 'font-bold' : 'group-hover:text-white group-hover:font-bold'
                   }`}>
                     {item.name}
@@ -254,8 +254,8 @@ const LandingLeaderboard = () => {
                 </div>
                 
                 {/* Points */}
-                <div className="text-right mr-2">
-                  <div className={`text-white font-jersey tracking-[1px] font-bold text-lg transition-colors duration-300 ${
+                <div className="text-right mr-1 sm:mr-2">
+                  <div className={`text-white font-jersey tracking-[0.5px] sm:tracking-[1px] text-base sm:text-lg transition-colors duration-300 ${
                     isActive ? 'text-white' : 'group-hover:text-white'
                   }`}>
                     {item.points.toLocaleString()}
@@ -263,7 +263,7 @@ const LandingLeaderboard = () => {
                   <div className={`text-purple-200 font-bold leaderboard text-xs transition-colors duration-300 ${
                     isActive ? 'text-white' : 'group-hover:text-white'
                   }`}>
-                    points
+                    POINTS
                   </div>
                 </div>
                 
