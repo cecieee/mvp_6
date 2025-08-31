@@ -4,12 +4,14 @@ import {
   FaExclamationCircle,
   FaClock,
   FaCheckCircle,
+  FaClipboardList,
 } from "react-icons/fa";
 
 export default function Tasks() {
   const today = new Date();
 
   const tasks = [
+    /*
     // Completed Tasks (past due dates)
     {
       title: "Setup Development Environment",
@@ -91,7 +93,7 @@ export default function Tasks() {
       desc: "Configure production environment and deployment pipelines.",
       due: "2025-02-20",
       completed: false,
-    },
+    },*/
   ];
 
   const activeTasks = tasks.filter((task) => task.status === "Active");
@@ -99,7 +101,7 @@ export default function Tasks() {
   const upcomingTasks = tasks.filter((task) => task.status === "Upcoming");
 
   const totalTasks = tasks.length;
-  const progress = Math.round((completedTasks.length / totalTasks) * 100);
+  const progress = totalTasks > 0 ? Math.round((completedTasks.length / totalTasks) * 100) : 0;
 
   const radius = 45;
   const circumference = 2 * Math.PI * radius;
@@ -177,11 +179,11 @@ export default function Tasks() {
                   />
                 </svg>
                 <span className="absolute inset-0 flex items-center justify-center text-xl font-bold text-gray-800">
-                  {progress}%
+                  {totalTasks > 0 ? `${progress}%` : '0%'}
                 </span>
               </div>
               <p className="text-gray-600 text-sm">
-                Completed: {completedTasks.length} / {totalTasks}
+                Completed: {completedTasks.length} / {totalTasks || 0}
               </p>
             </div>
           </div>
@@ -231,70 +233,107 @@ export default function Tasks() {
 
         {/* Main Tasks Section */}
         <div className="lg:col-span-3 space-y-6">
-          {/* Active Tasks */}
-          {activeTasks.length > 0 && (
-            <div>
-              <h2 className="text-xl font-bold mb-4 text-gray-800">
-                Active Tasks
+          {/* Check if there are no tasks */}
+          {tasks.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-16 px-6">
+              <div className="bg-gradient-to-br from-purple-100 to-indigo-100 rounded-full p-8 mb-6 shadow-lg">
+                <FaClipboardList className="text-6xl text-purple-600" />
+              </div>
+              <h2
+                className="text-3xl font-bold mb-4 text-center"
+                style={{
+                  fontFamily: "Frontline, sans-serif",
+                  background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                No Tasks Available
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                {activeTasks.map((task, index) => (
-                  <div
-                    key={index}
-                    className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${borderShadowStyles[task.status]}`}
-                  >
-                    <span
-                      className={`px-3 py-1 text-xs font-medium rounded-full ${statusStyles[task.status]}`}
-                    >
-                      {task.status}
-                    </span>
-                    <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">
-                      {task.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-4">{task.desc}</p>
-                    <div className="text-xs text-gray-500">Due: {task.due}</div>
+              <p className="text-gray-600 text-center max-w-md mb-8 leading-relaxed">
+                Tasks will be released soon! Stay tuned for exciting challenges and opportunities to showcase your skills.
+              </p>
+              <div className="bg-white rounded-xl p-6 shadow-sm border border-purple-200 max-w-sm">
+                <div className="flex items-center gap-3 text-purple-700">
+                  <FaClock className="text-purple-500" />
+                  <div>
+                    <p className="font-semibold">Coming Soon</p>
+                    <p className="text-sm text-gray-600">
+                      Keep checking back for updates
+                    </p>
                   </div>
-                ))}
+                </div>
               </div>
             </div>
-          )}
-
-          {/* Completed Tasks */}
-          {completedTasks.length > 0 && (
-            <div>
-              <h2 className="text-xl font-bold mb-4 text-gray-800">
-                Completed Tasks
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                {completedTasks.map((task, index) => (
-                  <div
-                    key={index}
-                    className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${borderShadowStyles[task.status]} opacity-90`}
-                  >
-                    <span
-                      className={`px-3 py-1 text-xs font-medium rounded-full ${statusStyles[task.status]}`}
-                    >
-                      ✓ {task.status}
-                    </span>
-                    <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">
-                      {task.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-4">{task.desc}</p>
-                    <div className="text-xs text-gray-500">
-                      Completed: {task.due}
-                    </div>
+          ) : (
+            <>
+              {/* Active Tasks */}
+              {activeTasks.length > 0 && (
+                <div>
+                  <h2 className="text-xl font-bold mb-4 text-gray-800">
+                    Active Tasks
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                    {activeTasks.map((task, index) => (
+                      <div
+                        key={index}
+                        className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${borderShadowStyles[task.status]}`}
+                      >
+                        <span
+                          className={`px-3 py-1 text-xs font-medium rounded-full ${statusStyles[task.status]}`}
+                        >
+                          {task.status}
+                        </span>
+                        <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">
+                          {task.title}
+                        </h3>
+                        <p className="text-gray-600 text-sm mb-4">{task.desc}</p>
+                        <div className="text-xs text-gray-500">Due: {task.due}</div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
-          )}
+                </div>
+              )}
 
-          {/* Upcoming Tasks Hidden */}
-          {/* 
+              {/* Completed Tasks */}
+              {completedTasks.length > 0 && (
+                <div>
+                  <h2 className="text-xl font-bold mb-4 text-gray-800">
+                    Completed Tasks
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                    {completedTasks.map((task, index) => (
+                      <div
+                        key={index}
+                        className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${borderShadowStyles[task.status]} opacity-90`}
+                      >
+                        <span
+                          className={`px-3 py-1 text-xs font-medium rounded-full ${statusStyles[task.status]}`}
+                        >
+                          ✓ {task.status}
+                        </span>
+                        <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">
+                          {task.title}
+                        </h3>
+                        <p className="text-gray-600 text-sm mb-4">{task.desc}</p>
+                        <div className="text-xs text-gray-500">
+                          Completed: {task.due}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Upcoming Tasks Hidden */}
+              {/* 
           {upcomingTasks.length > 0 && (
             <div>...render upcoming tasks...</div>
           )} 
           */}
+            </>
+          )}
         </div>
       </div>
     </div>
