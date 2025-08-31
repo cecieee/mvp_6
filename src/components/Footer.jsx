@@ -7,7 +7,6 @@ export default function Footer() {
 
   const handleNavigation = (href) => {
     navigate(href);
-    // Scroll to top after navigation
     setTimeout(() => {
       window.scrollTo(0, 0);
     }, 100);
@@ -72,13 +71,13 @@ export default function Footer() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        {/* Main content - stack on mobile, spread on desktop */}
-        <div className="flex flex-col space-y-6 md:space-y-0 md:flex-row md:justify-between md:items-start">
+        {/* Main content*/}
+        <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:justify-between md:items-center">
           {/* Logo section */}
-          <div className="text-center md:text-left">
+          <div className="text-center md:text-left order-2 md:order-1">
             <button onClick={() => handleNavigation("/")} className="cursor-pointer">
               <h3
-                className="text-2xl sm:text-3xl font-frontline mb-2 px-3 py-1 rounded-md"
+                className="text-xl sm:text-2xl md:text-3xl font-frontline mb-2 px-3 rounded-md"
                 style={{
                   fontFamily: "Frontline, sans-serif",
                   background: "linear-gradient(90deg, #FFFFFF 0%, #E8E0FF 50%, #FFFFFF 100%)",
@@ -92,40 +91,29 @@ export default function Footer() {
                 MVP 6.0
               </h3>
             </button>
+            <p className="text-purple-200 text-xs sm:text-sm font-medium">Micro Volunteering Programme</p>
           </div>
 
-          {/* Navigation Links - centered on mobile */}
-          <div className="text-center">
-            <div className="grid grid-cols-2 gap-4 sm:flex sm:gap-6 justify-center mb-4">
-              {navLinks.map((link, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => handleNavigation(link.href)}
-                  className="font-semibold text-white/80 hover:text-[#7152DE] transition-colors duration-200 text-sm sm:text-base"
-                >
-                  {link.name}
-                </button>
-              ))}
-            </div>
-
-            {/* Social Media */}
-            <div className="flex gap-4 justify-center">
+          {/* Social Media*/}
+          <div className="text-center order-1 md:order-2">
+            <p className="text-purple-200 text-xs sm:text-sm font-medium mb-3">Connect with us</p>
+            <div className="flex gap-4 sm:gap-6 justify-center">
               <a
                 href="https://www.instagram.com/ieee_sb_cec/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full flex items-center justify-center bg-white/15 backdrop-blur-sm border border-white/20 hover:bg-[#7152DE]/60 hover:border-[#7152DE]/50 transition-all duration-300 shadow-lg"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-white/15 backdrop-blur-sm border border-white/20 hover:bg-[#7152DE]/60 hover:border-[#7152DE]/50 transition-all duration-300 shadow-lg"
               >
-                <FiInstagram className="w-5 h-5 text-white" />
+                <FiInstagram className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </a>
               <a
                 href="https://www.linkedin.com/company/cecieee/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full flex items-center justify-center bg-white/15 backdrop-blur-sm border border-white/20 hover:bg-[#7152DE]/60 hover:border-[#7152DE]/50 transition-all duration-300 shadow-lg"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-white/15 backdrop-blur-sm border border-white/20 hover:bg-[#7152DE]/60 hover:border-[#7152DE]/50 transition-all duration-300 shadow-lg"
               >
                 <svg
-                  className="w-5 h-5 text-white"
+                  className="w-4 h-4 sm:w-5 sm:h-5 text-white"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -135,29 +123,32 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Contact info - centered on mobile */}
-          <div className="text-center md:text-right space-y-2">
-            <div className="flex items-center justify-center md:justify-end text-white/90 text-sm">
-              <FiPhone className="w-4 h-4 mr-2 text-[#7152DE] flex-shrink-0" />
-              <span>+91 12345 67890</span>
-            </div>
-            <div className="flex items-center justify-center md:justify-end text-white/90 text-sm">
-              <FiMail className="w-4 h-4 mr-2 text-[#7152DE] flex-shrink-0" />
-              <span>ieee@ceconline.edu</span>
-            </div>
-            <div className="flex items-center justify-center md:justify-end text-white/90 text-sm">
-              <FiMapPin className="w-4 h-4 mr-2 text-[#7152DE] flex-shrink-0" />
-              <span>CE Chengannur</span>
+          {/* Contact info*/}
+          <div className="text-center md:text-right order-3 md:order-3">
+            <p className="text-purple-200 text-xs sm:text-sm font-medium mb-3">Get in touch</p>
+            <div className="space-y-2 sm:space-y-3">
+              <div className="flex items-center justify-center md:justify-end text-white/90 text-xs sm:text-sm">
+                <FiPhone className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-[#7152DE] flex-shrink-0" />
+                <span>+91 12345 67890</span>
+              </div>
+              <div className="flex items-center justify-center md:justify-end text-white/90 text-xs sm:text-sm">
+                <FiMail className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-[#7152DE] flex-shrink-0" />
+                <span>ieee@ceconline.edu</span>
+              </div>
+              <div className="flex items-center justify-center md:justify-end text-white/90 text-xs sm:text-sm">
+                <FiMapPin className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-[#7152DE] flex-shrink-0" />
+                <span>CE Chengannur</span>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Bottom section */}
-        <div className="border-t border-white/10 mt-6 pt-4 text-center space-y-2 sm:space-y-0 sm:flex sm:justify-between sm:items-center text-sm">
+        <div className="border-t border-white/10 mt-6 sm:mt-8 pt-4 sm:pt-6 text-center space-y-3 sm:space-y-0 sm:flex sm:justify-between sm:items-center text-xs sm:text-sm">
           <p className="text-white/80">© 2025 IEEE SB CEC</p>
-          <div className="flex items-center justify-center space-x-2 text-white/70">
+          <div className="flex items-center justify-center space-x-1 sm:space-x-2 text-white/70">
             <span>Made with</span>
-            <span className="text-[#7152DE] animate-pulse">❤️</span>
+            <span className="text-[#7152DE] animate-pulse text-sm sm:text-base">❤️</span>
             <span>by IEEE SB CEC</span>
           </div>
         </div>
