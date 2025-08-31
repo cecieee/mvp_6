@@ -28,7 +28,7 @@ const EventLeaderboard = () => {
     }
   };
 
-  // Loading animation component for leaderboard list
+  // Loading skeleton component that matches the exact table structure
   const LoadingLeaderboard = () => (
     <div className="mx-4 sm:mx-auto sm:w-[90vw] lg:w-[60vw] font-jersey bg-gradient-to-b from-violet-900 to-violet-600 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl relative overflow-hidden mb-6">
       {/* Glass border effect */}
@@ -38,7 +38,7 @@ const EventLeaderboard = () => {
       <div className="absolute top-0 bottom-0 left-0 w-px bg-gradient-to-b from-transparent via-white/30 to-transparent"></div>
       <div className="absolute top-0 bottom-0 right-0 w-px bg-gradient-to-b from-transparent via-white/30 to-transparent"></div>
       
-      {/* Header */}
+      {/* Header - matches actual header exactly */}
       <div className="bg-violet-900 backdrop-blur-sm rounded-t-2xl p-3 sm:p-4 border-b border-white/20">
         <div className="flex items-center text-slate-100 font-semibold text-xs sm:text-sm uppercase tracking-wide">
           <div className="w-6 sm:w-8 text-center">Rank</div>
@@ -49,59 +49,52 @@ const EventLeaderboard = () => {
         </div>
       </div>
 
-      {/* Loading Content */}
-      <div className="p-6 sm:p-8 text-center">
-        <div className="flex flex-col items-center space-y-6">
-          {/* Animated Trophy */}
-          <div className="relative">
-            <FaTrophy className="text-4xl sm:text-5xl text-yellow-300 animate-pulse" />
-            <div className="absolute inset-0 animate-ping">
-              <FaTrophy className="text-4xl sm:text-5xl text-yellow-300 opacity-30" />
+      {/* Skeleton rows that match actual table structure */}
+      {[...Array(8)].map((_, i) => (
+        <div key={i} className="bg-gradient-to-l from-violet-400 to-purple-800 backdrop-blur-sm border border-white/10 p-3 sm:p-4 relative overflow-hidden">
+          <div className="flex items-center relative z-10">
+            {/* Rank Number Skeleton */}
+            <div className="flex items-center justify-center w-6 sm:w-8">
+              <div className="w-3 sm:w-4 h-4 sm:h-5 bg-white/20 rounded animate-pulse"></div>
+            </div>
+            
+            {/* Participant Icon Skeleton */}
+            <div className="w-8 h-8 sm:w-10 sm:h-10 border-2 border-white/20 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 backdrop-blur-sm ml-2 sm:ml-4 animate-pulse">
+              <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white/20 rounded"></div>
+            </div>
+            
+            {/* Name Skeleton */}
+            <div className="flex-1 min-w-0 ml-2 sm:ml-4">
+              <div className={`h-4 sm:h-5 bg-white/20 rounded animate-pulse`} style={{ width: `${70 + (i * 5)}%` }}></div>
+            </div>
+            
+            {/* Points Skeleton */}
+            <div className="text-right w-16 sm:w-24">
+              <div className="h-4 sm:h-5 bg-white/20 rounded animate-pulse mb-1"></div>
+              <div className="h-3 bg-white/15 rounded animate-pulse" style={{ animationDelay: '0.1s' }}></div>
+            </div>
+            
+            {/* Trophy Icon Space Skeleton */}
+            <div className="w-4 sm:w-6 flex justify-center ml-1 sm:ml-2">
+              {i < 3 && <div className="w-3 h-3 sm:w-4 sm:h-4 bg-white/20 rounded animate-pulse"></div>}
             </div>
           </div>
-          
-          {/* Loading Text */}
-          <div className="space-y-2">
-            <h3 className="text-xl sm:text-2xl font-bold text-white">
-              Loading Rankings...
-            </h3>
-            <p className="text-purple-200 text-sm sm:text-base">
-              Fetching the latest leaderboard data
-            </p>
-          </div>
 
-          {/* Animated Progress Bars */}
-          <div className="w-full max-w-md space-y-3">
-            {[...Array(5)].map((_, i) => (
-              <div key={i} className="flex items-center space-x-3">
-                <div className="w-6 h-6 bg-white/20 rounded-full animate-pulse" style={{ animationDelay: `${i * 0.2}s` }}></div>
-                <div className="flex-1 bg-white/10 rounded-full h-3 overflow-hidden">
-                  <div 
-                    className="h-full bg-gradient-to-r from-purple-300 to-indigo-400 rounded-full animate-pulse"
-                    style={{ 
-                      width: `${60 + (i * 8)}%`,
-                      animationDelay: `${i * 0.3}s`,
-                      animationDuration: '1.5s'
-                    }}
-                  ></div>
-                </div>
-                <div className="w-12 h-3 bg-white/20 rounded animate-pulse" style={{ animationDelay: `${i * 0.1}s` }}></div>
-              </div>
-            ))}
-          </div>
-
-          {/* Floating Dots Animation */}
-          <div className="flex space-x-2">
-            {[...Array(3)].map((_, i) => (
+          {/* Progress Bar Skeleton - matches actual progress bar position */}
+          <div className="mt-2 ml-8 sm:ml-12 mr-6 sm:mr-8 relative z-10">
+            <div className="w-3/4 bg-white/10 rounded-full h-1 sm:h-1.5 overflow-hidden backdrop-blur-sm">
               <div 
-                key={i}
-                className="w-2 h-2 bg-purple-300 rounded-full animate-bounce"
-                style={{ animationDelay: `${i * 0.2}s` }}
+                className="h-full bg-gradient-to-r from-purple-300/50 to-indigo-400/50 rounded-full animate-pulse"
+                style={{ 
+                  width: `${40 + (8 - i) * 10}%`,
+                  animationDelay: `${i * 0.1}s`,
+                  animationDuration: '2s'
+                }}
               ></div>
-            ))}
+            </div>
           </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 
