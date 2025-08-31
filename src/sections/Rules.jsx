@@ -1,31 +1,32 @@
 import React from "react";
 import RulesCard from "../components/RulesCard";
 import { motion } from "framer-motion";
+import { FaUsers, FaCalendarAlt, FaClipboardList, FaTrophy } from "react-icons/fa";
 
 const rules = [
 	{
 		title: "IEEE Membership",
 		content:
 			"To enroll in the volunteering program, the student must have a valid IEEE membership ID. This ensures access to exclusive IEEE resources and networking opportunities.",
-		icon: "👥",
+		icon: <FaUsers className="text-2xl text-[#7152DE]" />,
 	},
 	{
 		title: "Task Schedule",
 		content:
 			"Online tasks will be provided to the volunteers on alternate days. Each task is carefully designed to enhance your technical skills and contribute to meaningful projects.",
-		icon: "📅",
+		icon: <FaCalendarAlt className="text-2xl text-[#7152DE]" />,
 	},
 	{
 		title: "Task Submission",
 		content:
 			"Reports of the completed task should be submitted via the Google Form that will be provided along with each task. Detailed documentation is encouraged for better evaluation.",
-		icon: "📝",
+		icon: <FaClipboardList className="text-2xl text-[#7152DE]" />,
 	},
 	{
 		title: "Rewards",
 		content:
 			"The successful completion of each task will reward you with points. Accumulate points to climb the leaderboard and unlock exclusive prizes and recognition.",
-		icon: "🏆",
+		icon: <FaTrophy className="text-2xl text-[#7152DE]" />,
 	},
 ];
 
@@ -147,7 +148,7 @@ function Rules() {
 					{rules.map((rule, index) => (
 						<RulesCard key={index} title={rule.title} index={index}>
 							<div className="flex items-start space-x-3">
-								<span className="text-2xl mt-1">{rule.icon}</span>
+								<div className="mt-1">{rule.icon}</div>
 								<span>{rule.content}</span>
 							</div>
 						</RulesCard>
