@@ -1,5 +1,10 @@
 import React from "react";
-import { FaTasks, FaExclamationCircle, FaClock, FaCheckCircle } from "react-icons/fa";
+import {
+  FaTasks,
+  FaExclamationCircle,
+  FaClock,
+  FaCheckCircle,
+} from "react-icons/fa";
 
 export default function Tasks() {
   const today = new Date();
@@ -28,7 +33,7 @@ export default function Tasks() {
       completed: true,
     },
 
-    // Active Tasks (current/recent due dates)
+    // Active Tasks
     {
       title: "Frontend Dashboard Design",
       status: "Active",
@@ -89,7 +94,6 @@ export default function Tasks() {
     },
   ];
 
-  // Separate tasks by status
   const activeTasks = tasks.filter((task) => task.status === "Active");
   const completedTasks = tasks.filter((task) => task.status === "Completed");
   const upcomingTasks = tasks.filter((task) => task.status === "Upcoming");
@@ -118,7 +122,7 @@ export default function Tasks() {
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 p-6">
-      {/* Center aligned title with gradient */}
+      {/* Header */}
       <div className="text-center pt-16 pb-8 px-4">
         <h1
           className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold mb-6"
@@ -133,15 +137,13 @@ export default function Tasks() {
         >
           TASKS
         </h1>
-
-        {/* Decorative line */}
         <div className="w-24 h-1 bg-gradient-to-r from-[#7152DE] to-[#4B3791] mx-auto rounded-full mb-8"></div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Sidebar */}
         <div className="col-span-1 space-y-6">
-          {/* Progress Circle */}
+          {/* Progress */}
           <div className="bg-indigo-50 rounded-xl p-6 shadow-sm border border-indigo-200">
             <h2 className="text-lg font-semibold mb-4 text-indigo-700">
               Overall Progress
@@ -227,7 +229,7 @@ export default function Tasks() {
           </div>
         </div>
 
-        {/* Main Section */}
+        {/* Main Tasks Section */}
         <div className="lg:col-span-3 space-y-6">
           {/* Active Tasks */}
           {activeTasks.length > 0 && (
@@ -278,40 +280,21 @@ export default function Tasks() {
                       {task.title}
                     </h3>
                     <p className="text-gray-600 text-sm mb-4">{task.desc}</p>
-                    <div className="text-xs text-gray-500">Completed: {task.due}</div>
+                    <div className="text-xs text-gray-500">
+                      Completed: {task.due}
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
           )}
 
-          {/* Upcoming Tasks */}
+          {/* Upcoming Tasks Hidden */}
+          {/* 
           {upcomingTasks.length > 0 && (
-            <div>
-              <h2 className="text-xl font-bold mb-4 text-gray-800">
-                Upcoming Tasks
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                {upcomingTasks.map((task, index) => (
-                  <div
-                    key={index}
-                    className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${borderShadowStyles[task.status]}`}
-                  >
-                    <span
-                      className={`px-3 py-1 text-xs font-medium rounded-full ${statusStyles[task.status]}`}
-                    >
-                      {task.status}
-                    </span>
-                    <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">
-                      {task.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-4">{task.desc}</p>
-                    <div className="text-xs text-gray-500">Due: {task.due}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+            <div>...render upcoming tasks...</div>
+          )} 
+          */}
         </div>
       </div>
     </div>

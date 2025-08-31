@@ -47,7 +47,7 @@ const otherSections = [
   },
 ];
 
-// Sticky note card
+// Rotation classes for sticky note effect
 const rotateOptions = [
   "rotate-[-2deg]",
   "rotate-[2deg]",
@@ -55,12 +55,13 @@ const rotateOptions = [
   "rotate-[1deg]",
 ];
 
+// Contact card component
 const ContactCard = ({ name, role, phone }) => {
   const randomRotation = rotateOptions[Math.floor(Math.random() * rotateOptions.length)];
 
   return (
     <div
-      className={`relative bg-yellow-100 border-l-4 border-yellow-400 shadow-xl rounded-sm p-4 w-full transform ${randomRotation} transition duration-300 ease-in-out hover:scale-[1.03]`}
+      className={`relative bg-[#FDF3C6] border-l-4 border-[#FAD35D] shadow-lg rounded-sm p-4 w-full transform ${randomRotation} transition duration-300 ease-in-out hover:scale-[1.03]`}
     >
       <div className="absolute top-[-10px] left-1/2 transform -translate-x-1/2 z-10">
         <FaMapPin className="text-red-500 w-5 h-5 drop-shadow" />
@@ -69,7 +70,7 @@ const ContactCard = ({ name, role, phone }) => {
         <p className="font-bold">{name}</p>
         <p className="text-xs text-gray-600">{role}</p>
         <div className="flex items-center mt-2 text-xs">
-          <FaPhone className="mr-1 text-indigo-500" />
+          <FaPhone className="mr-1 text-[#5C3BCE]" />
           {phone}
         </div>
       </div>
@@ -77,7 +78,7 @@ const ContactCard = ({ name, role, phone }) => {
   );
 };
 
-// Taped paper heading
+// Heading component with gradient text and taped effect
 const TapedHeading = ({ title }) => {
   const rotations = ["-2deg", "2deg", "-1deg", "1deg"];
   const randomRotate = rotations[Math.floor(Math.random() * rotations.length)];
@@ -91,7 +92,7 @@ const TapedHeading = ({ title }) => {
       <h2
         className="text-2xl font-bold"
         style={{
-          background: "linear-gradient(90deg, #1C1538, #7152DE)",
+          background: "linear-gradient(90deg, #2A195B, #5C3BCE)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
         }}
@@ -102,7 +103,7 @@ const TapedHeading = ({ title }) => {
   );
 };
 
-// Section container
+// Section for each group (Registration, Outreach, etc.)
 const TeamSection = ({ section }) => (
   <div className="mb-16 flex flex-col items-center">
     <TapedHeading title={section.title} />
@@ -114,7 +115,7 @@ const TeamSection = ({ section }) => (
   </div>
 );
 
-// Main component
+// Main contact component
 export default function Contact() {
   const [activeSection, setActiveSection] = useState("Registration");
   const [isMobile, setIsMobile] = useState(false);
@@ -127,20 +128,20 @@ export default function Contact() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#E6E4F1] p-8 flex items-center justify-center">
+    <div className="min-h-screen bg-[#E6E4F1] pt-24 px-8 pb-8 flex items-center justify-center">
       <div
-        className="w-full max-w-5xl bg-[#D0CDEE] p-8 rounded-[100px] shadow-lg"
+        className="w-full max-w-5xl bg-white p-8 rounded-[60px] shadow-xl"
         style={{
           borderWidth: "6px",
           borderImageSlice: 1,
-          borderImageSource: "linear-gradient(to right, #1B1436, #4B3791)",
+          borderImageSource: "linear-gradient(to right, #2A195B, #5C3BCE)",
         }}
       >
         {/* Main Title */}
         <h1
           className="text-center font-extrabold text-5xl mb-20"
           style={{
-            background: "linear-gradient(90deg, #1C1538, #7152DE)",
+            background: "linear-gradient(90deg, #2A195B, #5C3BCE)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}
@@ -148,14 +149,14 @@ export default function Contact() {
           The Crew
         </h1>
 
-        {/* Crew Cards */}
+        {/* Crew Contacts */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-20 justify-center">
           {crewContacts.map((person) => (
             <ContactCard key={person.name} {...person} />
           ))}
         </div>
 
-        {/* Mobile Nav */}
+        {/* Mobile Navigation for Sections */}
         {isMobile && (
           <div className="flex flex-wrap justify-center gap-3 mb-10">
             {otherSections.map((section) => (
@@ -164,8 +165,8 @@ export default function Contact() {
                 onClick={() => setActiveSection(section.title)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border transition ${
                   activeSection === section.title
-                    ? "bg-[#4B3791] text-white"
-                    : "bg-white text-gray-800 border-[#4B3791] hover:bg-[#1B1436] hover:text-white"
+                    ? "bg-[#5C3BCE] text-white border-[#5C3BCE]"
+                    : "bg-white text-[#2A195B] border-[#5C3BCE] hover:bg-[#2A195B] hover:text-white"
                 }`}
               >
                 {section.icon}
@@ -175,7 +176,7 @@ export default function Contact() {
           </div>
         )}
 
-        {/* Other Sections */}
+        {/* Section Content */}
         <div className="flex flex-col items-center justify-center">
           {otherSections.map(
             (section) =>
