@@ -277,10 +277,11 @@
 // export default LandingLeaderboard;
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaUser, FaStar, FaTrophy, FaAward, FaGem, FaShieldAlt, FaBolt, FaMedal, FaCrown, FaChevronRight } from 'react-icons/fa';
 
 const LandingLeaderboard = () => {
+  const navigate = useNavigate();
   const [leaderboardData, setLeaderboardData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -384,6 +385,13 @@ const LandingLeaderboard = () => {
     }
   };
 
+  const handleViewFullClick = () => {
+    navigate('/leaderboard');
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
+  };
+
   if (loading) {
     return (
       <div className="bg-gradient-to-br from-violet-900/95 via-purple-800/95 to-indigo-900/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-6 relative overflow-hidden">
@@ -424,28 +432,28 @@ const LandingLeaderboard = () => {
             </h3>
             <p className="text-purple-300 text-sm text-center leaderboard">Top 5 Performers</p>
           </div>
-          
-          <div className="mt-2 hidden sm:block">
-            <Link 
-              to="/leaderboard"
-              className="group w-full bg-gradient-to-r from-purple-400/50 to-purple-400/50 hover:from-purple-500/70 hover:to-purple-500/70 backdrop-blur-sm border border-white/30 rounded-xl py-3 px-4 transition-all duration-300 hover:scale-[1.02] relative overflow-hidden block"
-              onTouchStart={() => handleTouchStart('header-button')}
-              onTouchEnd={handleTouchEnd}
-              onTouchCancel={handleTouchEnd}
-            >
-              {/* Shining animation overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-transform duration-700 ease-out ${
-                activeItem === 'header-button' ? 'translate-x-full' : '-translate-x-full group-hover:translate-x-full'
-              }`}></div>
-              
-              <div className="flex items-center justify-center space-x-1 relative z-10">
-                <span className="text-white font-jersey tracking-[1px] font-semibold">View Full</span>
-                <FaChevronRight className={`text-white text-sm transition-transform duration-300 ${
-                  activeItem === 'header-button' ? 'translate-x-1' : 'group-hover:translate-x-1'
-                }`} />
-              </div>
-            </Link>
-          </div>
+          {/* <Link 
+            to="/leaderboard" 
+            className="group flex items-center space-x-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 py-2 transition-all duration-300 hover:scale-105"
+          >
+            
+            <span className="text-white text-sm font-medium tracking-[1px] font-jersey">View Full</span>
+            <FaChevronRight className="text-white text-xs group-hover:translate-x-1 transition-transform duration-300" />
+          </Link> */}
+          <div className="mt-2">
+          <button 
+            onClick={handleViewFullClick}
+            className="group w-full bg-gradient-to-r from-purple-400/50 to-purple-400/50 hover:from-purple-500/70 hover:to-purple-500/70 backdrop-blur-sm border border-white/30 rounded-xl py-3 px-4 transition-all duration-300 hover:scale-[1.02] relative overflow-hidden block"
+          >
+            {/* Shining animation overlay */}
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-transform duration-700 ease-out"></div>
+            
+            <div className="flex items-center justify-center space-x-1 relative z-10">
+              <span className="text-white font-jersey tracking-[1px] font-semibold">View Full</span>
+              <FaChevronRight className="text-white text-sm group-hover:translate-x-1 transition-transform duration-300" />
+            </div>
+          </button>
+        </div>
         </div>
       </div>
       

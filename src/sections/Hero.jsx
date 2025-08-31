@@ -185,7 +185,7 @@ export default function Hero() {
           </h1>
 
           <p
-            className="text-2xl md:text-3xl lg:text-4xl mb-3 max-w-4xl mx-auto leading-relaxed font-bold"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mb-3 max-w-4xl mx-auto leading-relaxed font-bold px-4"
             style={{
               fontFamily: "Inter, system-ui, sans-serif",
               color: "#1C1538",
@@ -197,14 +197,14 @@ export default function Hero() {
             }}
           >
             <span className="font-bold">INNOVATE</span>
-            <span className="mx-3 text-[#7152DE] opacity-100">•</span>
+            <span className="mx-2 sm:mx-3 text-[#7152DE] opacity-100">•</span>
             <span className="font-bold">CONNECT</span>
-            <span className="mx-3 text-[#7152DE] opacity-100">•</span>
+            <span className="mx-2 sm:mx-3 text-[#7152DE] opacity-100">•</span>
             <span className="font-bold">INSPIRE</span>
           </p>
 
           <p
-            className="text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed opacity-80"
+            className="text-base sm:text-lg md:text-xl lg:text-xl mb-12 max-w-2xl mx-auto leading-relaxed opacity-80 px-4"
             style={{
               fontFamily: "Inter, system-ui, sans-serif",
               color: "#4B3791",
