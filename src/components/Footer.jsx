@@ -5,6 +5,14 @@ import { FiPhone, FiMail, FiInstagram, FiLinkedin, FiMapPin } from "react-icons/
 export default function Footer() {
   const navigate = useNavigate();
 
+  const handleNavigation = (href) => {
+    navigate(href);
+    // Scroll to top after navigation
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
+  };
+
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Tasks", href: "/tasks" },
@@ -68,7 +76,7 @@ export default function Footer() {
         <div className="flex flex-col space-y-6 md:space-y-0 md:flex-row md:justify-between md:items-start">
           {/* Logo section */}
           <div className="text-center md:text-left">
-            <button onClick={() => navigate("/")} className="cursor-pointer">
+            <button onClick={() => handleNavigation("/")} className="cursor-pointer">
               <h3
                 className="text-2xl sm:text-3xl font-frontline mb-2 px-3 py-1 rounded-md"
                 style={{
@@ -92,7 +100,7 @@ export default function Footer() {
               {navLinks.map((link, idx) => (
                 <button
                   key={idx}
-                  onClick={() => navigate(link.href)}
+                  onClick={() => handleNavigation(link.href)}
                   className="font-semibold text-white/80 hover:text-[#7152DE] transition-colors duration-200 text-sm sm:text-base"
                 >
                   {link.name}

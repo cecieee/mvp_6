@@ -8,12 +8,13 @@ import {
   useMotionValueEvent,
 } from "motion/react";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 const MainNavbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  
+  const mobileNavRef = useRef(null);
+
   const navItems = [
     {
       name: "Home",
@@ -35,6 +36,26 @@ const MainNavbar = () => {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        mobileNavRef.current &&
+        !mobileNavRef.current.contains(event.target)
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
+
   const handleNavigation = (link) => {
     navigate(link);
     setIsMobileMenuOpen(false);
@@ -46,19 +67,21 @@ const MainNavbar = () => {
         {/* Desktop Navigation */}
         <NavBody>
           <NavbarLogo onClick={() => navigate("/")} />
-          <NavItems 
-            items={navItems} 
+          <NavItems
+            items={navItems}
             onItemClick={(link) => navigate(link)}
             currentPath={location.pathname}
           />
           <div className="flex items-center gap-4">
             {/* <NavbarButton variant="secondary">Login</NavbarButton> */}
-            <NavbarButton variant="primary" onClick={() => navigate("/")}>Register Now</NavbarButton>
+            <NavbarButton variant="primary" onClick={() => navigate("/")}>
+              Register Now
+            </NavbarButton>
           </div>
         </NavBody>
 
         {/* Mobile Navigation */}
-        <MobileNav>
+        <MobileNav ref={mobileNavRef}>
           <MobileNavHeader>
             <NavbarLogo onClick={() => navigate("/")} />
             <MobileNavToggle
@@ -190,9 +213,10 @@ const NavItems = ({ items, className, onItemClick, currentPath }) => {
   );
 };
 
-const MobileNav = ({ children, className, visible }) => {
+const MobileNav = React.forwardRef(({ children, className, visible }, ref) => {
   return (
     <motion.div
+      ref={ref}
       animate={{
         backdropFilter: visible ? "blur(10px)" : "none",
         boxShadow: visible
@@ -217,7 +241,7 @@ const MobileNav = ({ children, className, visible }) => {
       {children}
     </motion.div>
   );
-};
+});
 
 const MobileNavHeader = ({ children, className }) => {
   return (
@@ -243,10 +267,10 @@ const MobileNavMenu = ({ children, className, isOpen, onClose }) => {
           transition={{
             type: "tween",
             duration: 0.15,
-            ease: "easeOut"
+            ease: "easeOut",
           }}
           className={cn(
-            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-white/95 px-4 py-8 shadow-[0_0_24px_rgba(113,82,222,0.1)]",
+            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-white px-4 py-8 shadow-[0_0_24px_rgba(113,82,222,0.1)]",
             className
           )}
         >
@@ -271,7 +295,6 @@ const NavbarLogo = ({ onClick }) => {
       onClick={onClick}
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal cursor-pointer"
     >
-      
       <span
         className="font-frontline text-xl"
         style={{
@@ -282,7 +305,7 @@ const NavbarLogo = ({ onClick }) => {
           backgroundClip: "text",
         }}
       >
-        MVP 6.0 
+        MVP 6.0
       </span>
     </button>
   );
@@ -302,7 +325,8 @@ const NavbarButton = ({
   const variantStyles = {
     primary:
       "bg-[#7152DE] text-white border-2 border-[#7152DE] hover:bg-[#4B3791] hover:border-[#4B3791] shadow-md",
-    secondary: "bg-transparent border-2 border-[#7152DE] text-[#7152DE] hover:bg-[#7152DE] hover:text-white",
+    secondary:
+      "bg-transparent border-2 border-[#7152DE] text-[#7152DE] hover:bg-[#7152DE] hover:text-white",
   };
 
   return (

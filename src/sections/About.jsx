@@ -177,7 +177,7 @@ const About = () => {
             <div className="space-y-6">
               <p
                 ref={textRef}
-                className="gradient-text text-2xl sm:text-4xl leading-relaxed font-semibold "
+                className="gradient-text text-2xl sm:text-3xl lg:text-4xl leading-relaxed font-semibold "
                 style={{
                   fontFamily: "JerseyM54, sans-serif",
                   fontStyle: "normal",

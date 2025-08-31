@@ -94,7 +94,7 @@ const PrizeCard = ({ prize, index }) => {
 						style={{
 							background: "rgba(255,255,255,0.2)",
 							border: "1px solid rgba(255,255,255,0.3)",
-							fontFamily: "Frontline, sans-serif",
+							fontFamily: "Inter, system-ui, sans-serif",
 						}}
 					>
 						{prize.position}
