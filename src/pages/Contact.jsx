@@ -130,7 +130,7 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-[#E6E4F1] pt-24 px-8 pb-8 flex items-center justify-center">
       <div
-        className="w-full max-w-5xl bg-white p-8 rounded-[60px] shadow-xl"
+        className="w-full max-w-5xl bg-white p-8 shadow-xl"
         style={{
           borderWidth: "6px",
           borderImageSlice: 1,
