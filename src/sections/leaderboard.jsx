@@ -134,7 +134,7 @@ const LandingLeaderboard = () => {
   }
 
   return (
-    <div className="w-[90vw] lg:w-[70vw] m-auto mb-10 bg-gradient-to-br from-violet-900 via-purple-800 to-violet-900 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl relative overflow-hidden">
+    <div className="w-[95vw] lg:w-[70vw] m-auto mb-10 bg-gradient-to-br from-violet-900 via-purple-800 to-violet-900 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl relative overflow-hidden">
       {/* Glass border highlight effect */}
       <div className="absolute inset-0 rounded-2xl border border-white/25 opacity-50"></div>
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
@@ -144,8 +144,12 @@ const LandingLeaderboard = () => {
       
       {/* Header */}
       <div className="bg-violet-900/80 backdrop-blur-sm rounded-t-2xl p-4 border-b border-white/20 relative z-10">
-        <div className="flex">
-          <div className='text-center flex-1'>
+        <div className="flex items-center justify-between">
+          {/* Left spacer for desktop to center the title */}
+          <div className="hidden sm:block w-32"></div>
+          
+          {/* Centered title section */}
+          <div className="text-center flex-1">
             <h3 
               className="text-xl sm:text-2xl font-bold text-white mb-1"
               style={{ fontFamily: "Frontline, sans-serif" }}
@@ -154,28 +158,22 @@ const LandingLeaderboard = () => {
             </h3>
             <p className="text-purple-300 text-sm text-center leaderboard">Top 5 Performers</p>
           </div>
-          {/* <Link 
-            to="/leaderboard" 
-            className="group flex items-center space-x-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 py-2 transition-all duration-300 hover:scale-105"
-          >
-            
-            <span className="text-white text-sm font-medium tracking-[1px] font-jersey">View Full</span>
-            <FaChevronRight className="text-white text-xs group-hover:translate-x-1 transition-transform duration-300" />
-          </Link> */}
-          <div className="mt-2 hidden sm:block">
-          <button 
-            onClick={handleViewFullClick}
-            className="group w-full bg-gradient-to-r from-purple-400/50 to-purple-400/50 hover:from-purple-500/70 hover:to-purple-500/70 backdrop-blur-sm border border-white/30 rounded-xl py-3 px-4 transition-all duration-300 hover:scale-[1.02] relative overflow-hidden block"
-          >
-            {/* Shining animation overlay */}
-            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-transform duration-700 ease-out"></div>
-            
-            <div className="flex items-center justify-center space-x-1 relative z-10">
-              <span className="text-white font-jersey tracking-[1px] font-semibold">View Full</span>
-              <FaChevronRight className="text-white text-sm group-hover:translate-x-1 transition-transform duration-300" />
-            </div>
-          </button>
-        </div>
+          
+          {/* View Full button for desktop */}
+          <div className="hidden sm:block w-32">
+            <button 
+              onClick={handleViewFullClick}
+              className="group bg-gradient-to-r from-purple-400/50 to-purple-400/50 hover:from-purple-500/70 hover:to-purple-500/70 backdrop-blur-sm border border-white/30 rounded-xl py-2 px-3 transition-all duration-300 hover:scale-[1.02] relative overflow-hidden"
+            >
+              {/* Shining animation overlay */}
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-transform duration-700 ease-out"></div>
+              
+              <div className="flex items-center justify-center space-x-1 relative z-10">
+                <span className="text-white font-jersey tracking-[1px] font-semibold text-sm">View Full</span>
+                <FaChevronRight className="text-white text-xs group-hover:translate-x-1 transition-transform duration-300" />
+              </div>
+            </button>
+          </div>
         </div>
       </div>
       
@@ -190,7 +188,7 @@ const LandingLeaderboard = () => {
           return (
             <div 
               key={item.id} 
-              className={`group bg-gradient-to-r backdrop-blur-sm border p-3 mb-3 last:mb-0 rounded-xl transition-all duration-300 relative overflow-hidden cursor-pointer ${
+              className={`group bg-gradient-to-r backdrop-blur-sm border p-3 mb-3 last:mb-0 rounded-xl transition-all duration-300 relative overflow-hidden  ${
                 isActive 
                   ? 'from-purple-400 to-purple-400 border-white/30 scale-[1.02]' 
                   : 'from-purple-700 to-purple-600 hover:from-purple-400 hover:to-purple-400 border-white/10 hover:border-white/30 hover:scale-[1.02]'
@@ -213,7 +211,7 @@ const LandingLeaderboard = () => {
               
               <div className="flex items-center relative z-10">
                 {/* Rank */}
-                <div className="flex items-center justify-center w-8 text-white font-bold text-lg mr-3">
+                <div className="flex items-center justify-center w-8 text-white font-bold text-lg mr-1">
                   {item.rank}
                 </div>
                 
@@ -232,7 +230,7 @@ const LandingLeaderboard = () => {
                 
                 {/* Name and Points */}
                 <div className="flex-1 min-w-0 mr-3">
-                  <h4 className={`text-white font-jersey tracking-[2px] font-semibold text-base capitalize truncate transition-all duration-300 ${
+                  <h4 className={`text-white font-jersey sm:tracking-[2px] font-semibold text-base capitalize truncate transition-all duration-300 ${
                     isActive ? 'font-bold' : 'group-hover:text-white group-hover:font-bold'
                   }`}>
                     {item.name}
