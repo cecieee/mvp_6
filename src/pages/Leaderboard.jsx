@@ -369,8 +369,9 @@ const EventLeaderboard = () => {
               return (
                 <div 
                   key={item.id} 
-                  className={`group bg-gradient-to-l from-violet-400 to-purple-800 backdrop-blur-sm border border-white/10 p-3 sm:p-4 hover:bg-gradient-to-r hover:from-purple-400/50 hover:to-purple-400/80 hover:border-slate-400/70 active:bg-violet-200 active:border-violet-400 transition-all duration-300 hover:scale-[1.01] active:scale-[1.01] relative overflow-hidden ${isRowActive ? 'bg-slate-400/20 border-slate-300/90 scale-[1.01]' : ''}`}
+                  className={`group bg-gradient-to-l from-violet-400 to-purple-800 backdrop-blur-sm border border-white/10 p-3 sm:p-4 hover:bg-violet-600 hover:border-slate-400/70 active:bg-violet-200 active:border-violet-400 transition-all duration-300 hover:scale-[1.01] active:scale-[1.01] relative overflow-hidden ${isRowActive ? 'bg-slate-400/20 border-slate-300/90 scale-[1.01]' : ''}`}
                   onClick={() => handleCardClick(`row-${item.id}`)}
+                  style={{ cursor: 'default' }}
                 >
                   {/* Full glass border highlight effect on hover */}
                   <div className={`absolute inset-0 border border-transparent ${isRowActive ? 'border-white/30' : 'group-hover:border-white/30'} rounded transition-all duration-300`}></div>

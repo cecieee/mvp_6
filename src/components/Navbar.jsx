@@ -195,7 +195,7 @@ const NavItems = ({ items, className, onItemClick, currentPath }) => {
         <button
           onMouseEnter={() => setHovered(idx)}
           onClick={() => onItemClick(item.link)}
-          className={`relative px-4 py-2 text-[#1C1538] hover:text-[#7152DE] transition-colors duration-200 ${
+          className={`relative px-4 py-2 text-[#1C1538] hover:text-[#7152DE] transition-colors duration-200 cursor-pointer ${
             currentPath === item.link ? "text-[#7152DE]" : ""
           }`}
           key={`link-${idx}`}

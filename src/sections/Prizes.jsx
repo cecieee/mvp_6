@@ -74,7 +74,8 @@ const PrizeCard = ({ prize, index }) => {
 				y: -10,
 				transition: { duration: 0.3 },
 			}}
-			className="relative group cursor-pointer"
+			className="relative group"
+			style={{ cursor: 'default' }}
 		>
 			<div
 				className={`relative overflow-hidden rounded-2xl p-6 h-full flex flex-col justify-between transition-all duration-500 ${

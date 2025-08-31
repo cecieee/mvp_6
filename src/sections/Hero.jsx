@@ -166,10 +166,10 @@ export default function Hero() {
         })}
       </div>
 
-      <div className="container mx-auto px-6 relative z-30">
+      <div className="container mx-auto px-4 sm:px-6 relative z-30">
         <div className="text-center">
           <h1
-            className="text-4xl md:text-6xl lg:text-7xl font-frontline mb-4 pr-3 animate-fade-in-up"
+            className="text-4xl md:text-6xl lg:text-7xl font-frontline mb-6 animate-fade-in-up"
             style={{
               fontFamily: "Frontline, sans-serif",
               background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
@@ -184,27 +184,29 @@ export default function Hero() {
             MVP 6.0
           </h1>
 
-          <p
-            className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mb-3 max-w-4xl mx-auto leading-relaxed font-bold px-4"
-            style={{
-              fontFamily: "Inter, system-ui, sans-serif",
-              color: "#1C1538",
-              background: "linear-gradient(90deg, #7152DE 0%, #4B3791 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            <span className="font-bold">INNOVATE</span>
-            <span className="mx-2 sm:mx-3 text-[#7152DE] opacity-100">•</span>
-            <span className="font-bold">CONNECT</span>
-            <span className="mx-2 sm:mx-3 text-[#7152DE] opacity-100">•</span>
-            <span className="font-bold">INSPIRE</span>
-          </p>
+          <div className="mb-4 max-w-5xl mx-auto">
+            <p
+              className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-bold px-2"
+              style={{
+                fontFamily: "Inter, system-ui, sans-serif",
+                color: "#1C1538",
+                background: "linear-gradient(90deg, #7152DE 0%, #4B3791 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              <span className="font-bold">INNOVATE</span>
+              <span className="mx-1 sm:mx-2 text-[#7152DE] opacity-100">•</span>
+              <span className="font-bold">CONNECT</span>
+              <span className="mx-1 sm:mx-2 text-[#7152DE] opacity-100">•</span>
+              <span className="font-bold">INSPIRE</span>
+            </p>
+          </div>
 
           <p
-            className="text-base sm:text-lg md:text-xl lg:text-xl mb-12 max-w-2xl mx-auto leading-relaxed opacity-80 px-4"
+            className="text-sm sm:text-base md:text-lg lg:text-xl mb-12 max-w-2xl mx-auto leading-relaxed opacity-80 px-4"
             style={{
               fontFamily: "Inter, system-ui, sans-serif",
               color: "#4B3791",
@@ -218,7 +220,7 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
             style={{ animation: "fadeInUp 1.2s ease-out 0.6s both" }}
           >
-            <button className="group px-8 py-3 font-semibold rounded-full border-2 border-[#7152DE] text-[#7152DE] bg-white shadow-md hover:bg-[#7152DE] hover:text-white transition-all duration-300 flex items-center gap-3 relative overflow-hidden">
+            <button className="group px-6 sm:px-8 py-3 font-semibold rounded-full border-2 border-[#7152DE] text-[#7152DE] bg-white shadow-md hover:bg-[#7152DE] hover:text-white transition-all duration-300 flex items-center gap-3 relative overflow-hidden cursor-pointer">
               <span className="relative z-10">Register Now</span>
               <svg
                 className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110"
@@ -236,7 +238,7 @@ export default function Hero() {
             </button>
             <button 
               onClick={scrollToAbout}
-              className="group px-8 py-3 font-semibold rounded-full border-2 border-[#4B3791] text-[#4B3791] bg-white shadow-md hover:bg-[#4B3791] hover:text-white transition-all duration-300 flex items-center gap-3 relative overflow-hidden"
+              className="group px-6 sm:px-8 py-3 font-semibold rounded-full border-2 border-[#4B3791] text-[#4B3791] bg-white shadow-md hover:bg-[#4B3791] hover:text-white transition-all duration-300 flex items-center gap-3 relative overflow-hidden cursor-pointer"
             >
               <span className="relative z-10">About Us</span>
               <svg
