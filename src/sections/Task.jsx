@@ -12,7 +12,7 @@ export default function Task() {
   };
 
   return (
-    <section className="pb-17.5 bg-white relative overflow-hidden">
+    <section className="pb-17.5 bg-white relative overflow-hidden py-20">
       {/* Particle dots matching Hero theme */}
       {Array.from({ length: 15 }).map((_, i) => {
         const baseX =
@@ -85,7 +85,7 @@ export default function Task() {
         ))}
       </div>
 
-      <div className="container mx-auto px-6 text-center md:mt-[15vw]  sm:mt-25 lg:mt-0 relative z-10 mt-20 ">
+      <div className="container mx-auto px-6 text-center relative z-10">
         <h2
           className="text-4xl md:text-5xl font-bold mb-4"
           style={{
