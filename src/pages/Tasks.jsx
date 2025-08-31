@@ -42,6 +42,7 @@ export default function Tasks() {
       desc: "Create responsive dashboard UI with modern design principles.",
       due: "2025-01-20",
       completed: false,
+      submissionLink: "https://forms.google.com/dashboard-task"
     },
     {
       title: "API Integration",
@@ -49,6 +50,7 @@ export default function Tasks() {
       desc: "Connect frontend with backend APIs and handle data flow.",
       due: "2025-01-22",
       completed: false,
+      submissionLink: "https://forms.google.com/api-task"
     },
     {
       title: "User Profile Management",
@@ -278,18 +280,27 @@ export default function Tasks() {
                     {activeTasks.map((task, index) => (
                       <div
                         key={index}
-                        className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${borderShadowStyles[task.status]}`}
+                        className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${borderShadowStyles[task.status]} flex flex-col`}
                       >
                         <span
-                          className={`px-3 py-1 text-xs font-medium rounded-full ${statusStyles[task.status]}`}
+                          className={`px-3 py-1 text-xs font-medium rounded-full self-start ${statusStyles[task.status]}`}
                         >
                           {task.status}
                         </span>
                         <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">
                           {task.title}
                         </h3>
-                        <p className="text-gray-600 text-sm mb-4">{task.desc}</p>
-                        <div className="text-xs text-gray-500">Due: {task.due}</div>
+                        <p className="text-gray-600 text-sm mb-4 flex-grow">{task.desc}</p>
+                        <div className="text-xs text-gray-500 mb-4">Due: {task.due}</div>
+                        
+                        {/* Submit Task Button */}
+                        <button
+                          onClick={() => window.open(task.submissionLink || '#', '_blank')}
+                          className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
+                        >
+                          <FaClipboardList className="w-4 h-4" />
+                          Submit Task
+                        </button>
                       </div>
                     ))}
                   </div>
