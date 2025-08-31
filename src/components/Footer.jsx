@@ -102,7 +102,7 @@ export default function Footer() {
                 href="https://www.instagram.com/ieee_sb_cec/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-white/15 backdrop-blur-sm border border-white/20 hover:bg-[#7152DE]/60 hover:border-[#7152DE]/50 transition-all duration-300 shadow-lg"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-white/15 backdrop-blur-sm border border-white/20 hover:bg-[#7152DE]/60 hover:border-[#7152DE]/50 transition-all duration-300 shadow-lg cursor-pointer"
               >
                 <FiInstagram className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </a>
@@ -110,7 +110,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/cecieee/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-white/15 backdrop-blur-sm border border-white/20 hover:bg-[#7152DE]/60 hover:border-[#7152DE]/50 transition-all duration-300 shadow-lg"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-white/15 backdrop-blur-sm border border-white/20 hover:bg-[#7152DE]/60 hover:border-[#7152DE]/50 transition-all duration-300 shadow-lg cursor-pointer"
               >
                 <svg
                   className="w-4 h-4 sm:w-5 sm:h-5 text-white"

@@ -296,7 +296,7 @@ export default function Tasks() {
                         {/* Submit Task Button */}
                         <button
                           onClick={() => window.open(task.submissionLink || '#', '_blank')}
-                          className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
+                          className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg cursor-pointer"
                         >
                           <FaClipboardList className="w-4 h-4" />
                           Submit Task

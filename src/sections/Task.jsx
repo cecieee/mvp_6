@@ -107,7 +107,7 @@ export default function Task() {
 
         <button
           onClick={handleExploreTask}
-          className="group px-8 py-3 font-semibold rounded-full border-2 border-[#7152DE] text-[#7152DE] bg-white shadow-md hover:bg-[#7152DE] hover:text-white transition-all duration-300 flex items-center gap-3 mx-auto"
+          className="group px-8 py-3 font-semibold rounded-full border-2 border-[#7152DE] text-[#7152DE] bg-white shadow-md hover:bg-[#7152DE] hover:text-white transition-all duration-300 flex items-center gap-3 mx-auto cursor-pointer"
         >
           <span className="relative z-10">View Tasks</span>
           <svg

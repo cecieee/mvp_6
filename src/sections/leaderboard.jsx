@@ -163,7 +163,7 @@ const LandingLeaderboard = () => {
           <div className="hidden sm:block w-32">
             <button 
               onClick={handleViewFullClick}
-              className="group bg-gradient-to-r from-purple-400/50 to-purple-400/50 hover:from-purple-500/70 hover:to-purple-500/70 backdrop-blur-sm border border-white/30 rounded-xl py-2 px-3 transition-all duration-300 hover:scale-[1.02] relative overflow-hidden"
+              className="group bg-gradient-to-r from-purple-400/50 to-purple-400/50 hover:from-purple-500/70 hover:to-purple-500/70 backdrop-blur-sm border border-white/30 rounded-xl py-2 px-3 transition-all duration-300 hover:scale-[1.02] relative overflow-hidden cursor-pointer"
             >
               {/* Shining animation overlay */}
               <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-transform duration-700 ease-out"></div>
@@ -188,7 +188,7 @@ const LandingLeaderboard = () => {
           return (
             <div 
               key={item.id} 
-              className={`group bg-gradient-to-r backdrop-blur-sm border p-3 mb-3 last:mb-0 rounded-xl transition-all duration-300 relative overflow-hidden  ${
+              className={`group bg-gradient-to-r backdrop-blur-sm border p-3 mb-3 last:mb-0 rounded-xl transition-all duration-300 relative overflow-hidden ${
                 isActive 
                   ? 'from-purple-400 to-purple-400 border-white/30 scale-[1.02]' 
                   : 'from-purple-700 to-purple-600 hover:from-purple-400 hover:to-purple-400 border-white/10 hover:border-white/30 hover:scale-[1.02]'
@@ -203,6 +203,7 @@ const LandingLeaderboard = () => {
                   handleTouchEnd();
                 }
               }}
+              style={{ cursor: 'default' }}
             >
               {/* Shining animation overlay */}
               <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-transform duration-700 ease-out ${
@@ -280,7 +281,7 @@ const LandingLeaderboard = () => {
         <div className="mt-4 pt-4 block sm:hidden border-t border-white/20">
           <Link 
             to="/leaderboard"
-            className={`group w-full bg-gradient-to-r backdrop-blur-sm border border-white/30 rounded-xl py-3 px-4 transition-all duration-300 relative overflow-hidden block ${
+            className={`group w-full bg-gradient-to-r backdrop-blur-sm border border-white/30 rounded-xl py-3 px-4 transition-all duration-300 relative overflow-hidden block cursor-pointer ${
               activeItem === 'mobile-button' 
                 ? 'from-purple-500/70 to-indigo-500/70 scale-[1.02]' 
                 : 'from-purple-600/50 to-violet-800/50 hover:from-purple-500/70 hover:to-indigo-500/70 hover:scale-[1.02]'

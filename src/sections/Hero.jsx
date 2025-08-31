@@ -220,7 +220,7 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
             style={{ animation: "fadeInUp 1.2s ease-out 0.6s both" }}
           >
-            <button className="group px-6 sm:px-8 py-3 font-semibold rounded-full border-2 border-[#7152DE] text-[#7152DE] bg-white shadow-md hover:bg-[#7152DE] hover:text-white transition-all duration-300 flex items-center gap-3 relative overflow-hidden">
+            <button className="group px-6 sm:px-8 py-3 font-semibold rounded-full border-2 border-[#7152DE] text-[#7152DE] bg-white shadow-md hover:bg-[#7152DE] hover:text-white transition-all duration-300 flex items-center gap-3 relative overflow-hidden cursor-pointer">
               <span className="relative z-10">Register Now</span>
               <svg
                 className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110"
@@ -238,7 +238,7 @@ export default function Hero() {
             </button>
             <button 
               onClick={scrollToAbout}
-              className="group px-6 sm:px-8 py-3 font-semibold rounded-full border-2 border-[#4B3791] text-[#4B3791] bg-white shadow-md hover:bg-[#4B3791] hover:text-white transition-all duration-300 flex items-center gap-3 relative overflow-hidden"
+              className="group px-6 sm:px-8 py-3 font-semibold rounded-full border-2 border-[#4B3791] text-[#4B3791] bg-white shadow-md hover:bg-[#4B3791] hover:text-white transition-all duration-300 flex items-center gap-3 relative overflow-hidden cursor-pointer"
             >
               <span className="relative z-10">About Us</span>
               <svg
