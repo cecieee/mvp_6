@@ -4,43 +4,43 @@ import { motion } from "framer-motion";
 const prizes = [
 	{
 		position: "1st",
-		title: "DRUMSTONE VR HEADSET",
-		image: "/prizes/vr-headset.webp",
+		title: "3D VR HEADSET WITH IN-BUILT HEADPHONES",
+		image: "/prizes/VrHeadset.webp",
 		gradient: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)",
 		shadowColor: "#FFD700",
 	},
 	{
 		position: "2nd",
-		title: "BOAT WIRELESS EARPHONES",
-		image: "/prizes/earphone.webp",
+		title: "IEM EARPHONES",
+		image: "/prizes/Earphone.webp",
 		gradient: "linear-gradient(135deg, #C0C0C0 0%, #808080 100%)",
 		shadowColor: "#C0C0C0",
 	},
 	{
 		position: "3rd",
-		title: "NOISE PULSE SMARTWATCH",
-		image: "/prizes/smartwatch.webp",
+		title: "NOISE PULSE GO BUZZ SMARTWATCH",
+		image: "/prizes/SmartWatch.webp",
 		gradient: "linear-gradient(135deg, #CD7F32 0%, #8B4513 100%)",
 		shadowColor: "#CD7F32",
 	},
 	{
 		position: "4th",
-		title: "FLIX 10000MAH POWERBANK",
-		image: "/prizes/powerbank.webp",
+		title: "PORTABLE BLUETOOTH SPEAKER WITH IN-BUILT MIC",
+		image: "/prizes/BluetoothSpeaker.webp",
 		gradient: "linear-gradient(135deg, #4B3791 0%, #7152DE 100%)",
 		shadowColor: "#7152DE",
 	},
 	{
 		position: "5th",
-		title: "3 COLOUR LED DESK LAMP",
-		image: "/prizes/tablelamp.webp",
+		title: "COOL MIST QUITE AIR HUMIDIFIER",
+		image: "/prizes/AirHumidifier.webp",
 		gradient: "linear-gradient(135deg, #1C1538 0%, #4B3791 100%)",
 		shadowColor: "#4B3791",
 	},
 	{
 		position: "Top 25",
-		title: "EXCLUSIVE SWAGS",
-		image: "/prizes/swags.webp",
+		title: "SELFIE STICK WITH TRIPOD STAND",
+		image: "/prizes/Tripod.webp",
 		gradient: "linear-gradient(135deg, #7152DE 0%, #1C1538 100%)",
 		shadowColor: "#7152DE",
 	},
@@ -118,7 +118,7 @@ const PrizeCard = ({ prize, index }) => {
 				{/* Prize title */}
 				<div className="text-center z-10">
 					<h3
-						className={`font-bold text-white drop-shadow-lg ${
+						className={`text-white drop-shadow-lg ${
 							isTopThree ? "text-lg md:text-xl" : "text-base"
 						}`}
 						style={{
