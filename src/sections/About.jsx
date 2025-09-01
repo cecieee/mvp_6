@@ -25,7 +25,8 @@ const About = () => {
         const wordElements = textContent.querySelectorAll(".word");
 
         // Smooth word reveal animation with opacity transition
-        gsap.fromTo(wordElements, 
+        gsap.fromTo(
+          wordElements,
           {
             opacity: 0.2,
           },
@@ -39,7 +40,6 @@ const About = () => {
               start: "top 80%",
               end: "bottom 60%",
               scrub: 1.5,
-              markers: true,
             },
           }
         );
