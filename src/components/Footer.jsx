@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { FiPhone, FiMail, FiInstagram, FiLinkedin, FiMapPin } from "react-icons/fi";
+import { FiPhone, FiMail, FiInstagram, FiLinkedin, FiMapPin, FiHeart, FiGlobe, FiUsers, FiArrowUp } from "react-icons/fi";
 
 export default function Footer() {
   const navigate = useNavigate();
@@ -12,149 +12,196 @@ export default function Footer() {
     }, 100);
   };
 
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Tasks", href: "/tasks" },
-    { name: "Leaderboard", href: "/leaderboard" },
-    { name: "Contact", href: "/contact" },
-  ];
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <footer
-      className="relative text-white overflow-hidden py-8"
+      className="relative text-white overflow-hidden"
       style={{
-        background: "linear-gradient(to right, #3A2F5A, #2A1F4A, #3A2F5A)",
+        background: "linear-gradient(180deg, #0a0520 0%, #1a1335 50%, #0f0728 100%)",
       }}
     >
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#7152DE] via-[#4B3791] to-[#7152DE]"></div>
+      {/* Enhanced Grid Pattern */}
+      <div className="absolute inset-0 opacity-20">
+        <div
+          className="w-full h-full"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(113, 82, 222, 0.4) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(113, 82, 222, 0.4) 1px, transparent 1px),
+              linear-gradient(rgba(147, 51, 234, 0.2) 0.5px, transparent 0.5px),
+              linear-gradient(90deg, rgba(147, 51, 234, 0.2) 0.5px, transparent 0.5px)
+            `,
+            backgroundSize: '80px 80px, 80px 80px, 20px 20px, 20px 20px',
+          }}
+        />
+      </div>
 
-      <div
-        className="absolute inset-0 pointer-events-none z-0"
-        style={{
-          backgroundImage: `
-          repeating-linear-gradient(
-            to right,
-            rgba(113,82,222,0.08) 0px,
-            rgba(113,82,222,0.08) 1.5px,
-            transparent 1.5px,
-            transparent 48px
-          ),
-          repeating-linear-gradient(
-            to bottom,
-            rgba(113,82,222,0.08) 0px,
-            rgba(113,82,222,0.08) 1.5px,
-            transparent 1.5px,
-            transparent 48px
-          )
-        `,
-          backgroundSize: "48px 48px",
-        }}
-      />
-
-      <div className="absolute inset-0 pointer-events-none z-0">
+      {/* Floating Elements */}
+      <div className="absolute inset-0 overflow-hidden">
         {Array.from({ length: 8 }).map((_, i) => (
           <div
             key={i}
-            className="absolute rounded-full"
+            className="absolute animate-float"
             style={{
-              width: "18px",
-              height: "18px",
-              left: `${(i * 12 + 20) % 100}%`,
-              top: `${(i * 17 + 30) % 100}%`,
-              background: "#7152DE",
-              boxShadow: `0 0 ${14 + i * 2}px #7152DE`,
-              opacity: 0.18 + (i % 3) * 0.08,
-              filter: `blur(${(i % 3) + 1}px)`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${8 + Math.random() * 4}s`,
             }}
-          />
+          >
+            <div
+              className="w-2 h-2 bg-purple-400/30 rounded-full blur-sm"
+              style={{
+                boxShadow: '0 0 20px rgba(147, 51, 234, 0.4)',
+              }}
+            />
+          </div>
         ))}
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        {/* Main content*/}
-        <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:justify-between md:items-center">
-          {/* Logo section */}
-          <div className="text-center md:text-left order-2 md:order-1">
-            <button onClick={() => handleNavigation("/")} className="cursor-pointer">
-              <h3
-                className="text-xl sm:text-2xl md:text-3xl font-frontline mb-2 px-3 rounded-md"
-                style={{
-                  fontFamily: "Frontline, sans-serif",
-                  background: "linear-gradient(90deg, #FFFFFF 0%, #E8E0FF 50%, #FFFFFF 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  textShadow: "0 0 20px rgba(255,255,255,0.5)",
-                  filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))",
-                }}
-              >
-                MVP 6.0
-              </h3>
-            </button>
-            <p className="text-purple-200 text-xs sm:text-sm font-medium">Micro Volunteering Programme</p>
-          </div>
-
-          {/* Social Media*/}
-          <div className="text-center order-1 md:order-2">
-            <p className="text-purple-200 text-xs sm:text-sm font-medium mb-3">Connect with us</p>
-            <div className="flex gap-4 sm:gap-6 justify-center">
-              <a
-                href="https://www.instagram.com/ieee_sb_cec/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-white/15 backdrop-blur-sm border border-white/20 hover:bg-[#7152DE]/60 hover:border-[#7152DE]/50 transition-all duration-300 shadow-lg cursor-pointer"
-              >
-                <FiInstagram className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-              </a>
-              <a
-                href="https://www.linkedin.com/company/cecieee/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-white/15 backdrop-blur-sm border border-white/20 hover:bg-[#7152DE]/60 hover:border-[#7152DE]/50 transition-all duration-300 shadow-lg cursor-pointer"
-              >
-                <svg
-                  className="w-4 h-4 sm:w-5 sm:h-5 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          {/* Contact info*/}
-          <div className="text-center md:text-right order-3 md:order-3">
-            <p className="text-purple-200 text-xs sm:text-sm font-medium mb-3">Get in touch</p>
-            <div className="space-y-2 sm:space-y-3">
-              <div className="flex items-center justify-center md:justify-end text-white/90 text-xs sm:text-sm">
-                <FiPhone className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-[#7152DE] flex-shrink-0" />
-                <span>+91 12345 67890</span>
+      {/* Main Content */}
+      <div className="relative z-10">
+        {/* Top Section */}
+        <div className="border-b border-white/10">
+          <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6">
+            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6 lg:gap-12">
+              
+              {/* Brand Section */}
+              <div className="flex flex-col items-center lg:items-start lg:flex-shrink-0 space-y-3 sm:space-y-4">
+                <div className="flex flex-col items-center lg:items-start gap-2 sm:gap-3">
+                  <img src="/logos/IEEE-logo.webp" alt="IEEE Logo" className="h-8 sm:h-10 lg:h-12 w-auto" />
+                  <img src="/logos/IEEE-SB-logo.webp" alt="IEEE SB Logo" className="mt-7 h-8 sm:h-10 lg:h-12 w-auto" />
+                </div>
               </div>
-              <div className="flex items-center justify-center md:justify-end text-white/90 text-xs sm:text-sm">
-                <FiMail className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-[#7152DE] flex-shrink-0" />
-                <span>ieee@ceconline.edu</span>
+
+              {/* MVP Logo Center */}
+              <div className="flex-shrink-0 flex justify-center lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2">
+                <div className="text-center">
+                  <h1
+                    className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2"
+                    style={{
+                      fontFamily: "Frontline, sans-serif",
+                      background: "linear-gradient(90deg, #FFFFFF 0%, #E8E0FF 50%, #FFFFFF 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                      filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))",
+                    }}
+                  >
+                    MVP 6.0
+                  </h1>
+                  <p className="text-purple-200 text-xs sm:text-sm font-medium">Micro Volunteering Programme</p>
+                </div>
               </div>
-              <div className="flex items-center justify-center md:justify-end text-white/90 text-xs sm:text-sm">
-                <FiMapPin className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-[#7152DE] flex-shrink-0" />
-                <span>CE Chengannur</span>
+
+              {/* Links and Contact Section */}
+              <div className="flex flex-col sm:flex-row lg:flex-row gap-6 sm:gap-8 lg:gap-16 justify-center sm:justify-start lg:justify-end">
+                {/* Quick Links */}
+                {/* <div className="space-y-3 text-center sm:text-left">
+                  <h4 className="text-sm sm:text-base font-semibold text-white">Quick Links</h4>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    {['Home', 'About', 'Events', 'Contact'].map((link) => (
+                      <button
+                        key={link}
+                        onClick={() => handleNavigation(link.toLowerCase())}
+                        className="block w-full text-gray-300 hover:text-white hover:translate-x-0 sm:hover:translate-x-1 transition-all duration-300 text-center sm:text-left text-xs sm:text-sm py-1"
+                      >
+                        {link}
+                      </button>
+                    ))}
+                  </div>
+                </div> */}
+
+                {/* Contact Info */}
+                <div className="space-y-3 text-center sm:text-left">
+                  <h4 className="text-sm sm:text-base font-semibold text-white">Contact</h4>
+                  <div className="space-y-2 sm:space-y-3">
+                    <a
+                      href="mailto:ieee@ceconline.edu"
+                      className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3 text-gray-300 hover:text-white transition-colors duration-300 group"
+                    >
+                      <div className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 bg-purple-500/20 group-hover:bg-purple-500/30 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-300">
+                        <FiMail className="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3.5 lg:h-3.5 text-purple-300 group-hover:text-purple-200 transition-colors duration-300" />
+                      </div>
+                      <span className="text-xs sm:text-sm">ieee@ceconline.edu</span>
+                    </a>
+                    <a
+                      href="https://maps.google.com/?q=College+of+Engineering+Chengannur"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-start justify-center sm:justify-start gap-2 sm:gap-3 text-gray-300 hover:text-white transition-colors duration-300 group"
+                    >
+                      <div className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 bg-purple-500/20 group-hover:bg-purple-500/30 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-300 mt-0.5">
+                        <FiMapPin className="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3.5 lg:h-3.5 text-purple-300 group-hover:text-purple-200 transition-colors duration-300" />
+                      </div>
+                      <span className="text-xs sm:text-sm leading-relaxed text-center sm:text-left">
+                        College of Engineering<br />Chengannur
+                      </span>
+                    </a>
+                    
+                    {/* Social Media Icons */}
+                    <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3 pt-2">
+                      <a
+                        href="https://www.instagram.com/ieee_sb_cec/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 bg-gradient-to-br from-pink-500/20 to-pink-600/20 hover:from-pink-500/30 hover:to-pink-600/30 rounded-lg flex items-center justify-center transition-all duration-300 overflow-hidden"
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-pink-400/0 to-pink-600/0 group-hover:from-pink-400/10 group-hover:to-pink-600/10 transition-all duration-300"></div>
+                        <FiInstagram className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-pink-300 group-hover:text-pink-200 transition-colors duration-300 relative z-10" />
+                      </a>
+                      <a
+                        href="https://www.linkedin.com/company/cecieee/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 bg-gradient-to-br from-blue-500/20 to-blue-600/20 hover:from-blue-500/30 hover:to-blue-600/30 rounded-lg flex items-center justify-center transition-all duration-300 overflow-hidden"
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-400/0 to-blue-600/0 group-hover:from-blue-400/10 group-hover:to-blue-600/10 transition-all duration-300"></div>
+                        <FiLinkedin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-300 group-hover:text-blue-200 transition-colors duration-300 relative z-10" />
+                      </a>
+                      
+                      <button
+                        onClick={scrollToTop}
+                        className="group w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 bg-gradient-to-br from-purple-500/20 to-purple-600/20 hover:from-purple-500/30 hover:to-purple-600/30 rounded-lg flex items-center justify-center transition-all duration-300 ml-1"
+                      >
+                        <FiArrowUp className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4 text-purple-300 group-hover:text-purple-200 group-hover:-translate-y-0.5 transition-all duration-300" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom section */}
-        <div className="border-t border-white/10 mt-6 sm:mt-8 pt-4 sm:pt-6 text-center space-y-3 sm:space-y-0 sm:flex sm:justify-between sm:items-center text-xs sm:text-sm">
-          <p className="text-white/80">© 2025 IEEE SB CEC</p>
-          <div className="flex items-center justify-center space-x-1 sm:space-x-2 text-white/70">
-            <span>Made with</span>
-            <span className="text-[#7152DE] animate-pulse text-sm sm:text-base">❤️</span>
-            <span>by IEEE SB CEC</span>
+        {/* Bottom Section */}
+        <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
+          <div className="flex justify-center items-center">
+            <div className="flex flex-col sm:flex-row items-center gap-1 text-xs sm:text-sm text-gray-400 text-center">
+              <span>© 2025 IEEE Student Branch CEC.</span>
+              <div className="flex items-center gap-1">
+                <span>Made with</span>
+                <FiHeart className="w-3 h-3 sm:w-4 sm:h-4 text-red-400 animate-pulse" />
+                <span>by the Web team</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#7152DE] via-[#4B3791] to-[#7152DE]"></div>
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          33% { transform: translateY(-10px) rotate(120deg); }
+          66% { transform: translateY(5px) rotate(240deg); }
+        }
+        .animate-float {
+          animation: float 12s ease-in-out infinite;
+        }
+      `}</style>
     </footer>
   );
 }
