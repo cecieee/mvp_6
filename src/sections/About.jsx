@@ -10,26 +10,6 @@ const About = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     const initializeAnimations = () => {
-      // Initial setup - hide elements
-      gsap.set([textRef.current], {
-        opacity: 0,
-        y: 50,
-      });
-
-      // Simple fade in animation on scroll
-      gsap.to(textRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: textRef.current,
-          start: "top 80%",
-          end: "bottom 20%",
-          toggleActions: "play none none reverse",
-        },
-      });
-
       // Enhanced typing effect with smooth animation
       const textContent = textRef.current;
       if (textContent) {
@@ -38,25 +18,31 @@ const About = () => {
         textContent.innerHTML = words
           .map(
             (word) =>
-              `<span class="word" style="opacity: 0; display: inline;">${word}</span>`
+              `<span class="word" style="opacity: 0.2; display: inline;">${word}</span>`
           )
           .join(" ");
 
         const wordElements = textContent.querySelectorAll(".word");
 
-        // Smooth typing effect animation
-        gsap.to(wordElements, {
-          opacity: 1,
-          duration: 0.05,
-          stagger: 0.08,
-          ease: "none",
-          scrollTrigger: {
-            trigger: textRef.current,
-            start: "top 70%",
-            end: "bottom 30%",
-            scrub: 1,
+        // Smooth word reveal animation with opacity transition
+        gsap.fromTo(wordElements, 
+          {
+            opacity: 0.2,
           },
-        });
+          {
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.05,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: textRef.current,
+              start: "top 80%",
+              end: "bottom 60%",
+              scrub: 1.5,
+              markers: true,
+            },
+          }
+        );
       }
     };
 
@@ -101,13 +87,12 @@ const About = () => {
           <div className="space-y-6">
             <p
               ref={textRef}
-              className="gradient-text text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl leading-relaxed sm:leading-relaxed md:leading-relaxed lg:leading-relaxed font-semibold max-w-5xl mx-auto text-center"
+              className="gradient-text text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl leading-relaxed sm:leading-relaxed md:leading-relaxed lg:leading-relaxed font-semibold  mx-auto text-center"
               style={{
-                fontFamily: "Inter, system-ui, sans-serif",
+                fontFamily: "JerseyM54, sans-serif",
                 fontStyle: "normal",
                 fontWeight: 500,
-                background:
-                  "linear-gradient(90deg, #4b074b 0%, #7152DE 100%)",
+                background: "linear-gradient(90deg, #4b074b 0%, #7152DE 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
