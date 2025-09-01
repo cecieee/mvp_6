@@ -169,6 +169,11 @@ const EventLeaderboard = () => {
   };
 
   useEffect(() => {
+    // Scroll to top when component mounts (page loads/navigates)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  useEffect(() => {
     fetchLeaderboardData();
   }, []);
 
