@@ -22,6 +22,7 @@ const prizes = [
 		image: "/prizes/SmartWatch.webp",
 		gradient: "linear-gradient(135deg, #CD7F32 0%, #8B4513 100%)",
 		shadowColor: "#CD7F32",
+		
 	},
 	{
 		position: "4th",
