@@ -115,13 +115,13 @@ export default function Footer() {
                   <h4 className="text-sm sm:text-base text-white" style={{ fontFamily: "JerseyM54, sans-serif" }}>CONTACT</h4>
                   <div className="space-y-2 sm:space-y-3">
                     <a
-                      href="mailto:chairman_ieee@ceconline.edu"
+                      href="mailto:mvp@cecieee.org"
                       className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3 text-gray-300 hover:text-white transition-colors duration-300 group"
                     >
                       <div className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 bg-purple-500/20 group-hover:bg-purple-500/30 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-300">
                         <FiMail className="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3.5 lg:h-3.5 text-purple-300 group-hover:text-purple-200 transition-colors duration-300" />
                       </div>
-                      <span className="text-xs sm:text-sm">chairman_ieee@ceconline.edu</span>
+                      <span className="text-xs sm:text-sm">mvp@cecieee.org</span>
                     </a>
                     <a
                       href="https://maps.google.com/?q=College+of+Engineering+Chengannur"
@@ -176,7 +176,7 @@ export default function Footer() {
         <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex justify-center items-center">
             <div className="flex flex-col sm:flex-row items-center gap-1 text-xs sm:text-sm text-gray-400 text-center">
-              <span>© 2025 IEEE SB CEC Web Team</span>
+              <span>© 2025 IEEE SB CEC Web Team.</span>
               <div className="flex items-center gap-1">
                 <span>Made with</span>
                 <FiHeart className="w-3 h-3 sm:w-4 sm:h-4 text-red-400 animate-pulse" />

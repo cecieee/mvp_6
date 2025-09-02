@@ -73,7 +73,7 @@ const About = () => {
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-4"
             style={{
-              fontFamily: "Hypik, sans-serif",
+              fontFamily: "Frontline, sans-serif",
               background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",

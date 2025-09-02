@@ -133,11 +133,12 @@ export default function Hero() {
           height: '100%',
           overflow: 'hidden',
           pointerEvents: 'auto',
-          top: viewport.width >= 1024 ? '-10%' : '0',
+          top: viewport.width >= 1024 ? '3%' : '80px',
           left: viewport.width >= 1024 ? '-5%' : '0',
           right: viewport.width >= 1024 ? 'auto' : '0',
           bottom: viewport.width >= 1024 ? 'auto' : '0',
-          transform: viewport.width >= 1024 ? 'scale(1.1)' : 'none'
+          transform: viewport.width >= 1024 ? 'scale(1.1)' : 'none',
+          height: viewport.width >= 1024 ? '90%' : 'calc(100% - 80px)'
         }}
       >
         <PixelBlast

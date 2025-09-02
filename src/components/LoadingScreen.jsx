@@ -36,7 +36,8 @@ function LoadingText() {
           style={{ 
             fontFamily: 'Frontline, sans-serif',
             fontSize: 'clamp(2.5rem, 8vw, 6rem)',
-            color: "#fff"
+            color: "#fff",
+            opacity: 0 // Start hidden
           }}
         >
           MVP
@@ -46,7 +47,8 @@ function LoadingText() {
           style={{ 
             fontFamily: 'Frontline, sans-serif',
             fontSize: 'clamp(2.5rem, 8vw, 6rem)',
-            color: "#fff"
+            color: "#fff",
+            opacity: 0 // Start hidden
           }}
         >
           6.0
@@ -125,13 +127,13 @@ export default function LoadingScreen({ onLoadingComplete }) {
           0% { transform: translateX(-150%) scale(1.1); filter: blur(10px); opacity: 0; }
           60% { transform: translateX(20px) scale(1.05); filter: blur(2px); opacity: 1; }
           80% { transform: translateX(-5px) scale(1); filter: blur(0); }
-          100% { transform: translateX(0) scale(1); }
+          100% { transform: translateX(0) scale(1); opacity: 1; }
         }
         @keyframes slideRight {
           0% { transform: translateX(150%) scale(1.1); filter: blur(10px); opacity: 0; }
           60% { transform: translateX(-20px) scale(1.05); filter: blur(2px); opacity: 1; }
           80% { transform: translateX(5px) scale(1); filter: blur(0); }
-          100% { transform: translateX(0) scale(1); }
+          100% { transform: translateX(0) scale(1); opacity: 1; }
         }
         .animate-slide-left {
           animation: slideLeft 1.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
