@@ -129,7 +129,6 @@ export default function Hero() {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-30">
         <div className="text-center relative">
-          {/* PixelBlast positioned within hero section only */}
           <div style={{ 
             position: 'absolute',
             top: '-80vh',
@@ -172,17 +171,6 @@ export default function Hero() {
               filter: "drop-shadow(0 4px 20px rgba(113, 82, 222, 0.2))"
             }}
           />
-
-          <p
-            className="text-sm sm:text-base md:text-lg lg:text-xl mb-12 max-w-2xl mx-auto leading-relaxed opacity-80 px-4 relative z-10"
-            style={{
-              fontFamily: "Inter, system-ui, sans-serif",
-              color: "#4B3791",
-              animation: "fadeInUp 1.2s ease-out 0.3s both",
-            }}
-          >
-            Join us for an extraordinary journey of innovation and discovery
-          </p>
 
           <div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 relative z-10"
