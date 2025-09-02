@@ -30,7 +30,11 @@ const otherSections = [
     title: "Point of Contact",
     icon: <FaBullhorn className="w-5 h-5" />,
     contacts: [
-      { name: "Gouri Rajesh Pillai", role: "Point of contact", phone: "628293 1968" },
+      {
+        name: "Gouri Rajesh Pillai",
+        role: "Point of contact",
+        phone: "628293 1968",
+      },
       { name: "Aparna Suresh", role: "Point of contact", phone: "89431 50049" },
     ],
   },
@@ -40,7 +44,11 @@ const otherSections = [
     contacts: [
       { name: "Nandhu Prasad", role: "Outreach", phone: "90487 38741" },
       { name: "Anjana Ajith", role: "Outreach", phone: "859080 2488" },
-      { name: "Nayan Shastham Valappil", role: "Outreach", phone: "956759 8490" },
+      {
+        name: "Nayan Shastham Valappil",
+        role: "Outreach",
+        phone: "956759 8490",
+      },
       { name: "Rachana Chandra A", role: "Outreach", phone: "628221 2759" },
     ],
   },
@@ -49,7 +57,11 @@ const otherSections = [
     icon: <FaGlobe className="w-5 h-5" />,
     contacts: [
       { name: "Harikrishna A", role: "Web Master", phone: "94955 09310" },
-      { name: "Adithyan Valayil Sreeni", role: "Web Team", phone: "96562 98751" },
+      {
+        name: "Adithyan Valayil Sreeni",
+        role: "Web Team",
+        phone: "96562 98751",
+      },
       { name: "Alwin Saji", role: "Web Team", phone: "94951 64693" },
       { name: "Aswin Ajikumar", role: "Web Team", phone: "85903 42134" },
       { name: "Sarin M S", role: "Web Team", phone: "62826 29447" },
@@ -97,7 +109,7 @@ const ContactCard = ({ name, role, phone }) => {
   );
 };
 
-// Taped heading 
+// Taped heading
 const TapedHeading = ({ title }) => {
   const rotations = ["-2deg", "2deg", "-1deg", "1deg"];
   const randomRotate = rotations[Math.floor(Math.random() * rotations.length)];
@@ -174,7 +186,7 @@ export default function Contact() {
           <h1
             className="text-4xl sm:text-5xl"
             style={{
-              fontFamily: "Hypik, sans-serif",
+              fontFamily: "Frontline, sans-serif",
               background: "linear-gradient(90deg, #2A195B, #5C3BCE)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",

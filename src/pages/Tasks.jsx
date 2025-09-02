@@ -93,7 +93,8 @@ export default function Tasks() {
   const upcomingTasks = tasks.filter((task) => task.status === "Upcoming");
 
   const totalTasks = tasks.length;
-  const progress = totalTasks > 0 ? Math.round((completedTasks.length / totalTasks) * 100) : 0;
+  const progress =
+    totalTasks > 0 ? Math.round((completedTasks.length / totalTasks) * 100) : 0;
 
   const radius = 45;
   const circumference = 2 * Math.PI * radius;
@@ -122,7 +123,7 @@ export default function Tasks() {
         <h1
           className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl mb-6"
           style={{
-            fontFamily: "Hypik, sans-serif",
+            fontFamily: "Frontline, sans-serif",
             background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
@@ -172,7 +173,7 @@ export default function Tasks() {
                   />
                 </svg>
                 <span className="absolute inset-0 flex items-center justify-center text-xl font-bold text-gray-800">
-                  {totalTasks > 0 ? `${progress}%` : '0%'}
+                  {totalTasks > 0 ? `${progress}%` : "0%"}
                 </span>
               </div>
               <p className="text-gray-600 text-sm">
@@ -236,7 +237,8 @@ export default function Tasks() {
                 className="text-3xl font-bold mb-4 text-center"
                 style={{
                   fontFamily: "JerseyM54, sans-serif",
-                  background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
+                  background:
+                    "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -245,7 +247,8 @@ export default function Tasks() {
                 No Tasks Available
               </h2>
               <p className="text-gray-600 text-center max-w-md mb-8 leading-relaxed">
-                Tasks will be released soon! Stay tuned for exciting challenges and opportunities to showcase your skills.
+                Tasks will be released soon! Stay tuned for exciting challenges
+                and opportunities to showcase your skills.
               </p>
               <div className="bg-white rounded-xl p-6 shadow-sm border border-purple-200 max-w-sm">
                 <div className="flex items-center gap-3 text-purple-700">
@@ -271,22 +274,32 @@ export default function Tasks() {
                     {activeTasks.map((task, index) => (
                       <div
                         key={index}
-                        className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${borderShadowStyles[task.status]} flex flex-col`}
+                        className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${
+                          borderShadowStyles[task.status]
+                        } flex flex-col`}
                       >
                         <span
-                          className={`px-3 py-1 text-xs font-medium rounded-full self-start ${statusStyles[task.status]}`}
+                          className={`px-3 py-1 text-xs font-medium rounded-full self-start ${
+                            statusStyles[task.status]
+                          }`}
                         >
                           {task.status}
                         </span>
                         <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">
                           {task.title}
                         </h3>
-                        <p className="text-gray-600 text-sm mb-4 flex-grow">{task.desc}</p>
-                        <div className="text-xs text-gray-500 mb-4">Due: {task.due}</div>
-                        
+                        <p className="text-gray-600 text-sm mb-4 flex-grow">
+                          {task.desc}
+                        </p>
+                        <div className="text-xs text-gray-500 mb-4">
+                          Due: {task.due}
+                        </div>
+
                         {/* Submit Task Button */}
                         <button
-                          onClick={() => window.open(task.submissionLink || '#', '_blank')}
+                          onClick={() =>
+                            window.open(task.submissionLink || "#", "_blank")
+                          }
                           className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg cursor-pointer"
                         >
                           <FaClipboardList className="w-4 h-4" />
@@ -308,17 +321,23 @@ export default function Tasks() {
                     {completedTasks.map((task, index) => (
                       <div
                         key={index}
-                        className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${borderShadowStyles[task.status]} opacity-90`}
+                        className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${
+                          borderShadowStyles[task.status]
+                        } opacity-90`}
                       >
                         <span
-                          className={`px-3 py-1 text-xs font-medium rounded-full ${statusStyles[task.status]}`}
+                          className={`px-3 py-1 text-xs font-medium rounded-full ${
+                            statusStyles[task.status]
+                          }`}
                         >
                           ✓ {task.status}
                         </span>
                         <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">
                           {task.title}
                         </h3>
-                        <p className="text-gray-600 text-sm mb-4">{task.desc}</p>
+                        <p className="text-gray-600 text-sm mb-4">
+                          {task.desc}
+                        </p>
                         <div className="text-xs text-gray-500">
                           Completed: {task.due}
                         </div>
