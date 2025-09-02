@@ -40,7 +40,7 @@ export default function Task() {
     <section className="pb-17.5 bg-white relative overflow-hidden py-20">
       <div className="container mx-auto px-6 text-center relative z-10">
         <h2
-          className="text-4xl md:text-5xl mb-4"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-3 sm:mb-4 px-2 sm:px-0"
           style={{
             fontFamily: "Hypik, system-ui, sans-serif",
             background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
