@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
+import { toast } from 'react-toastify';
+import { FiClock } from 'react-icons/fi';
 
 export default function Hero() {
   const [smoothMousePosition, setSmoothMousePosition] = useState({ x: 0, y: 0 });
@@ -56,6 +58,39 @@ export default function Hero() {
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleRegistrationClick = () => {
+    toast(
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <FiClock size={20} />
+        <span>Registration will open soon!</span>
+      </div>,
+      {
+        position: "bottom-center",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        className: "custom-toast",
+        style: {
+          background: "linear-gradient(135deg, #7152DE 0%, #4B3791 100%)",
+          color: "white",
+          borderRadius: "12px",
+          fontSize: window.innerWidth < 640 ? "14px" : "16px",
+          fontFamily: "Inter, system-ui, sans-serif",
+          fontWeight: "500",
+          boxShadow: "0 10px 30px rgba(113, 82, 222, 0.3)",
+          border: "none",
+          margin: window.innerWidth < 640 ? "0 16px" : "0 24px",
+          maxWidth: window.innerWidth < 640 ? "calc(100vw - 32px)" : "400px",
+          width: "100%",
+        },
+        progressClassName: "white-progress",
+        icon: false,
+      }
+    );
   };
 
   return (
@@ -220,7 +255,10 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
             style={{ animation: "fadeInUp 1.2s ease-out 0.6s both" }}
           >
-            <button className="group px-6 sm:px-8 py-3 font-semibold rounded-full border-2 border-[#7152DE] text-[#7152DE] bg-white shadow-md hover:bg-[#7152DE] hover:text-white transition-all duration-300 flex items-center gap-3 relative overflow-hidden cursor-pointer">
+            <button 
+              onClick={handleRegistrationClick}
+              className="group px-6 sm:px-8 py-3 font-semibold rounded-full border-2 border-[#7152DE] text-[#7152DE] bg-white shadow-md hover:bg-[#7152DE] hover:text-white transition-all duration-300 flex items-center gap-3 relative overflow-hidden cursor-pointer"
+            >
               <span className="relative z-10">Register Now</span>
               <svg
                 className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110"
@@ -267,7 +305,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style jsx global>{`
         @keyframes fadeInUp {
           from {
             opacity: 0;
@@ -293,6 +331,57 @@ export default function Hero() {
           }
           to {
             opacity: 1;
+          }
+        }
+        
+        .white-progress {
+          background: white !important;
+        }
+        
+        .custom-toast .Toastify__progress-bar {
+          background: white !important;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 640px) {
+          .custom-toast {
+            margin: 0 12px !important;
+            max-width: calc(100vw - 24px) !important;
+            font-size: 14px !important;
+            padding: 12px 16px !important;
+            border-radius: 10px !important;
+          }
+          
+          .custom-toast div {
+            gap: 6px !important;
+          }
+          
+          .Toastify__toast-container--bottom-center {
+            bottom: 20px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: calc(100% - 24px) !important;
+            max-width: none !important;
+          }
+        }
+
+        /* Tablet responsive styles */
+        @media (min-width: 641px) and (max-width: 1024px) {
+          .custom-toast {
+            margin: 0 20px !important;
+            max-width: 350px !important;
+            font-size: 15px !important;
+          }
+          
+          .Toastify__toast-container--bottom-center {
+            bottom: 24px !important;
+          }
+        }
+
+        /* Desktop styles */
+        @media (min-width: 1025px) {
+          .Toastify__toast-container--bottom-center {
+            bottom: 32px !important;
           }
         }
       `}</style>
