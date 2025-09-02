@@ -39,7 +39,7 @@ const otherSections = [
     ],
   },
   {
-    title: "Web Team",
+    title: "Web",
     icon: <FaGlobe className="w-5 h-5" />,
     contacts: [
       { name: "Harikrishnan", role: "Web Team", phone: "94955 09310" },
