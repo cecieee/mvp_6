@@ -7,16 +7,22 @@ import {
   FaMapPin,
 } from "react-icons/fa";
 
+// Crew contacts
 const crewContacts = [
   { name: "Siddharth R", role: "MDC", phone: "80893 72642" },
+  { name: "Shijin Abraham", role: "Chairperson", phone: "8075015042" },
+  { name: "Gowri EVB", role: "Secretary", phone: "8289859773" },
+  { name: "Afrah Quamar", role: "Vice Chairperson", phone: "9633918910" },
+  { name: "Aadikrishna", role: "Joint Secretary", phone: "8089690314" },
 ];
 
+// Other teams
 const otherSections = [
   {
     title: "Registration",
     icon: <FaClipboardList className="w-5 h-5" />,
     contacts: [
-      { name: "Sreeganga D", role: "Registration", phone: "88485 78058" },
+      { name: "Sreeganga D", role: "Registration", phone: "88485 78053" },
       { name: "Kashinadh A", role: "Registration", phone: "92077 90775" },
     ],
   },
@@ -39,19 +45,27 @@ const otherSections = [
     ],
   },
   {
-    title: "Web",
+    title: "Web Team",
     icon: <FaGlobe className="w-5 h-5" />,
     contacts: [
-      { name: "Harikrishnan", role: "Web Team", phone: "94955 09310" },
-      { name: "Adithyan", role: "Web Team", phone: "96562 98751" },
-      { name: "Alwin", role: "Web Team", phone: "94951 64693" },
-      { name: "Aswin", role: "Web Team", phone: "85903 42134" },
-      { name: "Sarin", role: "Web Team", phone: "62826 29447" }
+      { name: "Harikrishna A", role: "Web Master", phone: "94955 09310" },
+      { name: "Adithyan Valayil Sreeni", role: "Web Team", phone: "96562 98751" },
+      { name: "Alwin Saji", role: "Web Team", phone: "94951 64693" },
+      { name: "Aswin Ajikumar", role: "Web Team", phone: "85903 42134" },
+      { name: "Sarin M S", role: "Web Team", phone: "62826 29447" },
     ],
-  }
+  },
+  {
+    title: "Design Team",
+    icon: <FaGlobe className="w-5 h-5" />,
+    contacts: [
+      { name: "Sreeparvathi MJ", role: "Design Team ", phone: "9605678526" },
+      { name: "Jez Thomas P Kurien", role: "Design Team", phone: "8606177663" },
+    ],
+  },
 ];
 
-// Rotation classes for sticky note effect
+// Rotation classes
 const rotateOptions = [
   "rotate-[-2deg]",
   "rotate-[2deg]",
@@ -59,9 +73,10 @@ const rotateOptions = [
   "rotate-[1deg]",
 ];
 
-// Contact card component
+// Contact card
 const ContactCard = ({ name, role, phone }) => {
-  const randomRotation = rotateOptions[Math.floor(Math.random() * rotateOptions.length)];
+  const randomRotation =
+    rotateOptions[Math.floor(Math.random() * rotateOptions.length)];
 
   return (
     <div
@@ -82,7 +97,7 @@ const ContactCard = ({ name, role, phone }) => {
   );
 };
 
-// Heading component with gradient text and taped effect
+// Taped heading 
 const TapedHeading = ({ title }) => {
   const rotations = ["-2deg", "2deg", "-1deg", "1deg"];
   const randomRotate = rotations[Math.floor(Math.random() * rotations.length)];
@@ -92,7 +107,7 @@ const TapedHeading = ({ title }) => {
       className="relative inline-block mb-6 px-6 py-3 bg-white shadow-md rounded-sm border border-gray-300 select-none"
       style={{ transform: `rotate(${randomRotate})` }}
     >
-      <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-14 h-5 bg-yellow-300 rounded-t-md shadow-inner rotate-1 animate-pulse"></div>
+      <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-14 h-5 bg-yellow-300 rounded-t-md shadow-inner rotate-1"></div>
       <h2
         className="text-2xl"
         style={{
@@ -102,23 +117,28 @@ const TapedHeading = ({ title }) => {
           WebkitTextFillColor: "transparent",
         }}
       >
-        {title} Team
+        {title}
       </h2>
     </div>
   );
 };
 
-// Section for each group (Registration, Outreach, etc.)
+// Team section
 const TeamSection = ({ section }) => (
   <div className="mb-16 flex flex-col items-center w-full">
     <TapedHeading title={section.title} />
     <div className="flex justify-center w-full">
-      <div className={`grid gap-6 justify-items-center ${
-        section.contacts.length === 2 ? 'grid-cols-1 sm:grid-cols-2 max-w-2xl' : 
-        section.contacts.length === 4 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-5xl' :
-        section.contacts.length === 5 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 max-w-6xl' :
-        'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-4xl'
-      }`}>
+      <div
+        className={`grid gap-6 justify-items-center ${
+          section.contacts.length === 2
+            ? "grid-cols-1 sm:grid-cols-2 max-w-2xl"
+            : section.contacts.length === 4
+            ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-5xl"
+            : section.contacts.length === 5
+            ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 max-w-6xl"
+            : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-4xl"
+        }`}
+      >
         {section.contacts.map((person) => (
           <ContactCard key={person.name} {...person} />
         ))}
@@ -164,16 +184,28 @@ export default function Contact() {
           </h1>
         </div>
 
-        {/* Crew Contacts - Centered single person */}
-        <div className="flex justify-center mb-16 sm:mb-20">
-          <div className="w-full max-w-xs">
-            {crewContacts.map((person) => (
-              <ContactCard key={person.name} {...person} />
-            ))}
+        {/* Crew Section (without subheading) */}
+        <div className="mb-16 flex flex-col items-center w-full">
+          <div className="flex justify-center w-full">
+            <div
+              className={`grid gap-6 justify-items-center ${
+                crewContacts.length === 2
+                  ? "grid-cols-1 sm:grid-cols-2 max-w-2xl"
+                  : crewContacts.length === 4
+                  ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-5xl"
+                  : crewContacts.length === 5
+                  ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 max-w-6xl"
+                  : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-4xl"
+              }`}
+            >
+              {crewContacts.map((person) => (
+                <ContactCard key={person.name} {...person} />
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Mobile Navigation for Sections */}
+        {/* Mobile Navigation */}
         {isMobile && (
           <div className="flex flex-wrap justify-center gap-3 mb-10">
             {otherSections.map((section) => (
@@ -193,7 +225,7 @@ export default function Contact() {
           </div>
         )}
 
-        {/* Section Content */}
+        {/* Sections */}
         <div className="flex flex-col items-center justify-center w-full">
           {otherSections.map(
             (section) =>
