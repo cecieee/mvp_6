@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { toast } from 'react-toastify';
 import { FiClock } from 'react-icons/fi';
-import PixelBlast from "../components/pixelBlast"
+import PixelBlast from "../components/PixelBlast.jsx"
 
 export default function Hero() {
   const [smoothMousePosition, setSmoothMousePosition] = useState({ x: 0, y: 0 });
