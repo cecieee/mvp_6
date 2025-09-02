@@ -207,7 +207,7 @@ const MainNavbar = () => {
               <button
                 key={`mobile-link-${idx}`}
                 onClick={() => handleNavigation(item.link)}
-                className={`relative text-black text-left w-full ${
+                className={`relative text-[#1C1538] text-left w-full ${
                   (item.link === "/leaderboard" || item.link === "/tasks")
                     ? "opacity-60"
                     : ""
@@ -310,7 +310,7 @@ const NavItems = ({ items, className, onItemClick, currentPath }) => {
           onClick={() => onItemClick(item.link)}
           className={`relative px-4 py-2 text-[#1C1538] hover:text-[#7152DE] transition-colors duration-200 cursor-pointer ${
             currentPath === item.link ? "text-[#7152DE]" : ""
-          } ${(item.link === "/leaderboard" || item.link === "/tasks") ? "opacity-60" : ""}`}
+          } ${(item.link === "/leaderboard" || item.link === "/tasks") ? "opacity-100" : ""}`}
           key={`link-${idx}`}
         >
           {hovered === idx && (
@@ -396,9 +396,9 @@ const MobileNavMenu = ({ children, className, isOpen, onClose }) => {
 
 const MobileNavToggle = ({ isOpen, onClick }) => {
   return isOpen ? (
-    <HiX className="text-[#1C1538]" onClick={onClick} />
+    <HiX className="text-[#1C1538] w-6 h-6 cursor-pointer" onClick={onClick} />
   ) : (
-    <HiMenuAlt3 className="text-[#1C1538]" onClick={onClick} />
+    <HiMenuAlt3 className="text-[#1C1538] w-6 h-6 cursor-pointer" onClick={onClick} />
   );
 };
 
