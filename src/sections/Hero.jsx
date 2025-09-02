@@ -37,8 +37,27 @@ export default function Hero() {
         ticking = true;
       }
     };
+
+    const handleTouchMove = (e) => {
+      if (e.touches.length > 0 && !ticking) {
+        window.requestAnimationFrame(() => {
+          const touch = e.touches[0];
+          mousePositionRef.current = {
+            x: (touch.clientX / viewport.width) * 2 - 1,
+            y: -(touch.clientY / viewport.height) * 2 + 1,
+          };
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
   }, [viewport.width, viewport.height]);
 
   useEffect(() => {
@@ -127,38 +146,46 @@ export default function Hero() {
         }}
       />
 
+      {/* PixelBlast Background - Mobile First */}
+      <div 
+        className="absolute z-10"
+        style={{
+          width: '100%',
+          height: '100%',
+          overflow: 'hidden',
+          pointerEvents: 'auto',
+          top: viewport.width >= 1024 ? '-10%' : '0',
+          left: viewport.width >= 1024 ? '-5%' : '0',
+          right: viewport.width >= 1024 ? 'auto' : '0',
+          bottom: viewport.width >= 1024 ? 'auto' : '0',
+          transform: viewport.width >= 1024 ? 'scale(1.1)' : 'none'
+        }}
+      >
+        <PixelBlast
+          variant="circle"
+          pixelSize={viewport.width < 640 ? 3 : viewport.width < 1024 ? 4 : 6}
+          color="#7152DE"
+          patternScale={viewport.width < 640 ? 2 : viewport.width < 1024 ? 2.5 : 3}
+          patternDensity={viewport.width < 640 ? 0.8 : viewport.width < 1024 ? 1.0 : 1.2}
+          pixelSizeJitter={viewport.width < 640 ? 0.3 : 0.5}
+          enableRipples={viewport.width >= 640}
+          rippleSpeed={0.3}
+          rippleThickness={0.1}
+          rippleIntensityScale={viewport.width < 640 ? 1.0 : 1.5}
+          liquid={viewport.width >= 768}
+          liquidStrength={viewport.width < 1024 ? 0.08 : 0.12}
+          liquidRadius={viewport.width < 1024 ? 1.0 : 1.2}
+          liquidWobbleSpeed={viewport.width < 640 ? 3 : 5}
+          speed={viewport.width < 640 ? 0.4 : 0.6}
+          edgeFade={viewport.width < 640 ? 0.4 : 0.25}
+          transparent
+          mousePosition={smoothMousePosition}
+          interactive
+        />
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 relative z-30">
         <div className="text-center relative">
-          <div style={{ 
-            position: 'absolute',
-            top: '-80vh',
-            left: '-50vw',
-            width: '200vw',
-            height: '200vh',
-            zIndex: 1,
-            pointerEvents: 'auto'
-          }}>
-            <PixelBlast
-              variant="circle"
-              pixelSize={6}
-              color="#7152DE"
-              patternScale={3}
-              patternDensity={1.2}
-              pixelSizeJitter={0.5}
-              enableRipples
-              rippleSpeed={0.4}
-              rippleThickness={0.12}
-              rippleIntensityScale={1.5}
-              liquid
-              liquidStrength={0.12}
-              liquidRadius={1.2}
-              liquidWobbleSpeed={5}
-              speed={0.6}
-              edgeFade={0.25}
-              transparent
-            />
-          </div>
-
           <img
             src="/logos/mvp_logo.webp"
             alt="MVP 6.0 Logo"
@@ -263,8 +290,8 @@ export default function Hero() {
           background: white !important;
         }
 
-        /* Mobile responsive styles */
-        @media (max-width: 640px) {
+        /* Mobile performance optimizations */
+        @media (max-width: 639px) {
           .custom-toast {
             margin: 0 12px !important;
             max-width: calc(100vw - 24px) !important;
@@ -284,10 +311,19 @@ export default function Hero() {
             width: calc(100% - 24px) !important;
             max-width: none !important;
           }
+
+          /* Reduce motion for mobile performance */
+          @media (prefers-reduced-motion: reduce) {
+            * {
+              animation-duration: 0.01ms !important;
+              animation-iteration-count: 1 !important;
+              transition-duration: 0.01ms !important;
+            }
+          }
         }
 
         /* Tablet responsive styles */
-        @media (min-width: 641px) and (max-width: 1024px) {
+        @media (min-width: 640px) and (max-width: 1024px) {
           .custom-toast {
             margin: 0 20px !important;
             max-width: 350px !important;
