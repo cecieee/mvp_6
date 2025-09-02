@@ -69,7 +69,7 @@ const About = () => {
         {/* Title */}
         <div className="text-center mb-8 sm:mb-12">
           <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-4"
             style={{
               fontFamily: "Frontline, sans-serif",
               background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
@@ -78,7 +78,7 @@ const About = () => {
               backgroundClip: "text",
             }}
           >
-            About MVP 6.0
+            ABOUT MVP
           </h2>
         </div>
 

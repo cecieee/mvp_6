@@ -328,20 +328,16 @@ const NavbarLogo = ({ onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal cursor-pointer"
+      className="relative z-20 mr-4 flex items-center space-x-2 text-sm font-normal cursor-pointer"
     >
-      <span
-        className="font-frontline text-xl"
+      <img
+        src="/logos/mvp_title.webp"
+        alt="MVP 6.0"
+        className="h-8 w-auto"
         style={{
-          fontFamily: "Frontline, sans-serif",
-          background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
+          filter: "drop-shadow(0 2px 4px rgba(113, 82, 222, 0.1))"
         }}
-      >
-        MVP 6.0
-      </span>
+      />
     </button>
   );
 };
