@@ -6,6 +6,7 @@ import {
   FaCheckCircle,
   FaClipboardList,
 } from "react-icons/fa";
+import GridBackground from "../components/GridBackground.jsx";
 
 export default function Tasks() {
   const today = new Date();
@@ -114,9 +115,10 @@ export default function Tasks() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900 p-6">
+    <div className="min-h-screen bg-gray-50 text-gray-900 p-6 relative">
+      <GridBackground opacity={0.3} zIndex={0} />
       {/* Header */}
-      <div className="text-center pt-16 pb-8 px-4">
+      <div className="text-center pt-16 pb-8 px-4 relative z-10">
         <h1
           className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl mb-6"
           style={{
@@ -133,7 +135,7 @@ export default function Tasks() {
         <div className="w-24 h-1 bg-gradient-to-r from-[#7152DE] to-[#4B3791] mx-auto rounded-full"></div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 relative z-10">
         {/* Sidebar */}
         <div className="col-span-1 space-y-6">
           {/* Progress */}

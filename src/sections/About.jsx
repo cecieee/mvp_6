@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import GridBackground from "../components/GridBackground.jsx";
 
 const About = () => {
   const sectionRef = useRef(null);
@@ -65,6 +66,7 @@ const About = () => {
       ref={sectionRef}
       className="px-4 sm:px-6 lg:px-8 bg-white py-20 relative"
     >
+      <GridBackground opacity={0.3} zIndex={0} />
       <div className="max-w-7xl mx-auto w-full relative z-10">
         {/* Title */}
         <div className="text-center mb-8 sm:mb-12">

@@ -1,6 +1,7 @@
 import React from "react";
 import { toast } from "react-toastify";
 import { FiClock } from "react-icons/fi";
+import GridBackground from "../components/GridBackground.jsx";
 
 export default function Task() {
   const handleTasksComingSoon = () => {
@@ -38,6 +39,7 @@ export default function Task() {
 
   return (
     <section className="pb-17.5 bg-white relative overflow-hidden py-20">
+      <GridBackground opacity={0.3} zIndex={0} />
       <div className="container mx-auto px-6 text-center relative z-10">
         <h2
           className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-3 sm:mb-4 px-2 sm:px-0"
@@ -49,7 +51,7 @@ export default function Task() {
             backgroundClip: "text",
           }}
         >
-          exPLORE TASKS
+          EXPLORE TASKS
         </h2>
         <p
           className="text-xl md:text-2xl mb-8 text-[#4B3791] font-semibold"

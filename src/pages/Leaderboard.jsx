@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaUser, FaStar, FaTrophy, FaMedal, FaCrown, FaAward, FaGem, FaShieldAlt, FaBolt, FaLock } from 'react-icons/fa';
 import { FiClock } from 'react-icons/fi';
+import GridBackground from "../components/GridBackground.jsx";
 
 const EventLeaderboard = () => {
   const [leaderboardData, setLeaderboardData] = useState([]);
@@ -110,6 +111,7 @@ const EventLeaderboard = () => {
   if (isLocked) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+        <GridBackground opacity={0.3} zIndex={0} />
         <div className="relative z-10">
           {/* Header */}
           <div className="text-center pt-25 pb-6 px-4">
@@ -304,6 +306,7 @@ const EventLeaderboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+      <GridBackground opacity={0.3} zIndex={0} />
       <div className="relative z-10">
          {/* Header */}
         <div className="text-center pt-25 pb-6 px-4">
