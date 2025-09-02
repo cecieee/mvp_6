@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { FaUser, FaStar, FaTrophy, FaMedal, FaCrown, FaAward, FaGem, FaShieldAlt, FaBolt } from 'react-icons/fa';
+import { FaUser, FaStar, FaTrophy, FaMedal, FaCrown, FaAward, FaGem, FaShieldAlt, FaBolt, FaLock } from 'react-icons/fa';
+import { FiClock } from 'react-icons/fi';
 
 const EventLeaderboard = () => {
   const [leaderboardData, setLeaderboardData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // Changed to false since we're showing locked state
   const [error, setError] = useState(null);
   const [activeCard, setActiveCard] = useState(null);
+
+  // Show locked state instead of fetching data
+  const isLocked = true; // Set to false when you want to unlock after first task
 
   // Icon mapping for different participants
   const getParticipantIcon = (index) => {
@@ -98,83 +102,97 @@ const EventLeaderboard = () => {
     </div>
   );
 
-  // Fetch data from Google Sheets
-  const fetchLeaderboardData = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vQdGYvZIoH2axeJPQXrDqRjSWtYtIH1WpMTNla-lOiOvQ3oTukwD88BQBSTVdStxeSvAPBwTBGE5DOc/pub?output=csv');
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch data');
-      }
-
-      const csvText = await response.text();
-      
-      // Parse CSV data
-      const lines = csvText.split('\n');
-      const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
-      
-      const data = lines.slice(1)
-        .filter(line => line.trim())
-        .map((line, index) => {
-          const values = line.split(',').map(v => v.trim().replace(/"/g, ''));
-          const row = {};
-          headers.forEach((header, i) => {
-            row[header] = values[i] || '';
-          });
-          
-          // Map common column names to standard format
-          return {
-            id: index + 1,
-            name: row.Name || row.name || row.Participant || row.participant || `Participant ${index + 1}`,
-            points: parseInt(row.Points || row.points || row.Score || row.score || 0) || 0,
-            originalRank: parseInt(row.Rank || row.rank || 0) || 0,
-            ...row
-          };
-        })
-        .sort((a, b) => {
-          // Sort by points in descending order (highest first)
-          if (b.points !== a.points) {
-            return b.points - a.points;
-          }
-          // If points are equal, maintain original order
-          return a.id - b.id;
-        })
-        .map((item, index) => ({
-          ...item,
-          rank: index + 1 // Assign new rank based on sorted position
-        }));
-
-      setLeaderboardData(data);
-      setError(null);
-    } catch (err) {
-      console.error('Error fetching leaderboard data:', err);
-      setError('Failed to load leaderboard data');
-      
-      // Fallback demo data with proper sorting
-      const demoData = [
-        { id: 1, name: 'Participant 1', points: 2450, rank: 1 },
-        { id: 2, name: 'Participant 2', points: 2380, rank: 2 },
-        { id: 3, name: 'Participant 3', points: 2100, rank: 3 },
-        { id: 4, name: 'Participant 4', points: 1950, rank: 4 },
-        { id: 5, name: 'Participant 5', points: 1800, rank: 5 },
-        { id: 6, name: 'Participant 6', points: 1750, rank: 6 },
-        { id: 7, name: 'Participant 7', points: 1650, rank: 7 },
-        { id: 8, name: 'Participant 8', points: 1550, rank: 8 }
-      ];
-      setLeaderboardData(demoData);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
     // Scroll to top when component mounts (page loads/navigates)
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
+  if (isLocked) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+        <div className="relative z-10">
+          {/* Header */}
+          <div className="text-center pt-25 pb-6 px-4">
+            <h1 
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-frontline break-words"
+              style={{
+                fontFamily: "Hypik, sans-serif",
+                background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                wordBreak: "break-word",
+                overflowWrap: "break-word",
+              }}
+            >
+              LEADERBOARD
+            </h1>
+          </div>
+
+          {/* Locked State Content */}
+          <div className="flex flex-col items-center justify-center min-h-[60vh] px-4">
+            <div className="max-w-2xl mx-auto text-center space-y-8">
+              {/* Lock Icon */}
+              <div className="relative">
+                <div className="w-32 h-32 mx-auto bg-gradient-to-br from-violet-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl">
+                  <FaLock className="text-white text-4xl" />
+                </div>
+              </div>
+
+              {/* Main Message */}
+              <div className="space-y-4">
+                <h2 
+                  className="text-3xl sm:text-4xl font-bold"
+                  style={{
+                    fontFamily: "JerseyM54, sans-serif",
+                    background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  Leaderboard Coming Soon!
+                </h2>
+                <p 
+                  className="text-lg sm:text-xl text-[#4B3791] leading-relaxed"
+                  style={{ fontFamily: "JerseyM54, sans-serif" }}
+                >
+                  The competition hasn't started yet. The leaderboard will unlock after the first task is released.
+                </p>
+              </div>
+
+              {/* Info Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12">
+                <div className="bg-gradient-to-br from-violet-500/10 to-purple-600/10 backdrop-blur-sm border border-violet-300/20 rounded-xl p-6 text-left">
+                  <div className="flex items-center space-x-3 mb-3">
+                    <FaTrophy className="text-yellow-500 text-xl" />
+                    <h3 className="text-lg font-bold text-[#1C1538]">Real-time Rankings</h3>
+                  </div>
+                  <p className="text-[#4B3791] text-sm">
+                    Track your progress and see how you stack up against other participants in real-time.
+                  </p>
+                </div>
+
+                <div className="bg-gradient-to-br from-violet-500/10 to-purple-600/10 backdrop-blur-sm border border-violet-300/20 rounded-xl p-6 text-left">
+                  <div className="flex items-center space-x-3 mb-3">
+                    <FaAward className="text-purple-500 text-xl" />
+                    <h3 className="text-lg font-bold text-[#1C1538]">Point System</h3>
+                  </div>
+                  <p className="text-[#4B3791] text-sm">
+                    Earn points by completing tasks and climb your way to the top of the leaderboard.
+                  </p>
+                </div>
+              </div>  
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   useEffect(() => {
-    fetchLeaderboardData();
+    // Scroll to top when component mounts (page loads/navigates)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   const getRankIcon = (rank) => {
