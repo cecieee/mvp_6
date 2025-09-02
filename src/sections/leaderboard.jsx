@@ -333,13 +333,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaUser, FaStar, FaTrophy, FaAward, FaGem, FaShieldAlt, FaBolt, FaMedal, FaCrown, FaChevronRight } from 'react-icons/fa';
+import { FiClock } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 
 const LandingLeaderboard = () => {
   const navigate = useNavigate();
   const [leaderboardData, setLeaderboardData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // Changed to false since we're showing locked state
   const [error, setError] = useState(null);
-  const [activeItem, setActiveItem] = useState(null); // Track which item is being touched/clicked
+  const [activeItem, setActiveItem] = useState(null);
+
+  // Show locked state instead of fetching data
+  const isLocked = true; // Set to false when you want to unlock after first task
 
   // Icon mapping for different participants
   const getParticipantIcon = (index) => {
@@ -359,105 +364,61 @@ const LandingLeaderboard = () => {
     }, 150);
   };
 
-  // Fetch data from Google Sheets
-  const fetchLeaderboardData = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vQdGYvZIoH2axeJPQXrDqRjSWtYtIH1WpMTNla-lOiOvQ3oTukwD88BQBSTVdStxeSvAPBwTBGE5DOc/pub?output=csv');
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch data');
-      }
-
-      const csvText = await response.text();
-      
-      // Parse CSV data
-      const lines = csvText.split('\n');
-      const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
-      
-      const data = lines.slice(1)
-        .filter(line => line.trim())
-        .map((line, index) => {
-          const values = line.split(',').map(v => v.trim().replace(/"/g, ''));
-          const row = {};
-          headers.forEach((header, i) => {
-            row[header] = values[i] || '';
-          });
-          
-          // Map common column names to standard format
-          return {
-            id: index + 1,
-            name: row.Name || row.name || row.Participant || row.participant || `Participant ${index + 1}`,
-            points: parseInt(row.Points || row.points || row.Score || row.score || 0) || 0,
-            originalRank: parseInt(row.Rank || row.rank || 0) || 0,
-            ...row
-          };
-        })
-        .sort((a, b) => {
-          // Sort by points in descending order (highest first)
-          if (b.points !== a.points) {
-            return b.points - a.points;
-          }
-          // If points are equal, maintain original order
-          return a.id - b.id;
-        })
-        .map((item, index) => ({
-          ...item,
-          rank: index + 1 // Assign new rank based on sorted position
-        }));
-
-      setLeaderboardData(data.slice(0, 5)); // Only take top 5
-      setError(null);
-    } catch (err) {
-      console.error('Error fetching leaderboard data:', err);
-      setError('Failed to load leaderboard data');
-      
-      // Fallback demo data with proper sorting - top 5 only
-      const demoData = [
-        { id: 1, name: 'Participant 1', points: 2450, rank: 1 },
-        { id: 2, name: 'Participant 2', points: 2380, rank: 2 },
-        { id: 3, name: 'Participant 3', points: 2100, rank: 3 },
-        { id: 4, name: 'Participant 4', points: 1950, rank: 4 },
-        { id: 5, name: 'Participant 5', points: 1800, rank: 5 }
-      ];
-      setLeaderboardData(demoData);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchLeaderboardData();
-  }, []);
-
-  const getRankIcon = (rank) => {
-    switch(rank) {
-      case 1: return <FaCrown className="text-yellow-400" />;
-      case 2: return <FaTrophy className="text-gray-300" />;
-      case 3: return <FaMedal className="text-orange-400" />;
-      default: return null;
-    }
-  };
-
   const handleViewFullClick = () => {
-    navigate('/leaderboard');
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 100);
+    toast(
+      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <FiClock size={20} />
+        <span>Leaderboard will open after the first task!</span>
+      </div>,
+      {
+        position: "bottom-center",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        className: "custom-toast",
+        style: {
+          background: "linear-gradient(135deg, #7152DE 0%, #4B3791 100%)",
+          color: "white",
+          borderRadius: "12px",
+          fontSize: window.innerWidth < 640 ? "14px" : "16px",
+          fontFamily: "Inter, system-ui, sans-serif",
+          fontWeight: "500",
+          boxShadow: "0 10px 30px rgba(113, 82, 222, 0.3)",
+          border: "none",
+          margin: window.innerWidth < 640 ? "0 16px" : "0 24px",
+          maxWidth: window.innerWidth < 640 ? "calc(100vw - 32px)" : "400px",
+          width: "100%",
+        },
+        progressClassName: "white-progress",
+        icon: false,
+      }
+    );
   };
 
-  if (loading) {
+  if (isLocked) {
     return (
-      <div className="bg-gradient-to-br from-violet-900/95 via-purple-800/95 to-indigo-900/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-6 relative overflow-hidden">
+      <div className="w-[95vw] lg:w-[70vw] m-auto mb-10 bg-gradient-to-br from-violet-900/95 via-purple-800/95 to-indigo-900/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl relative overflow-hidden">
         {/* Glass border effect */}
         <div className="absolute inset-0 rounded-2xl border border-white/25 opacity-50"></div>
         
-        <div className="flex items-center justify-center py-12">
-          <div className="flex items-center space-x-4">
-            <FaTrophy className="animate-pulse text-3xl text-purple-300" />
-            <div className="text-center">
-              <span className="text-xl font-bold text-white">Loading Rankings...</span>
-              <div className="mt-1 text-purple-200 text-sm">Fetching top performers</div>
+        <div className="flex flex-col items-center justify-center py-16 px-6">
+          <div className="text-center space-y-6">
+            <div className="text-6xl mb-4">🔒</div>
+            <h3 
+              className="text-2xl sm:text-3xl font-bold text-white mb-4"
+              style={{ fontFamily: "JerseyM54, system-ui, sans-serif" }}
+            >
+              Leaderboard Locked
+            </h3>
+            <p className="text-purple-200 text-lg max-w-md mx-auto leading-relaxed">
+              The leaderboard will unlock after the first task is completed. 
+              Stay tuned for exciting competitions ahead!
+            </p>
+            <div className="flex items-center justify-center space-x-2 text-purple-300 text-sm">
+              <FiClock size={16} />
+              <span>Coming Soon</span>
             </div>
           </div>
         </div>
@@ -483,7 +444,7 @@ const LandingLeaderboard = () => {
           {/* Centered title section */}
           <div className="text-center flex-1">
             <h3 
-              className="text-xl sm:text-2xl text-white mb-1"
+              className="text-xl sm:text-2xl font-bold text-white mb-1"
               style={{ fontFamily: "Hypik, system-ui, sans-serif" }}
             >
               🏆 Live Rankings
