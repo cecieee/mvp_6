@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import GridBackground from "../components/GridBackground.jsx";
 
 const prizes = [
 	{
@@ -150,6 +151,7 @@ function Prizes() {
 				position: "relative",
 			}}
 		>
+			<GridBackground opacity={0.3} zIndex={0} />
 			<div className="relative w-full max-w-6xl mx-auto z-10">
 				{/* Section header */}
 				<motion.div

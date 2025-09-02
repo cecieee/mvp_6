@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { toast } from 'react-toastify';
 import { FiClock } from 'react-icons/fi';
 import PixelBlast from "../components/PixelBlast.jsx"
+import GridBackground from "../components/GridBackground.jsx"
 
 export default function Hero() {
   const [smoothMousePosition, setSmoothMousePosition] = useState({ x: 0, y: 0 });
@@ -121,30 +122,8 @@ export default function Hero() {
         position: "relative",
       }}
     >
-      {/* Black grid background */}
-      <div
-        className="absolute inset-0 z-0 pointer-events-none opacity-50"
-        style={{
-          backgroundImage: `
-            repeating-linear-gradient(
-              to right,
-              rgba(0,0,0,0.08) 0px,
-              rgba(0,0,0,0.08) 1.5px,
-              transparent 1.5px,
-              transparent 64px
-            ),
-            repeating-linear-gradient(
-              to bottom,
-              rgba(0,0,0,0.08) 0px,
-              rgba(0,0,0,0.08) 1.5px,
-              transparent 1.5px,
-              transparent 64px
-            )
-          `,
-          backgroundSize: "64px 64px",
-          zIndex: 0,
-        }}
-      />
+      {/* Grid background using component */}
+      <GridBackground opacity={0.5} zIndex={0} />
 
       {/* PixelBlast Background - Mobile First */}
       <div 

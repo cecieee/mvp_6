@@ -335,6 +335,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaUser, FaStar, FaTrophy, FaAward, FaGem, FaShieldAlt, FaBolt, FaMedal, FaCrown, FaChevronRight } from 'react-icons/fa';
 import { FiClock } from 'react-icons/fi';
 import { toast } from 'react-toastify';
+import GridBackground from "../components/GridBackground.jsx";
 
 const LandingLeaderboard = () => {
   const navigate = useNavigate();
@@ -399,225 +400,231 @@ const LandingLeaderboard = () => {
 
   if (isLocked) {
     return (
-      <div className="w-[95vw] lg:w-[70vw] m-auto mb-10 bg-gradient-to-br from-violet-900/95 via-purple-800/95 to-indigo-900/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl relative overflow-hidden">
-        {/* Glass border effect */}
-        <div className="absolute inset-0 rounded-2xl border border-white/25 opacity-50"></div>
-        
-        <div className="flex flex-col items-center justify-center py-16 px-6">
-          <div className="text-center space-y-6">
-            <div className="text-6xl mb-4">🔒</div>
-            <h3 
-              className="text-2xl sm:text-3xl font-bold text-white mb-4"
-              style={{ fontFamily: "JerseyM54, system-ui, sans-serif" }}
-            >
-              Leaderboard Locked
-            </h3>
-            <p className="text-purple-200 text-lg max-w-md mx-auto leading-relaxed">
-              The leaderboard will unlock after the first task is completed. 
-              Stay tuned for exciting competitions ahead!
-            </p>
-            <div className="flex items-center justify-center space-x-2 text-purple-300 text-sm">
-              <FiClock size={16} />
-              <span>Coming Soon</span>
+      <section className="relative py-8">
+        <GridBackground opacity={0.3} zIndex={0} />
+        <div className="w-[95vw] lg:w-[70vw] m-auto mb-10 bg-gradient-to-br from-violet-900/95 via-purple-800/95 to-indigo-900/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl relative overflow-hidden z-10">
+          {/* Glass border effect */}
+          <div className="absolute inset-0 rounded-2xl border border-white/25 opacity-50"></div>
+          
+          <div className="flex flex-col items-center justify-center py-16 px-6">
+            <div className="text-center space-y-6">
+              <div className="text-6xl mb-4">🔒</div>
+              <h3 
+                className="text-2xl sm:text-3xl font-bold text-white mb-4"
+                style={{ fontFamily: "JerseyM54, system-ui, sans-serif" }}
+              >
+                Leaderboard Locked
+              </h3>
+              <p className="text-purple-200 text-lg max-w-md mx-auto leading-relaxed">
+                The leaderboard will unlock after the first task is completed. 
+                Stay tuned for exciting competitions ahead!
+              </p>
+              <div className="flex items-center justify-center space-x-2 text-purple-300 text-sm">
+                <FiClock size={16} />
+                <span>Coming Soon</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 
   return (
-    <div className="w-[95vw] lg:w-[70vw] m-auto mb-10 bg-gradient-to-br from-violet-900 via-purple-800 to-violet-900 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl relative overflow-hidden">
-      {/* Glass border highlight effect */}
-      <div className="absolute inset-0 rounded-2xl border border-white/25 opacity-50"></div>
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent"></div>
-      <div className="absolute top-0 bottom-0 left-0 w-px bg-gradient-to-b from-transparent via-white/30 to-transparent"></div>
-      <div className="absolute top-0 bottom-0 right-0 w-px bg-gradient-to-b from-transparent via-white/30 to-transparent"></div>
-      
-      {/* Header */}
-      <div className="bg-violet-900/80 backdrop-blur-sm rounded-t-2xl p-4 border-b border-white/20 relative z-10">
-        <div className="flex items-center justify-between">
-          {/* Left spacer for desktop to center the title */}
-          <div className="hidden sm:block w-32"></div>
-          
-          {/* Centered title section */}
-          <div className="text-center flex-1">
-            <h3 
-              className="text-xl sm:text-2xl font-bold text-white mb-1"
-              style={{ fontFamily: "Hypik, system-ui, sans-serif" }}
-            >
-              🏆 Live Rankings
-            </h3>
-            <p className="text-purple-300 text-sm text-center leaderboard">Top 5 Performers</p>
-          </div>
-          
-          {/* View Full button for desktop */}
-          <div className="hidden sm:block w-32">
-            <button 
-              onClick={handleViewFullClick}
-              className="group bg-gradient-to-r from-purple-400/50 to-purple-400/50 hover:from-purple-500/70 hover:to-purple-500/70 backdrop-blur-sm border border-white/30 rounded-xl py-2 px-3 transition-all duration-300 hover:scale-[1.02] relative overflow-hidden"
-            >
-              {/* Shining animation overlay */}
-              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-transform duration-700 ease-out"></div>
-              
-              <div className="flex items-center justify-center space-x-1 relative z-10">
-                <span className="text-white font-jersey tracking-[1px] font-semibold text-sm">View Full</span>
-                <FaChevronRight className="text-white text-xs group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
-            </button>
+    <section className="relative py-8">
+      <GridBackground opacity={0.3} zIndex={0} />
+      <div className="w-[95vw] lg:w-[70vw] m-auto mb-10 bg-gradient-to-br from-violet-900 via-purple-800 to-violet-900 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl relative overflow-hidden z-10">
+        {/* Glass border highlight effect */}
+        <div className="absolute inset-0 rounded-2xl border border-white/25 opacity-50"></div>
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent"></div>
+        <div className="absolute top-0 bottom-0 left-0 w-px bg-gradient-to-b from-transparent via-white/30 to-transparent"></div>
+        <div className="absolute top-0 bottom-0 right-0 w-px bg-gradient-to-b from-transparent via-white/30 to-transparent"></div>
+        
+        {/* Header */}
+        <div className="bg-violet-900/80 backdrop-blur-sm rounded-t-2xl p-4 border-b border-white/20 relative z-10">
+          <div className="flex items-center justify-between">
+            {/* Left spacer for desktop to center the title */}
+            <div className="hidden sm:block w-32"></div>
+            
+            {/* Centered title section */}
+            <div className="text-center flex-1">
+              <h3 
+                className="text-xl sm:text-2xl font-bold text-white mb-1"
+                style={{ fontFamily: "Hypik, system-ui, sans-serif" }}
+              >
+                🏆 Live Rankings
+              </h3>
+              <p className="text-purple-300 text-sm text-center leaderboard">Top 5 Performers</p>
+            </div>
+            
+            {/* View Full button for desktop */}
+            <div className="hidden sm:block w-32">
+              <button 
+                onClick={handleViewFullClick}
+                className="group bg-gradient-to-r from-purple-400/50 to-purple-400/50 hover:from-purple-500/70 hover:to-purple-500/70 backdrop-blur-sm border border-white/30 rounded-xl py-2 px-3 transition-all duration-300 hover:scale-[1.02] relative overflow-hidden"
+              >
+                {/* Shining animation overlay */}
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-transform duration-700 ease-out"></div>
+                
+                <div className="flex items-center justify-center space-x-1 relative z-10">
+                  <span className="text-white font-jersey tracking-[1px] font-semibold text-sm">View Full</span>
+                  <FaChevronRight className="text-white text-xs group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      
-      {/* Leaderboard List */}
-      <div className="p-4 relative z-10">
-        {leaderboardData.map((item, index) => {
-          const IconComponent = getParticipantIcon(index);
-          const maxPoints = Math.max(...leaderboardData.map(p => p.points));
-          const progressWidth = (item.points / maxPoints) * 100;
-          const isActive = activeItem === item.id;
-          
-          return (
-            <div 
-              key={item.id} 
-              className={`group bg-gradient-to-r backdrop-blur-sm border p-3 mb-3 last:mb-0 rounded-xl transition-all duration-300 relative overflow-hidden  ${
-                isActive 
-                  ? 'from-purple-400 to-purple-400 border-white/30 scale-[1.02]' 
-                  : 'from-purple-700 to-purple-600 hover:from-purple-400 hover:to-purple-400 border-white/10 hover:border-white/30 hover:scale-[1.02]'
-              }`}
-              onTouchStart={() => handleTouchStart(item.id)}
-              onTouchEnd={handleTouchEnd}
-              onTouchCancel={handleTouchEnd}
-              onClick={() => {
-                // Handle click for desktop users who don't have touch
-                if (!('ontouchstart' in window)) {
-                  handleTouchStart(item.id);
-                  handleTouchEnd();
-                }
-              }}
-            >
-              {/* Shining animation overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-transform duration-700 ease-out ${
-                isActive ? 'translate-x-full' : '-translate-x-full group-hover:translate-x-full'
-              }`}></div>
-              
-              <div className="flex items-center relative z-10">
-                {/* Rank */}
-                <div className="flex items-center justify-center w-8 text-white font-bold text-lg mr-1">
-                  {item.rank}
-                </div>
+        
+        {/* Leaderboard List */}
+        <div className="p-4 relative z-10">
+          {leaderboardData.map((item, index) => {
+            const IconComponent = getParticipantIcon(index);
+            const maxPoints = Math.max(...leaderboardData.map(p => p.points));
+            const progressWidth = (item.points / maxPoints) * 100;
+            const isActive = activeItem === item.id;
+            
+            return (
+              <div 
+                key={item.id} 
+                className={`group bg-gradient-to-r backdrop-blur-sm border p-3 mb-3 last:mb-0 rounded-xl transition-all duration-300 relative overflow-hidden  ${
+                  isActive 
+                    ? 'from-purple-400 to-purple-400 border-white/30 scale-[1.02]' 
+                    : 'from-purple-700 to-purple-600 hover:from-purple-400 hover:to-purple-400 border-white/10 hover:border-white/30 hover:scale-[1.02]'
+                }`}
+                onTouchStart={() => handleTouchStart(item.id)}
+                onTouchEnd={handleTouchEnd}
+                onTouchCancel={handleTouchEnd}
+                onClick={() => {
+                  // Handle click for desktop users who don't have touch
+                  if (!('ontouchstart' in window)) {
+                    handleTouchStart(item.id);
+                    handleTouchEnd();
+                  }
+                }}
+              >
+                {/* Shining animation overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-transform duration-700 ease-out ${
+                  isActive ? 'translate-x-full' : '-translate-x-full group-hover:translate-x-full'
+                }`}></div>
                 
-                {/* Participant Icon */}
-                <div className={`w-10 h-10 border-2 rounded-full flex items-center justify-center flex-shrink-0 backdrop-blur-sm transition-all duration-300 mr-3 shadow-lg ${
-                  item.rank === 1 ? 'bg-yellow-500/40 border-yellow-300/60 shadow-yellow-300/30' :
-                  item.rank === 2 ? 'bg-slate-400/40 border-slate-200/60 shadow-slate-200/30' :
-                  item.rank === 3 ? 'bg-orange-400/40 border-orange-300/60 shadow-orange-300/30' :
-                  isActive ? 'bg-purple-300/60 border-purple-300/60' : 'bg-purple-600/40 border-purple-300/60 group-hover:bg-purple-300/60'
-                }`}>
-                  <IconComponent className={`text-sm transition-colors duration-300 ${
-                    item.rank <= 3 ? 'text-white' : 
-                    isActive ? 'text-white' : 'text-purple-100 group-hover:text-white'
-                  }`} />
-                </div>
-                
-                {/* Name and Points */}
-                <div className="flex-1 min-w-0 mr-3">
-                  <h4 className={`text-white font-jersey sm:tracking-[2px] font-semibold text-base capitalize truncate transition-all duration-300 ${
-                    isActive ? 'font-bold' : 'group-hover:text-white group-hover:font-bold'
+                <div className="flex items-center relative z-10">
+                  {/* Rank */}
+                  <div className="flex items-center justify-center w-8 text-white font-bold text-lg mr-1">
+                    {item.rank}
+                  </div>
+                  
+                  {/* Participant Icon */}
+                  <div className={`w-10 h-10 border-2 rounded-full flex items-center justify-center flex-shrink-0 backdrop-blur-sm transition-all duration-300 mr-3 shadow-lg ${
+                    item.rank === 1 ? 'bg-yellow-500/40 border-yellow-300/60 shadow-yellow-300/30' :
+                    item.rank === 2 ? 'bg-slate-400/40 border-slate-200/60 shadow-slate-200/30' :
+                    item.rank === 3 ? 'bg-orange-400/40 border-orange-300/60 shadow-orange-300/30' :
+                    isActive ? 'bg-purple-300/60 border-purple-300/60' : 'bg-purple-600/40 border-purple-300/60 group-hover:bg-purple-300/60'
                   }`}>
-                    {item.name}
-                  </h4>
-                  {/* Progress Bar */}
-                  <div className="mt-1 relative">
-                    <div className="w-full bg-white/20 rounded-full h-1 overflow-hidden">
-                      <div 
-                        className={`h-full rounded-full transition-all duration-1000 ease-out ${
-                          item.rank === 1 ? 'bg-gradient-to-r from-yellow-300 to-yellow-500' :
-                          item.rank === 2 ? 'bg-gradient-to-r from-slate-300 to-slate-500' :
-                          item.rank === 3 ? 'bg-gradient-to-r from-orange-300 to-orange-500' :
-                          'bg-gradient-to-r from-purple-300 to-indigo-400'
-                        }`}
-                        style={{ width: `${progressWidth}%` }}
-                      >
-                        <div className="h-full bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-60"></div>
+                    <IconComponent className={`text-sm transition-colors duration-300 ${
+                      item.rank <= 3 ? 'text-white' : 
+                      isActive ? 'text-white' : 'text-purple-100 group-hover:text-white'
+                    }`} />
+                  </div>
+                  
+                  {/* Name and Points */}
+                  <div className="flex-1 min-w-0 mr-3">
+                    <h4 className={`text-white font-jersey sm:tracking-[2px] font-semibold text-base capitalize truncate transition-all duration-300 ${
+                      isActive ? 'font-bold' : 'group-hover:text-white group-hover:font-bold'
+                    }`}>
+                      {item.name}
+                    </h4>
+                    {/* Progress Bar */}
+                    <div className="mt-1 relative">
+                      <div className="w-full bg-white/20 rounded-full h-1 overflow-hidden">
+                        <div 
+                          className={`h-full rounded-full transition-all duration-1000 ease-out ${
+                            item.rank === 1 ? 'bg-gradient-to-r from-yellow-300 to-yellow-500' :
+                            item.rank === 2 ? 'bg-gradient-to-r from-slate-300 to-slate-500' :
+                            item.rank === 3 ? 'bg-gradient-to-r from-orange-300 to-orange-500' :
+                            'bg-gradient-to-r from-purple-300 to-indigo-400'
+                          }`}
+                          style={{ width: `${progressWidth}%` }}
+                        >
+                          <div className="h-full bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-60"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                
-                {/* Points */}
-                <div className="text-right mr-2">
-                  <div className={`text-white font-jersey tracking-[1px] font-bold text-lg transition-colors duration-300 ${
-                    isActive ? 'text-white' : 'group-hover:text-white'
-                  }`}>
-                    {item.points.toLocaleString()}
+                  
+                  {/* Points */}
+                  <div className="text-right mr-2">
+                    <div className={`text-white font-jersey tracking-[1px] font-bold text-lg transition-colors duration-300 ${
+                      isActive ? 'text-white' : 'group-hover:text-white'
+                    }`}>
+                      {item.points.toLocaleString()}
+                    </div>
+                    <div className={`text-purple-200 font-bold leaderboard text-xs transition-colors duration-300 ${
+                      isActive ? 'text-white' : 'group-hover:text-white'
+                    }`}>
+                      points
+                    </div>
                   </div>
-                  <div className={`text-purple-200 font-bold leaderboard text-xs transition-colors duration-300 ${
-                    isActive ? 'text-white' : 'group-hover:text-white'
-                  }`}>
-                    points
+                  
+                  {/* Rank Icon */}
+                  <div className="w-6 flex justify-center">
+                    {getRankIcon(item.rank)}
                   </div>
-                </div>
-                
-                {/* Rank Icon */}
-                <div className="w-6 flex justify-center">
-                  {getRankIcon(item.rank)}
                 </div>
               </div>
+            );
+          })}
+          
+          {/* View All Button - Mobile */}
+          <div className="mt-4 pt-4 block sm:hidden border-t border-white/20">
+            <Link 
+              to="/leaderboard"
+              className={`group w-full bg-gradient-to-r backdrop-blur-sm border border-white/30 rounded-xl py-3 px-4 transition-all duration-300 relative overflow-hidden block ${
+                activeItem === 'mobile-button' 
+                  ? 'from-purple-500/70 to-indigo-500/70 scale-[1.02]' 
+                  : 'from-purple-600/50 to-violet-800/50 hover:from-purple-500/70 hover:to-indigo-500/70 hover:scale-[1.02]'
+              }`}
+              onTouchStart={() => handleTouchStart('mobile-button')}
+              onTouchEnd={handleTouchEnd}
+              onTouchCancel={handleTouchEnd}
+            >
+              {/* Shining animation overlay */}
+              <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-transform duration-700 ease-out ${
+                activeItem === 'mobile-button' ? 'translate-x-full' : '-translate-x-full group-hover:translate-x-full'
+              }`}></div>
+              
+              <div className="flex items-center justify-center space-x-2 relative z-10">
+                <span className="text-white font-jersey tracking-[1px] font-semibold">View Full Leaderboard</span>
+                <FaChevronRight className={`text-white text-sm transition-transform duration-300 ${
+                  activeItem === 'mobile-button' ? 'translate-x-1' : 'group-hover:translate-x-1'
+                }`} />
+              </div>
+            </Link>
+          </div>
+          
+          {/* Status */}
+          <div className="mt-4 text-center">
+            <div className="inline-block bg-purple-800/60 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1">
+              <p className="text-purple-200 text-xs">
+                Live Updates • {leaderboardData.length} of {leaderboardData.length > 0 ? '100+' : '0'} Participants
+              </p>
             </div>
-          );
-        })}
-        
-        {/* View All Button - Mobile */}
-        <div className="mt-4 pt-4 block sm:hidden border-t border-white/20">
-          <Link 
-            to="/leaderboard"
-            className={`group w-full bg-gradient-to-r backdrop-blur-sm border border-white/30 rounded-xl py-3 px-4 transition-all duration-300 relative overflow-hidden block ${
-              activeItem === 'mobile-button' 
-                ? 'from-purple-500/70 to-indigo-500/70 scale-[1.02]' 
-                : 'from-purple-600/50 to-violet-800/50 hover:from-purple-500/70 hover:to-indigo-500/70 hover:scale-[1.02]'
-            }`}
-            onTouchStart={() => handleTouchStart('mobile-button')}
-            onTouchEnd={handleTouchEnd}
-            onTouchCancel={handleTouchEnd}
-          >
-            {/* Shining animation overlay */}
-            <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-transform duration-700 ease-out ${
-              activeItem === 'mobile-button' ? 'translate-x-full' : '-translate-x-full group-hover:translate-x-full'
-            }`}></div>
-            
-            <div className="flex items-center justify-center space-x-2 relative z-10">
-              <span className="text-white font-jersey tracking-[1px] font-semibold">View Full Leaderboard</span>
-              <FaChevronRight className={`text-white text-sm transition-transform duration-300 ${
-                activeItem === 'mobile-button' ? 'translate-x-1' : 'group-hover:translate-x-1'
-              }`} />
-            </div>
-          </Link>
-        </div>
-        
-        {/* Status */}
-        <div className="mt-4 text-center">
-          <div className="inline-block bg-purple-800/60 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1">
-            <p className="text-purple-200 text-xs">
-              Live Updates • {leaderboardData.length} of {leaderboardData.length > 0 ? '100+' : '0'} Participants
-            </p>
           </div>
         </div>
-      </div>
 
-      {/* Error Message */}
-      {error && (
-        <div className="px-4 pb-4">
-          <div className="bg-red-600/80 backdrop-blur-xl border border-red-400/40 rounded-xl p-3 text-red-100 text-sm">
-            <div className="flex items-center space-x-2">
-              <span className="text-red-300">⚠️</span>
-              <span>Using demo data - {error}</span>
+        {/* Error Message */}
+        {error && (
+          <div className="px-4 pb-4">
+            <div className="bg-red-600/80 backdrop-blur-xl border border-red-400/40 rounded-xl p-3 text-red-100 text-sm">
+              <div className="flex items-center space-x-2">
+                <span className="text-red-300">⚠️</span>
+                <span>Using demo data - {error}</span>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </section>
   );
 };
 

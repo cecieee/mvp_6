@@ -1,5 +1,6 @@
 import React from "react";
 import RulesCard from "../components/RulesCard";
+import GridBackground from "../components/GridBackground.jsx";
 import { motion } from "framer-motion";
 import { FaUsers, FaCalendarAlt, FaClipboardList, FaTrophy } from "react-icons/fa";
 
@@ -40,6 +41,7 @@ function Rules() {
 				position: "relative",
 			}}
 		>
+			<GridBackground opacity={0.3} zIndex={0} />
 			<div className="relative w-full max-w-6xl mx-auto z-10">
 				<motion.div
 					initial={{ opacity: 0, y: -50 }}
