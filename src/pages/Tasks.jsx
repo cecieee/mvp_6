@@ -18,21 +18,18 @@ export default function Tasks() {
       status: "Completed",
       desc: "Install and configure development tools, IDE, and project dependencies.",
       due: "2025-01-05",
-      completed: true,
     },
     {
       title: "Database Schema Design",
       status: "Completed",
       desc: "Design and implement the database structure for user management.",
       due: "2025-01-08",
-      completed: true,
     },
     {
       title: "User Authentication System",
       status: "Completed",
       desc: "Implement user login, registration, and session management.",
       due: "2025-01-12",
-      completed: true,
     },
 
     // Active Tasks
@@ -41,7 +38,6 @@ export default function Tasks() {
       status: "Active",
       desc: "Create responsive dashboard UI with modern design principles.",
       due: "2025-01-20",
-      completed: false,
       submissionLink: "https://forms.google.com/dashboard-task"
     },
     {
@@ -49,7 +45,6 @@ export default function Tasks() {
       status: "Active",
       desc: "Connect frontend with backend APIs and handle data flow.",
       due: "2025-01-22",
-      completed: false,
       submissionLink: "https://forms.google.com/api-task"
     },
     {
@@ -57,7 +52,6 @@ export default function Tasks() {
       status: "Active",
       desc: "Implement user profile editing and settings functionality.",
       due: "2025-01-25",
-      completed: false,
     },
 
     // Upcoming Tasks (future due dates)
@@ -66,35 +60,30 @@ export default function Tasks() {
       status: "Upcoming",
       desc: "Optimize application performance and reduce loading times.",
       due: "2025-02-01",
-      completed: false,
     },
     {
       title: "Testing & QA",
       status: "Upcoming",
       desc: "Conduct comprehensive testing and quality assurance.",
       due: "2025-02-05",
-      completed: false,
     },
     {
       title: "Security Implementation",
       status: "Upcoming",
       desc: "Implement security measures and vulnerability assessments.",
       due: "2025-02-10",
-      completed: false,
     },
     {
       title: "Documentation",
       status: "Upcoming",
       desc: "Create comprehensive project documentation and user guides.",
       due: "2025-02-15",
-      completed: false,
     },
     {
       title: "Deployment Setup",
       status: "Upcoming",
       desc: "Configure production environment and deployment pipelines.",
       due: "2025-02-20",
-      completed: false,
     },*/
   ];
 
