@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { toast } from 'react-toastify';
 import { FiClock } from 'react-icons/fi';
+import PixelBlast from "../components/pixelBlast"
 
 export default function Hero() {
   const [smoothMousePosition, setSmoothMousePosition] = useState({ x: 0, y: 0 });
@@ -103,7 +104,7 @@ export default function Hero() {
     >
       {/* Black grid background */}
       <div
-        className="absolute inset-0 z-0 pointer-events-none"
+        className="absolute inset-0 z-0 pointer-events-none opacity-50"
         style={{
           backgroundImage: `
             repeating-linear-gradient(
@@ -127,46 +128,53 @@ export default function Hero() {
       />
 
       <div className="container mx-auto px-4 sm:px-6 relative z-30">
-        <div className="text-center">
-          <h1
-            className="text-4xl md:text-6xl lg:text-7xl font-frontline mb-6 animate-fade-in-up"
-            style={{
-              fontFamily: "Frontline, sans-serif",
-              background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              color: "#7152DE",
-              animation: "fadeInUp 1.2s ease-out",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            MVP 6.0
-          </h1>
-
-          <div className="mb-4 max-w-5xl mx-auto">
-            <p
-              className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-bold px-2"
-              style={{
-                fontFamily: "Inter, system-ui, sans-serif",
-                color: "#1C1538",
-                background: "linear-gradient(90deg, #7152DE 0%, #4B3791 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                letterSpacing: "-0.01em",
-              }}
-            >
-              <span className="font-bold">INNOVATE</span>
-              <span className="mx-1 sm:mx-2 text-[#7152DE] opacity-100">•</span>
-              <span className="font-bold">CONNECT</span>
-              <span className="mx-1 sm:mx-2 text-[#7152DE] opacity-100">•</span>
-              <span className="font-bold">INSPIRE</span>
-            </p>
+        <div className="text-center relative">
+          {/* PixelBlast positioned within hero section only */}
+          <div style={{ 
+            position: 'absolute',
+            top: '-80vh',
+            left: '-50vw',
+            width: '200vw',
+            height: '200vh',
+            zIndex: 1,
+            pointerEvents: 'auto'
+          }}>
+            <PixelBlast
+              variant="circle"
+              pixelSize={6}
+              color="#7152DE"
+              patternScale={3}
+              patternDensity={1.2}
+              pixelSizeJitter={0.5}
+              enableRipples
+              rippleSpeed={0.4}
+              rippleThickness={0.12}
+              rippleIntensityScale={1.5}
+              liquid
+              liquidStrength={0.12}
+              liquidRadius={1.2}
+              liquidWobbleSpeed={5}
+              speed={0.6}
+              edgeFade={0.25}
+              transparent
+            />
           </div>
 
+          <img
+            src="/logos/mvp_logo.webp"
+            alt="MVP 6.0 Logo"
+            className="mx-auto mb-8 animate-fade-in-up relative z-10"
+            style={{
+              width: "auto",
+              height: "clamp(120px, 20vw, 300px)",
+              maxWidth: "100%",
+              animation: "fadeInUp 1.2s ease-out",
+              filter: "drop-shadow(0 4px 20px rgba(113, 82, 222, 0.2))"
+            }}
+          />
+
           <p
-            className="text-sm sm:text-base md:text-lg lg:text-xl mb-12 max-w-2xl mx-auto leading-relaxed opacity-80 px-4"
+            className="text-sm sm:text-base md:text-lg lg:text-xl mb-12 max-w-2xl mx-auto leading-relaxed opacity-80 px-4 relative z-10"
             style={{
               fontFamily: "Inter, system-ui, sans-serif",
               color: "#4B3791",
@@ -177,7 +185,7 @@ export default function Hero() {
           </p>
 
           <div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 relative z-10"
             style={{ animation: "fadeInUp 1.2s ease-out 0.6s both" }}
           >
             <button 
