@@ -1,3 +1,4 @@
+// 
 import React from "react";
 import { motion } from "framer-motion";
 import GridBackground from "../components/GridBackground.jsx";
@@ -7,6 +8,7 @@ const prizes = [
 		position: "1st",
 		title: "VR HEADSET",
 		image: "/prizes/VrHeadset.webp",
+		size: "w-60 max-h-50",
 		gradient: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)",
 		shadowColor: "#FFD700",
 	},
@@ -14,6 +16,7 @@ const prizes = [
 		position: "2nd",
 		title: "SMART WATCH",
 		image: "/prizes/SmartWatch.webp",
+		size: "w-60 max-h-50",
 		gradient: "linear-gradient(135deg, #CD7F32 0%, #8B4513 100%)",
 		shadowColor: "#CD7F32",
 		
@@ -22,6 +25,7 @@ const prizes = [
 		position: "3rd",
 		title: "IEM EARPHONES",
 		image: "/prizes/Earphone.webp",
+		size: "w-60 max-h-50",
 		gradient: "linear-gradient(135deg, #C0C0C0 0%, #808080 100%)",
 		shadowColor: "#C0C0C0",
 	},
@@ -29,6 +33,7 @@ const prizes = [
 		position: "4th",
 		title: "BLUETOOTH SPEAKER",
 		image: "/prizes/BluetoothSpeaker.webp",
+		size: "max-w-40 max-h-50",
 		gradient: "linear-gradient(135deg, #4B3791 0%, #7152DE 100%)",
 		shadowColor: "#7152DE",
 	},
@@ -36,6 +41,7 @@ const prizes = [
 		position: "5th",
 		title: "OUTDOOR TELESCOPE",
 		image: "/prizes/OutdoorTelescope.webp",
+		size: "w-96 h-72",
 		gradient: "linear-gradient(135deg, #1C1538 0%, #4B3791 100%)",
 		shadowColor: "#4B3791",
 	},
@@ -103,13 +109,15 @@ const PrizeCard = ({ prize, index }) => {
 						<img
 							src={prize.image}
 							alt={prize.title}
-							className={`w-full h-auto object-contain filter drop-shadow-lg ${
-								isTopThree 
-									? "max-h-40" 
-									: prize.title.includes("TELESCOPE") 
-										? "max-h-40" 
-										: "max-h-36"
-							}`}
+							className={`filter ${prize.size} drop-shadow-lg 
+							`}
+							// {
+							// 	isTopThree
+							// 		? "max-h-50"
+							// 		: prize.title.includes("TELESCOPE")
+							// 			? "max-h-40"
+							// 			: "max-h-36"
+							// }
 						/>
 					</div>
 				</div>
