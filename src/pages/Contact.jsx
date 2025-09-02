@@ -6,6 +6,7 @@ import {
   FaGlobe,
   FaMapPin,
 } from "react-icons/fa";
+import GridBackground from "../components/GridBackground.jsx";
 
 const crewContacts = [
   { name: "Siddharth R", role: "MDC", phone: "80893 72642" },
@@ -140,9 +141,10 @@ export default function Contact() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#E6E4F1] pt-24 px-4 sm:px-8 pb-8 flex items-center justify-center">
+    <div className="min-h-screen bg-[#E6E4F1] pt-24 px-4 sm:px-8 pb-8 flex items-center justify-center relative">
+      <GridBackground opacity={0.3} zIndex={0} />
       <div
-        className="w-full max-w-7xl bg-white p-6 sm:p-8 shadow-xl mx-auto"
+        className="w-full max-w-7xl bg-white p-6 sm:p-8 shadow-xl mx-auto relative z-10"
         style={{
           borderWidth: "6px",
           borderImageSlice: 1,
