@@ -49,7 +49,7 @@ export default function Task() {
             backgroundClip: "text",
           }}
         >
-          exPLORE TASKS
+          EXPLORE TASKS
         </h2>
         <p
           className="text-xl md:text-2xl mb-8 text-[#4B3791] font-semibold"
