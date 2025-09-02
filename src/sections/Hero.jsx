@@ -7,11 +7,25 @@ import GridBackground from "../components/GridBackground.jsx"
 export default function Hero() {
   const [smoothMousePosition, setSmoothMousePosition] = useState({ x: 0, y: 0 });
   const mousePositionRef = useRef({ x: 0, y: 0 });
+  const [pixelBlastLoaded, setPixelBlastLoaded] = useState(false);
+  const [isMobileDevice, setIsMobileDevice] = useState(false);
 
   const [viewport, setViewport] = useState({
     width: typeof window !== "undefined" ? window.innerWidth : 375,
     height: typeof window !== "undefined" ? window.innerHeight : 667,
   });
+
+  // Detect if it's actually a mobile device regardless of viewport
+  useEffect(() => {
+    const checkMobileDevice = () => {
+      const userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : '';
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+      const hasTouch = typeof window !== 'undefined' && 'ontouchstart' in window;
+      setIsMobileDevice(isMobile || hasTouch);
+    };
+    
+    checkMobileDevice();
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -114,6 +128,14 @@ export default function Hero() {
     );
   };
 
+  // Add PixelBlast error handling
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPixelBlastLoaded(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
@@ -125,44 +147,59 @@ export default function Hero() {
       {/* Grid background using component */}
       <GridBackground opacity={0.5} zIndex={0} />
 
-      {/* PixelBlast Background - Mobile First */}
+      {/* Fallback background gradient */}
       <div 
-        className="absolute z-10"
+        className="absolute inset-0 z-5"
         style={{
-          width: '100%',
-          height: '100%',
-          overflow: 'hidden',
-          pointerEvents: 'auto',
-          top: viewport.width >= 1024 ? '3%' : '80px',
-          left: viewport.width >= 1024 ? '-5%' : '0',
-          right: viewport.width >= 1024 ? 'auto' : '0',
-          bottom: viewport.width >= 1024 ? 'auto' : '0',
-          transform: viewport.width >= 1024 ? 'scale(1.1)' : 'none',
-          height: viewport.width >= 1024 ? '90%' : 'calc(100% - 80px)'
+          background: "linear-gradient(135deg, rgba(113, 82, 222, 0.05) 0%, rgba(75, 55, 145, 0.03) 100%)",
+          pointerEvents: "none"
         }}
-      >
-        <PixelBlast
-          variant="circle"
-          pixelSize={viewport.width < 640 ? 3 : viewport.width < 1024 ? 4 : 6}
-          color="#7152DE"
-          patternScale={viewport.width < 640 ? 2 : viewport.width < 1024 ? 2.5 : 3}
-          patternDensity={viewport.width < 640 ? 0.8 : viewport.width < 1024 ? 1.0 : 1.2}
-          pixelSizeJitter={viewport.width < 640 ? 0.3 : 0.5}
-          enableRipples={viewport.width >= 640}
-          rippleSpeed={0.3}
-          rippleThickness={0.1}
-          rippleIntensityScale={viewport.width < 640 ? 1.0 : 1.5}
-          liquid={viewport.width >= 768}
-          liquidStrength={viewport.width < 1024 ? 0.08 : 0.12}
-          liquidRadius={viewport.width < 1024 ? 1.0 : 1.2}
-          liquidWobbleSpeed={viewport.width < 640 ? 3 : 5}
-          speed={viewport.width < 640 ? 0.4 : 0.6}
-          edgeFade={viewport.width < 640 ? 0.4 : 0.25}
-          transparent
-          mousePosition={smoothMousePosition}
-          interactive
-        />
-      </div>
+      />
+
+      {/* PixelBlast Background - with better mobile handling */}
+      {pixelBlastLoaded && (
+        <div 
+          className="absolute z-10"
+          style={{
+            width: '100%',
+            height: '100%',
+            overflow: 'hidden',
+            pointerEvents: 'auto',
+            top: (!isMobileDevice && viewport.width >= 1024) ? '3%' : '80px',
+            left: (!isMobileDevice && viewport.width >= 1024) ? '-5%' : '0',
+            right: (!isMobileDevice && viewport.width >= 1024) ? 'auto' : '0',
+            bottom: (!isMobileDevice && viewport.width >= 1024) ? 'auto' : '0',
+            transform: (!isMobileDevice && viewport.width >= 1024) ? 'scale(1.1)' : 'none',
+            height: (!isMobileDevice && viewport.width >= 1024) ? '90%' : 'calc(100% - 80px)',
+            background: 'transparent'
+          }}
+          onError={() => {
+            console.warn('PixelBlast failed to render');
+          }}
+        >
+          <PixelBlast
+            variant="circle"
+            pixelSize={isMobileDevice ? 2 : (viewport.width < 640 ? 3 : viewport.width < 1024 ? 4 : 6)}
+            color="#7152DE"
+            patternScale={isMobileDevice ? 1.5 : (viewport.width < 640 ? 2 : viewport.width < 1024 ? 2.5 : 3)}
+            patternDensity={isMobileDevice ? 0.6 : (viewport.width < 640 ? 0.8 : viewport.width < 1024 ? 1.0 : 1.2)}
+            pixelSizeJitter={isMobileDevice ? 0.2 : (viewport.width < 640 ? 0.3 : 0.5)}
+            enableRipples={!isMobileDevice && viewport.width >= 640}
+            rippleSpeed={0.3}
+            rippleThickness={0.1}
+            rippleIntensityScale={isMobileDevice ? 0.8 : (viewport.width < 640 ? 1.0 : 1.5)}
+            liquid={!isMobileDevice && viewport.width >= 768}
+            liquidStrength={isMobileDevice ? 0.05 : (viewport.width < 1024 ? 0.08 : 0.12)}
+            liquidRadius={isMobileDevice ? 0.8 : (viewport.width < 1024 ? 1.0 : 1.2)}
+            liquidWobbleSpeed={isMobileDevice ? 2 : (viewport.width < 640 ? 3 : 5)}
+            speed={isMobileDevice ? 0.3 : (viewport.width < 640 ? 0.4 : 0.6)}
+            edgeFade={isMobileDevice ? 0.5 : (viewport.width < 640 ? 0.4 : 0.25)}
+            transparent
+            mousePosition={smoothMousePosition}
+            interactive={!isMobileDevice}
+          />
+        </div>
+      )}
 
       <div className="container mx-auto px-4 sm:px-6 relative z-30">
         <div className="text-center relative">
@@ -270,8 +307,12 @@ export default function Hero() {
           background: white !important;
         }
 
-        /* Mobile performance optimizations */
+        /* Ensure no black backgrounds on mobile */
         @media (max-width: 639px) {
+          section {
+            background: #fff !important;
+          }
+          
           .custom-toast {
             margin: 0 12px !important;
             max-width: calc(100vw - 24px) !important;
@@ -299,6 +340,13 @@ export default function Hero() {
               animation-iteration-count: 1 !important;
               transition-duration: 0.01ms !important;
             }
+          }
+        }
+
+        /* Mobile device detection override */
+        @media (hover: none) and (pointer: coarse) {
+          section {
+            background: #fff !important;
           }
         }
 
