@@ -4,46 +4,39 @@ import { motion } from "framer-motion";
 const prizes = [
 	{
 		position: "1st",
-		title: "3D VR HEADSET WITH IN-BUILT HEADPHONES",
+		title: "VR HEADSET",
 		image: "/prizes/VrHeadset.webp",
 		gradient: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)",
 		shadowColor: "#FFD700",
 	},
 	{
 		position: "2nd",
-		title: "IEM EARPHONES",
-		image: "/prizes/Earphone.webp",
-		gradient: "linear-gradient(135deg, #C0C0C0 0%, #808080 100%)",
-		shadowColor: "#C0C0C0",
-	},
-	{
-		position: "3rd",
-		title: "NOISE PULSE GO BUZZ SMARTWATCH",
+		title: "SMART WATCH",
 		image: "/prizes/SmartWatch.webp",
 		gradient: "linear-gradient(135deg, #CD7F32 0%, #8B4513 100%)",
 		shadowColor: "#CD7F32",
 		
 	},
 	{
+		position: "3rd",
+		title: "IEM EARPHONES",
+		image: "/prizes/Earphone.webp",
+		gradient: "linear-gradient(135deg, #C0C0C0 0%, #808080 100%)",
+		shadowColor: "#C0C0C0",
+	},
+	{
 		position: "4th",
-		title: "PORTABLE BLUETOOTH SPEAKER WITH IN-BUILT MIC",
+		title: "BLUETOOTH SPEAKER",
 		image: "/prizes/BluetoothSpeaker.webp",
 		gradient: "linear-gradient(135deg, #4B3791 0%, #7152DE 100%)",
 		shadowColor: "#7152DE",
 	},
 	{
 		position: "5th",
-		title: "COOL MIST QUITE AIR HUMIDIFIER",
-		image: "/prizes/AirHumidifier.webp",
+		title: "OUTDOOR TELESCOPE",
+		image: "/prizes/OutdoorTelescope.webp",
 		gradient: "linear-gradient(135deg, #1C1538 0%, #4B3791 100%)",
 		shadowColor: "#4B3791",
-	},
-	{
-		position: "Top 25",
-		title: "SELFIE STICK WITH TRIPOD STAND",
-		image: "/prizes/Tripod.webp",
-		gradient: "linear-gradient(135deg, #7152DE 0%, #1C1538 100%)",
-		shadowColor: "#7152DE",
 	},
 ];
 
@@ -79,8 +72,8 @@ const PrizeCard = ({ prize, index }) => {
 			style={{ cursor: 'default' }}
 		>
 			<div
-				className={`relative overflow-hidden rounded-2xl p-6 h-full flex flex-col justify-between transition-all duration-500 ${
-					isTopThree ? "min-h-[350px]" : "min-h-[300px]"
+				className={`relative overflow-hidden rounded-2xl p-4 h-full flex flex-col justify-between transition-all duration-500 ${
+					isTopThree ? "min-h-[280px]" : "min-h-[260px]"
 				}`}
 				style={{
 					background: `${prize.gradient}`,
@@ -88,15 +81,15 @@ const PrizeCard = ({ prize, index }) => {
 				}}
 			>
 				{/* Position badge */}
-				<div className="absolute top-4 left-4 z-10">
+				<div className="absolute top-3 left-3 z-10">
 					<div
-						className={`px-3 py-1 rounded-full text-white font-bold backdrop-blur-sm ${
-							isTopThree ? "text-base" : "text-sm"
+						className={`px-2.5 py-1 rounded-full text-white backdrop-blur-sm ${
+							isTopThree ? "text-sm" : "text-xs"
 						}`}
 						style={{
 							background: "rgba(255,255,255,0.2)",
 							border: "1px solid rgba(255,255,255,0.3)",
-							fontFamily: "Inter, system-ui, sans-serif",
+							fontFamily: "JerseyM54, sans-serif",
 						}}
 					>
 						{prize.position}
@@ -104,13 +97,17 @@ const PrizeCard = ({ prize, index }) => {
 				</div>
 
 				{/* Prize image */}
-				<div className="flex-1 flex items-center justify-center p-4">
+				<div className="flex-1 flex items-center justify-center p-3">
 					<div className="relative group-hover:scale-110 transition-transform duration-500">
 						<img
 							src={prize.image}
 							alt={prize.title}
 							className={`w-full h-auto object-contain filter drop-shadow-lg ${
-								isTopThree ? "max-h-44" : "max-h-36"
+								isTopThree 
+									? "max-h-40" 
+									: prize.title.includes("TELESCOPE") 
+										? "max-h-40" 
+										: "max-h-36"
 							}`}
 						/>
 					</div>
@@ -120,7 +117,7 @@ const PrizeCard = ({ prize, index }) => {
 				<div className="text-center z-10">
 					<h3
 						className={`text-white drop-shadow-lg ${
-							isTopThree ? "text-lg md:text-xl" : "text-base"
+							isTopThree ? "text-base md:text-lg" : "text-sm md:text-base"
 						}`}
 						style={{
 							fontFamily: "JerseyM54, sans-serif",
@@ -147,7 +144,7 @@ function Prizes() {
 	return (
 		<section
 			id="prizes"
-			className="relative min-h-screen flex justify-center items-center py-20 px-4 overflow-hidden"
+			className="relative py-16 px-4 overflow-hidden"
 			style={{
 				background: "#fff",
 				position: "relative",
@@ -224,10 +221,10 @@ function Prizes() {
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
 					transition={{ duration: 0.8 }}
-					className="text-center mb-16"
+					className="text-center mb-12"
 				>
 					<h1
-						className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4"
+						className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3"
 						style={{
 							fontFamily: "Frontline, sans-serif",
 							background: "linear-gradient(90deg, #1C1538 0%, #4B3791 100%)",
@@ -240,7 +237,7 @@ function Prizes() {
 						Prizes
 					</h1>
 					<p
-						className="text-xl max-w-3xl mx-auto"
+						className="text-lg max-w-3xl mx-auto"
 						style={{
 							fontFamily: "JerseyM54, sans-serif",
 							color: "#4B3791",
@@ -251,20 +248,56 @@ function Prizes() {
 					</p>
 				</motion.div>
 
-				{/* Prize grid - Top row with 3 main prizes */}
-				<div className="space-y-8">
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<div className="space-y-6">
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 						{prizes.slice(0, 3).map((prize, index) => (
 							<PrizeCard key={index} prize={prize} index={index} />
 						))}
 					</div>
 
-					{/* Bottom row with remaining prizes */}
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
 						{prizes.slice(3).map((prize, index) => (
 							<PrizeCard key={index + 3} prize={prize} index={index + 3} />
 						))}
 					</div>
+
+					<motion.div
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.8, delay: 0.2 }}
+						className="text-center mt-12 py-8"
+					>
+						<div className="mb-2">
+							<h3
+								className="text-3xl md:text-4xl font-bold mb-3"
+								style={{
+									fontFamily: "JerseyM54, sans-serif",
+									color: "#7152DE",
+								}}
+							>
+								Top 25 Participants
+							</h3>
+							<p
+								className="text-xl text-purple-600 font-medium mb-2"
+								style={{
+									fontFamily: "JerseyM54, sans-serif",
+								}}
+							>
+								Exciting Prizes For Top 25 Participants
+							</p>
+						</div>
+
+						<div
+							className="inline-flex items-center gap-3 text-base font-medium text-purple-600"
+							style={{
+									fontFamily: "JerseyM54, sans-serif",
+
+							}}
+						>
+							<span>Certificates for ALL Participants</span>
+						</div>
+					</motion.div>
 				</div>
 			</div>
 		</section>
