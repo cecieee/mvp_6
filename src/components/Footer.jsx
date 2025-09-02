@@ -80,19 +80,14 @@ export default function Footer() {
               {/* MVP Logo Center */}
               <div className="flex-shrink-0 flex justify-center lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2">
                 <div className="text-center">
-                  <h1
-                    className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2"
+                  <img
+                    src="/logos/mvp_title_white.webp"
+                    alt="MVP 6.0"
+                    className="h-8 sm:h-10 lg:h-12 w-auto mx-auto mb-2"
                     style={{
-                      fontFamily: "Frontline, sans-serif",
-                      background: "linear-gradient(90deg, #FFFFFF 0%, #E8E0FF 50%, #FFFFFF 100%)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text",
                       filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))",
                     }}
-                  >
-                    MVP 6.0
-                  </h1>
+                  />
                   <p className="text-purple-200 text-xs sm:text-sm font-medium">Micro Volunteering Programme</p>
                 </div>
               </div>
@@ -117,7 +112,7 @@ export default function Footer() {
 
                 {/* Contact Info */}
                 <div className="space-y-3 text-center sm:text-left">
-                  <h4 className="text-sm sm:text-base font-semibold text-white">Contact</h4>
+                  <h4 className="text-sm sm:text-base text-white" style={{ fontFamily: "JerseyM54, sans-serif" }}>CONTACT</h4>
                   <div className="space-y-2 sm:space-y-3">
                     <a
                       href="mailto:ieee@ceconline.edu"

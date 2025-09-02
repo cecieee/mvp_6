@@ -118,9 +118,9 @@ export default function Tasks() {
       {/* Header */}
       <div className="text-center pt-16 pb-8 px-4">
         <h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold mb-6"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl mb-6"
           style={{
-            fontFamily: "Frontline, sans-serif",
+            fontFamily: "Hypik, sans-serif",
             background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
@@ -130,7 +130,7 @@ export default function Tasks() {
         >
           TASKS
         </h1>
-        <div className="w-24 h-1 bg-gradient-to-r from-[#7152DE] to-[#4B3791] mx-auto rounded-full mb-8"></div>
+        <div className="w-24 h-1 bg-gradient-to-r from-[#7152DE] to-[#4B3791] mx-auto rounded-full"></div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -233,7 +233,7 @@ export default function Tasks() {
               <h2
                 className="text-3xl font-bold mb-4 text-center"
                 style={{
-                  fontFamily: "Frontline, sans-serif",
+                  fontFamily: "JerseyM54, sans-serif",
                   background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",

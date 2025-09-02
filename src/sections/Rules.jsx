@@ -48,9 +48,9 @@ function Rules() {
 					className="text-center mb-16"
 				>
 					<h1
-						className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4"
+						className="text-5xl md:text-6xl lg:text-7xl mb-4"
 						style={{
-							fontFamily: "Frontline, sans-serif",
+							fontFamily: "Hypik, system-ui, sans-serif",
 							background: "linear-gradient(90deg, #1C1538 0%, #4B3791 100%)",
 							WebkitBackgroundClip: "text",
 							WebkitTextFillColor: "transparent",

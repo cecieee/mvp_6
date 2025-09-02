@@ -160,7 +160,7 @@ function Prizes() {
 					className="text-center mb-12"
 				>
 					<h1
-						className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3"
+						className="text-4xl md:text-5xl lg:text-6xl mb-3"
 						style={{
 							fontFamily: "Frontline, sans-serif",
 							background: "linear-gradient(90deg, #1C1538 0%, #4B3791 100%)",

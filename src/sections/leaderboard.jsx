@@ -152,7 +152,7 @@
 //           <div className="text-center flex-1">
 //             <h3 
 //               className="text-xl sm:text-2xl font-bold text-white mb-1"
-//               style={{ fontFamily: "Frontline, sans-serif" }}
+//               style={{ fontFamily: "Hypik, system-ui, sans-serif" }}
 //             >
 //               🏆 Live Rankings
 //             </h3>
@@ -483,8 +483,8 @@ const LandingLeaderboard = () => {
           {/* Centered title section */}
           <div className="text-center flex-1">
             <h3 
-              className="text-xl sm:text-2xl font-bold text-white mb-1"
-              style={{ fontFamily: "Frontline, sans-serif" }}
+              className="text-xl sm:text-2xl text-white mb-1"
+              style={{ fontFamily: "Hypik, system-ui, sans-serif" }}
             >
               🏆 Live Rankings
             </h3>
@@ -520,7 +520,7 @@ const LandingLeaderboard = () => {
           return (
             <div 
               key={item.id} 
-              className={`group bg-gradient-to-r backdrop-blur-sm border p-3 mb-3 last:mb-0 rounded-xl transition-all duration-300 relative overflow-hidden ${
+              className={`group bg-gradient-to-r backdrop-blur-sm border p-3 mb-3 last:mb-0 rounded-xl transition-all duration-300 relative overflow-hidden  ${
                 isActive 
                   ? 'from-purple-400 to-purple-400 border-white/30 scale-[1.02]' 
                   : 'from-purple-700 to-purple-600 hover:from-purple-400 hover:to-purple-400 border-white/10 hover:border-white/30 hover:scale-[1.02]'

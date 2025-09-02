@@ -290,9 +290,9 @@ const EventLeaderboard = () => {
          {/* Header */}
         <div className="text-center pt-25 pb-6 px-4">
           <h1 
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-frontline mb-5 break-words"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-frontline break-words"
             style={{
-              fontFamily: "Frontline, sans-serif",
+              fontFamily: "Hypik, sans-serif",
               background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
@@ -307,7 +307,7 @@ const EventLeaderboard = () => {
 
         {/* Subtitle section */}
         <div className="text-center mb-12 px-4">  
-          <div className="w-24 h-0.5 bg-gradient-to-r from-[#7152DE] to-[#4B3791] mx-auto rounded-full mt-8 opacity-60 mb-5"></div>
+          <div className="w-24 h-0.5 bg-gradient-to-r from-[#7152DE] to-[#4B3791] mx-auto rounded-full  opacity-60 mb-5"></div>
           <div className="max-w-4xl mx-auto space-y-6">
             <p 
               className="text-lg sm:text-xl md:text-2xl italic font-medium text-[#1C1538]"
@@ -332,7 +332,7 @@ const EventLeaderboard = () => {
           <div className="px-2 sm:px-4 py-4 sm:py-6 overflow-hidden font-jersey">
             <h2 
               className="text-center text-[#4B3791] font-bold mb-8 text-xl sm:text-3xl md:text-4xl"
-              style={{ fontFamily: "Frontline, sans-serif" }}
+              style={{ fontFamily: "JerseyM54, sans-serif" }}
             >
               🏆 Top Performers
             </h2>

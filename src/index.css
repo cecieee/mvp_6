@@ -24,6 +24,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Hypik";
+  src: url("/src/assets/fonts/hypik.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Lenis smooth scroll styles */
 html {
   scroll-behavior: auto;
