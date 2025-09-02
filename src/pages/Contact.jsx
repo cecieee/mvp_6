@@ -7,44 +7,48 @@ import {
   FaMapPin,
 } from "react-icons/fa";
 
-// Crew data
 const crewContacts = [
-  { name: "Alexander Chen", role: "Chief Technology Officer", phone: "+1-202-555-0101" },
-  { name: "Sophia Rodriguez", role: "Head of Product Development", phone: "+1-202-555-0102" },
-  { name: "Benjamin Lee", role: "Lead Software Engineer", phone: "+1-202-555-0103" },
-  { name: "Olivia Martinez", role: "Senior UI/UX Designer", phone: "+1-202-555-0104" },
+  { name: "Siddharth R", role: "MDC", phone: "80893 72642" },
 ];
 
-// Other sections
 const otherSections = [
   {
     title: "Registration",
     icon: <FaClipboardList className="w-5 h-5" />,
     contacts: [
-      { name: "Daniel Kin", role: "Registration Manager", phone: "+1-202-555-0105" },
-      { name: "Emily Watson", role: "Support Specialist", phone: "+1-202-555-0106" },
-      { name: "Michael Brown", role: "Data Entry Coordinator", phone: "+1-202-555-0107" },
+      { name: "Sreeganga D", role: "Registration", phone: "88485 78058" },
+      { name: "Kashinadh A", role: "Registration", phone: "92077 90775" },
+    ],
+  },
+  {
+    title: "Point of Contact",
+    icon: <FaBullhorn className="w-5 h-5" />,
+    contacts: [
+      { name: "Gouri Rajesh Pillai", role: "Point of contact", phone: "628293 1968" },
+      { name: "Aparna Suresh", role: "Point of contact", phone: "89431 50049" },
     ],
   },
   {
     title: "Outreach",
-    icon: <FaBullhorn className="w-5 h-5" />,
+    icon: <FaGlobe className="w-5 h-5" />,
     contacts: [
-      { name: "Jessica Davis", role: "Head of Community Engagement", phone: "+1-202-555-0108" },
-      { name: "Christopher White", role: "Partnership Development Lead", phone: "+1-202-555-0109" },
-      { name: "Sarah Johnson", role: "Content & Social Media Manager", phone: "+1-202-555-0110" },
-      { name: "Matthew Miller", role: "Event Marketing Specialist", phone: "+1-202-555-0111" },
+      { name: "Nandhu Prasad", role: "Outreach", phone: "90487 38741" },
+      { name: "Anjana Ajith", role: "Outreach", phone: "859080 2488" },
+      { name: "Nayan Shastham Valappil", role: "Outreach", phone: "956759 8490" },
+      { name: "Rachana Chandra A", role: "Outreach", phone: "628221 2759" },
     ],
   },
   {
-    title: "Website",
+    title: "Web Team",
     icon: <FaGlobe className="w-5 h-5" />,
     contacts: [
-      { name: "Chloe Wilson", role: "Web Development Lead", phone: "+1-202-555-0112" },
-      { name: "David Taylor", role: "Frontend Developer", phone: "+1-202-555-0113" },
-      { name: "Grace Thompson", role: "Backend Engineer", phone: "+1-202-555-0114" },
+      { name: "Harikrishnan", role: "Web Team", phone: "94955 09310" },
+      { name: "Adithyan", role: "Web Team", phone: "96562 98751" },
+      { name: "Alwin", role: "Web Team", phone: "94951 64693" },
+      { name: "Aswin", role: "Web Team", phone: "85903 42134" },
+      { name: "Sarin", role: "Web Team", phone: "62826 29447" }
     ],
-  },
+  }
 ];
 
 // Rotation classes for sticky note effect
@@ -90,8 +94,9 @@ const TapedHeading = ({ title }) => {
     >
       <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-14 h-5 bg-yellow-300 rounded-t-md shadow-inner rotate-1 animate-pulse"></div>
       <h2
-        className="text-2xl font-bold"
+        className="text-2xl"
         style={{
+          fontFamily: "JerseyM54, sans-serif",
           background: "linear-gradient(90deg, #2A195B, #5C3BCE)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
@@ -105,12 +110,19 @@ const TapedHeading = ({ title }) => {
 
 // Section for each group (Registration, Outreach, etc.)
 const TeamSection = ({ section }) => (
-  <div className="mb-16 flex flex-col items-center">
+  <div className="mb-16 flex flex-col items-center w-full">
     <TapedHeading title={section.title} />
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      {section.contacts.map((person) => (
-        <ContactCard key={person.name} {...person} />
-      ))}
+    <div className="flex justify-center w-full">
+      <div className={`grid gap-6 justify-items-center ${
+        section.contacts.length === 2 ? 'grid-cols-1 sm:grid-cols-2 max-w-2xl' : 
+        section.contacts.length === 4 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-5xl' :
+        section.contacts.length === 5 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 max-w-6xl' :
+        'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-4xl'
+      }`}>
+        {section.contacts.map((person) => (
+          <ContactCard key={person.name} {...person} />
+        ))}
+      </div>
     </div>
   </div>
 );
@@ -128,9 +140,9 @@ export default function Contact() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#E6E4F1] pt-24 px-8 pb-8 flex items-center justify-center">
+    <div className="min-h-screen bg-[#E6E4F1] pt-24 px-4 sm:px-8 pb-8 flex items-center justify-center">
       <div
-        className="w-full max-w-5xl bg-white p-8 shadow-xl"
+        className="w-full max-w-7xl bg-white p-6 sm:p-8 shadow-xl mx-auto"
         style={{
           borderWidth: "6px",
           borderImageSlice: 1,
@@ -138,22 +150,27 @@ export default function Contact() {
         }}
       >
         {/* Main Title */}
-        <h1
-          className="text-center font-extrabold text-5xl mb-20"
-          style={{
-            background: "linear-gradient(90deg, #2A195B, #5C3BCE)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
-        >
-          The Crew
-        </h1>
+        <div className="text-center mb-16 sm:mb-20">
+          <h1
+            className="text-4xl sm:text-5xl"
+            style={{
+              fontFamily: "Hypik, sans-serif",
+              background: "linear-gradient(90deg, #2A195B, #5C3BCE)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            The Crew
+          </h1>
+        </div>
 
-        {/* Crew Contacts */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-20 justify-center">
-          {crewContacts.map((person) => (
-            <ContactCard key={person.name} {...person} />
-          ))}
+        {/* Crew Contacts - Centered single person */}
+        <div className="flex justify-center mb-16 sm:mb-20">
+          <div className="w-full max-w-xs">
+            {crewContacts.map((person) => (
+              <ContactCard key={person.name} {...person} />
+            ))}
+          </div>
         </div>
 
         {/* Mobile Navigation for Sections */}
@@ -177,7 +194,7 @@ export default function Contact() {
         )}
 
         {/* Section Content */}
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center w-full">
           {otherSections.map(
             (section) =>
               (!isMobile || activeSection === section.title) && (

@@ -1,4 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
+import { toast } from 'react-toastify';
+import { FiClock } from 'react-icons/fi';
+import PixelBlast from "../components/pixelBlast"
 
 export default function Hero() {
   const [smoothMousePosition, setSmoothMousePosition] = useState({ x: 0, y: 0 });
@@ -58,6 +61,39 @@ export default function Hero() {
     }
   };
 
+  const handleRegistrationClick = () => {
+    toast(
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <FiClock size={20} />
+        <span>Registration will open soon!</span>
+      </div>,
+      {
+        position: "bottom-center",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        className: "custom-toast",
+        style: {
+          background: "linear-gradient(135deg, #7152DE 0%, #4B3791 100%)",
+          color: "white",
+          borderRadius: "12px",
+          fontSize: window.innerWidth < 640 ? "14px" : "16px",
+          fontFamily: "Inter, system-ui, sans-serif",
+          fontWeight: "500",
+          boxShadow: "0 10px 30px rgba(113, 82, 222, 0.3)",
+          border: "none",
+          margin: window.innerWidth < 640 ? "0 16px" : "0 24px",
+          maxWidth: window.innerWidth < 640 ? "calc(100vw - 32px)" : "400px",
+          width: "100%",
+        },
+        progressClassName: "white-progress",
+        icon: false,
+      }
+    );
+  };
+
   return (
     <section
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
@@ -68,7 +104,7 @@ export default function Hero() {
     >
       {/* Black grid background */}
       <div
-        className="absolute inset-0 z-0 pointer-events-none"
+        className="absolute inset-0 z-0 pointer-events-none opacity-50"
         style={{
           backgroundImage: `
             repeating-linear-gradient(
@@ -90,137 +126,60 @@ export default function Hero() {
           zIndex: 0,
         }}
       />
-      {/* Particle dots */}
-      {Array.from({ length: 15 }).map((_, i) => {
-        const vw = viewport.width;
-        const vh = viewport.height;
-        const baseX = (((i * 7 + 10) % 100) / 100) * vw;
-        const baseY = (((i * 11 + 15) % 100) / 100) * vh;
-        const scale = 1 + ((i % 3) * 0.2);
-        const glowIntensity = (vw < 640 ? 8 : 12) + (i % 5) * (vw < 640 ? 4 : 8);
-        return (
-          <div
-            key={i}
-            className="absolute w-2 h-2 rounded-full transition-all duration-200 ease-out animate-pulse"
-            style={{
-              left: `${baseX}px`,
-              top: `${baseY}px`,
-              animationDelay: `${i * 0.12}s`,
-              transform: `scale(${scale})`,
-              boxShadow: `0 0 ${glowIntensity}px #7152DE`,
-              background: "#7152DE",
-              filter: `blur(${(i % 4) * (vw < 640 ? 0.2 : 0.4)}px)`,
-            }}
-          />
-        );
-      })}
-
-      {/* Floating particles */}
-      {Array.from({ length: 10 }).map((_, i) => {
-        const vw = viewport.width;
-        const vh = viewport.height;
-        const baseTop = (((i * 13 + 20) % 90) / 100) * vh;
-        const baseLeft = (((i * 17 + 25) % 90) / 100) * vw;
-        const scale = 1 + ((i % 4) * 0.15);
-        const rotation = (i % 6) * 15;
-        return (
-          <div
-            key={`floating-${i}`}
-            className="absolute w-3 h-3 rounded-full animate-ping transition-all duration-200 ease-out"
-            style={{
-              top: `${baseTop}px`,
-              left: `${baseLeft}px`,
-              animationDelay: `${i * 0.18}s`,
-              animationDuration: `${2.5 + i * 0.15}s`,
-              transform: `scale(${scale}) rotate(${rotation}deg)`,
-              opacity: 0.5,
-              background: "#4B3791",
-              boxShadow: "0 0 20px #4B3791",
-            }}
-          />
-        );
-      })}
-
-      {/* Matrix lines */}
-      <div className="absolute inset-0 opacity-5">
-        {Array.from({ length: 20 }).map((_, i) => {
-          const translateX = smoothMousePosition.x * 8;
-          const scaleY = 1 + Math.abs(smoothMousePosition.y) * 0.15;
-          const opacity =
-            0.03 +
-            Math.abs(smoothMousePosition.x + smoothMousePosition.y) * 0.02;
-          return (
-            <div
-              key={i}
-              className="absolute w-px bg-gradient-to-b from-transparent via-[#7152DE] to-transparent animate-pulse transition-all duration-500 ease-out"
-              style={{
-                left: `${i * 5 + 2}%`,
-                height: "100%",
-                animationDuration: `${4 + i * 0.2}s`,
-                animationDelay: `${i * 0.1}s`,
-                transform: `translateX(${translateX}px) scaleY(${scaleY})`,
-                opacity: opacity,
-              }}
-            />
-          );
-        })}
-      </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-30">
-        <div className="text-center">
-          <h1
-            className="text-4xl md:text-6xl lg:text-7xl font-frontline mb-6 animate-fade-in-up"
-            style={{
-              fontFamily: "Frontline, sans-serif",
-              background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              color: "#7152DE",
-              animation: "fadeInUp 1.2s ease-out",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            MVP 6.0
-          </h1>
-
-          <div className="mb-4 max-w-5xl mx-auto">
-            <p
-              className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-bold px-2"
-              style={{
-                fontFamily: "Inter, system-ui, sans-serif",
-                color: "#1C1538",
-                background: "linear-gradient(90deg, #7152DE 0%, #4B3791 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                letterSpacing: "-0.01em",
-              }}
-            >
-              <span className="font-bold">INNOVATE</span>
-              <span className="mx-1 sm:mx-2 text-[#7152DE] opacity-100">•</span>
-              <span className="font-bold">CONNECT</span>
-              <span className="mx-1 sm:mx-2 text-[#7152DE] opacity-100">•</span>
-              <span className="font-bold">INSPIRE</span>
-            </p>
+        <div className="text-center relative">
+          <div style={{ 
+            position: 'absolute',
+            top: '-80vh',
+            left: '-50vw',
+            width: '200vw',
+            height: '200vh',
+            zIndex: 1,
+            pointerEvents: 'auto'
+          }}>
+            <PixelBlast
+              variant="circle"
+              pixelSize={6}
+              color="#7152DE"
+              patternScale={3}
+              patternDensity={1.2}
+              pixelSizeJitter={0.5}
+              enableRipples
+              rippleSpeed={0.4}
+              rippleThickness={0.12}
+              rippleIntensityScale={1.5}
+              liquid
+              liquidStrength={0.12}
+              liquidRadius={1.2}
+              liquidWobbleSpeed={5}
+              speed={0.6}
+              edgeFade={0.25}
+              transparent
+            />
           </div>
 
-          <p
-            className="text-sm sm:text-base md:text-lg lg:text-xl mb-12 max-w-2xl mx-auto leading-relaxed opacity-80 px-4"
+          <img
+            src="/logos/mvp_logo.webp"
+            alt="MVP 6.0 Logo"
+            className="mx-auto mb-8 animate-fade-in-up relative z-10"
             style={{
-              fontFamily: "Inter, system-ui, sans-serif",
-              color: "#4B3791",
-              animation: "fadeInUp 1.2s ease-out 0.3s both",
+              width: "auto",
+              height: "clamp(120px, 20vw, 300px)",
+              maxWidth: "100%",
+              animation: "fadeInUp 1.2s ease-out",
+              filter: "drop-shadow(0 4px 20px rgba(113, 82, 222, 0.2))"
             }}
-          >
-            Join us for an extraordinary journey of innovation and discovery
-          </p>
+          />
 
           <div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 relative z-10"
             style={{ animation: "fadeInUp 1.2s ease-out 0.6s both" }}
           >
-            <button className="group px-6 sm:px-8 py-3 font-semibold rounded-full border-2 border-[#7152DE] text-[#7152DE] bg-white shadow-md hover:bg-[#7152DE] hover:text-white transition-all duration-300 flex items-center gap-3 relative overflow-hidden cursor-pointer">
+            <button 
+              onClick={handleRegistrationClick}
+              className="group px-6 sm:px-8 py-3 font-semibold rounded-full border-2 border-[#7152DE] text-[#7152DE] bg-white shadow-md hover:bg-[#7152DE] hover:text-white transition-all duration-300 flex items-center gap-3 relative overflow-hidden cursor-pointer"
+            >
               <span className="relative z-10">Register Now</span>
               <svg
                 className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110"
@@ -267,7 +226,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style jsx global>{`
         @keyframes fadeInUp {
           from {
             opacity: 0;
@@ -293,6 +252,57 @@ export default function Hero() {
           }
           to {
             opacity: 1;
+          }
+        }
+        
+        .white-progress {
+          background: white !important;
+        }
+        
+        .custom-toast .Toastify__progress-bar {
+          background: white !important;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 640px) {
+          .custom-toast {
+            margin: 0 12px !important;
+            max-width: calc(100vw - 24px) !important;
+            font-size: 14px !important;
+            padding: 12px 16px !important;
+            border-radius: 10px !important;
+          }
+          
+          .custom-toast div {
+            gap: 6px !important;
+          }
+          
+          .Toastify__toast-container--bottom-center {
+            bottom: 20px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: calc(100% - 24px) !important;
+            max-width: none !important;
+          }
+        }
+
+        /* Tablet responsive styles */
+        @media (min-width: 641px) and (max-width: 1024px) {
+          .custom-toast {
+            margin: 0 20px !important;
+            max-width: 350px !important;
+            font-size: 15px !important;
+          }
+          
+          .Toastify__toast-container--bottom-center {
+            bottom: 24px !important;
+          }
+        }
+
+        /* Desktop styles */
+        @media (min-width: 1025px) {
+          .Toastify__toast-container--bottom-center {
+            bottom: 32px !important;
           }
         }
       `}</style>

@@ -152,7 +152,7 @@
 //           <div className="text-center flex-1">
 //             <h3 
 //               className="text-xl sm:text-2xl font-bold text-white mb-1"
-//               style={{ fontFamily: "Frontline, sans-serif" }}
+//               style={{ fontFamily: "Hypik, system-ui, sans-serif" }}
 //             >
 //               🏆 Live Rankings
 //             </h3>
@@ -483,8 +483,8 @@ const LandingLeaderboard = () => {
           {/* Centered title section */}
           <div className="text-center flex-1">
             <h3 
-              className="text-xl sm:text-2xl font-bold text-white mb-1"
-              style={{ fontFamily: "Frontline, sans-serif" }}
+              className="text-xl sm:text-2xl text-white mb-1"
+              style={{ fontFamily: "Hypik, system-ui, sans-serif" }}
             >
               🏆 Live Rankings
             </h3>
@@ -495,7 +495,7 @@ const LandingLeaderboard = () => {
           <div className="hidden sm:block w-32">
             <button 
               onClick={handleViewFullClick}
-              className="group bg-gradient-to-r from-purple-400/50 to-purple-400/50 hover:from-purple-500/70 hover:to-purple-500/70 backdrop-blur-sm border border-white/30 rounded-xl py-2 px-3 transition-all duration-300 hover:scale-[1.02] relative overflow-hidden cursor-pointer"
+              className="group bg-gradient-to-r from-purple-400/50 to-purple-400/50 hover:from-purple-500/70 hover:to-purple-500/70 backdrop-blur-sm border border-white/30 rounded-xl py-2 px-3 transition-all duration-300 hover:scale-[1.02] relative overflow-hidden"
             >
               {/* Shining animation overlay */}
               <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-transform duration-700 ease-out"></div>
@@ -520,7 +520,7 @@ const LandingLeaderboard = () => {
           return (
             <div 
               key={item.id} 
-              className={`group bg-gradient-to-r backdrop-blur-sm border p-3 mb-3 last:mb-0 rounded-xl transition-all duration-300 relative overflow-hidden ${
+              className={`group bg-gradient-to-r backdrop-blur-sm border p-3 mb-3 last:mb-0 rounded-xl transition-all duration-300 relative overflow-hidden  ${
                 isActive 
                   ? 'from-purple-400 to-purple-400 border-white/30 scale-[1.02]' 
                   : 'from-purple-700 to-purple-600 hover:from-purple-400 hover:to-purple-400 border-white/10 hover:border-white/30 hover:scale-[1.02]'
@@ -535,7 +535,6 @@ const LandingLeaderboard = () => {
                   handleTouchEnd();
                 }
               }}
-              style={{ cursor: 'default' }}
             >
               {/* Shining animation overlay */}
               <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-transform duration-700 ease-out ${
@@ -563,17 +562,8 @@ const LandingLeaderboard = () => {
                 
                 {/* Name and Points */}
                 <div className="flex-1 min-w-0 mr-3">
-                  <h4 className={`text-white font-jersey capitalize transition-all duration-300 ${
-                    // Responsive font sizing and overflow handling
-                    'text-[15px] sm:text-base'
-                  } ${
-                    // Remove truncate on very small screens, allow wrapping
-                    'xs:truncate leading-tight'
-                  } ${
-                    // Responsive tracking
-                    'tracking-wide xs:tracking-[1px] sm:tracking-[2px]'
-                  } ${
-                    isActive ? 'font-bold' : 'font-semibold group-hover:text-white group-hover:font-bold'
+                  <h4 className={`text-white font-jersey sm:tracking-[2px] font-semibold text-base capitalize truncate transition-all duration-300 ${
+                    isActive ? 'font-bold' : 'group-hover:text-white group-hover:font-bold'
                   }`}>
                     {item.name}
                   </h4>
@@ -596,8 +586,8 @@ const LandingLeaderboard = () => {
                 </div>
                 
                 {/* Points */}
-                <div className="text-right mr-1 sm:mr-2">
-                  <div className={`text-white font-jersey tracking-[0.5px] sm:tracking-[1px] text-base sm:text-lg transition-colors duration-300 ${
+                <div className="text-right mr-2">
+                  <div className={`text-white font-jersey tracking-[1px] font-bold text-lg transition-colors duration-300 ${
                     isActive ? 'text-white' : 'group-hover:text-white'
                   }`}>
                     {item.points.toLocaleString()}
@@ -605,7 +595,7 @@ const LandingLeaderboard = () => {
                   <div className={`text-purple-200 font-bold leaderboard text-xs transition-colors duration-300 ${
                     isActive ? 'text-white' : 'group-hover:text-white'
                   }`}>
-                    POINTS
+                    points
                   </div>
                 </div>
                 
@@ -622,7 +612,7 @@ const LandingLeaderboard = () => {
         <div className="mt-4 pt-4 block sm:hidden border-t border-white/20">
           <Link 
             to="/leaderboard"
-            className={`group w-full bg-gradient-to-r backdrop-blur-sm border border-white/30 rounded-xl py-3 px-4 transition-all duration-300 relative overflow-hidden block cursor-pointer ${
+            className={`group w-full bg-gradient-to-r backdrop-blur-sm border border-white/30 rounded-xl py-3 px-4 transition-all duration-300 relative overflow-hidden block ${
               activeItem === 'mobile-button' 
                 ? 'from-purple-500/70 to-indigo-500/70 scale-[1.02]' 
                 : 'from-purple-600/50 to-violet-800/50 hover:from-purple-500/70 hover:to-indigo-500/70 hover:scale-[1.02]'

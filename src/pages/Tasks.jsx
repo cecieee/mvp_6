@@ -11,28 +11,25 @@ export default function Tasks() {
   const today = new Date();
 
   const tasks = [
-    
+    /*
     // Completed Tasks (past due dates)
     {
       title: "Setup Development ppppppppppppppp Environment",
       status: "Completed",
       desc: "Install and configure development tools, IDE, and project dependencies.",
       due: "2025-01-05",
-  
     },
     {
       title: "Database Schema Design",
       status: "Completed",
       desc: "Design and implement the database structure for user management.",
       due: "2025-01-08",
-
     },
     {
       title: "User Authentication System",
       status: "Completed",
       desc: "Implement user login, registration, and session management.",
       due: "2025-01-12",
-      
     },
 
     // Active Tasks
@@ -55,7 +52,6 @@ export default function Tasks() {
       status: "Active",
       desc: "Implement user profile editing and settings functionality.",
       due: "2025-01-25",
-      submissionLink: "https://forms.google.com/dashboard-task"
     },
 
     // Upcoming Tasks (future due dates)
@@ -75,20 +71,20 @@ export default function Tasks() {
       title: "Security Implementation",
       status: "Upcoming",
       desc: "Implement security measures and vulnerability assessments.",
-      due: "2025-02-10",  
+      due: "2025-02-10",
     },
     {
       title: "Documentation",
       status: "Upcoming",
       desc: "Create comprehensive project documentation and user guides.",
-      due: "2025-02-15", 
+      due: "2025-02-15",
     },
     {
       title: "Deployment Setup",
       status: "Upcoming",
       desc: "Configure production environment and deployment pipelines.",
       due: "2025-02-20",
-    },
+    },*/
   ];
 
   const activeTasks = tasks.filter((task) => task.status === "Active");
@@ -122,9 +118,9 @@ export default function Tasks() {
       {/* Header */}
       <div className="text-center pt-16 pb-8 px-4">
         <h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold mb-6"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl mb-6"
           style={{
-            fontFamily: "Frontline, sans-serif",
+            fontFamily: "Hypik, sans-serif",
             background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
@@ -134,7 +130,7 @@ export default function Tasks() {
         >
           TASKS
         </h1>
-        <div className="w-24 h-1 bg-gradient-to-r from-[#7152DE] to-[#4B3791] mx-auto rounded-full mb-8"></div>
+        <div className="w-24 h-1 bg-gradient-to-r from-[#7152DE] to-[#4B3791] mx-auto rounded-full"></div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -237,7 +233,7 @@ export default function Tasks() {
               <h2
                 className="text-3xl font-bold mb-4 text-center"
                 style={{
-                  fontFamily: "Frontline, sans-serif",
+                  fontFamily: "JerseyM54, sans-serif",
                   background: "linear-gradient(90deg, #1C1538 0%, #7152DE 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
