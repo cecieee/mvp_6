@@ -176,7 +176,7 @@ export default function Footer() {
         <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex justify-center items-center">
             <div className="flex flex-col sm:flex-row items-center gap-1 text-xs sm:text-sm text-gray-400 text-center">
-              <span>© 2025 IEEE SB CEC Web Team.</span>
+              <span>© 2025 IEEE SB CEC.</span>
               <div className="flex items-center gap-1">
                 <span>Made with</span>
                 <FiHeart className="w-3 h-3 sm:w-4 sm:h-4 text-red-400 animate-pulse" />
