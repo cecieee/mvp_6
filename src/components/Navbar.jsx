@@ -72,36 +72,7 @@ const MainNavbar = () => {
   };
 
   const handleRegistrationClick = () => {
-    toast(
-      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <FiClock size={20} />
-        <span>Registration will open soon!</span>
-      </div>,
-      {
-        position: "bottom-center",
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        className: "custom-toast",
-        style: {
-          background: "linear-gradient(135deg, #7152DE 0%, #4B3791 100%)",
-          color: "white",
-          borderRadius: "12px",
-          fontSize: window.innerWidth < 640 ? "14px" : "16px",
-          fontFamily: "Inter, system-ui, sans-serif",
-          fontWeight: "500",
-          boxShadow: "0 10px 30px rgba(113, 82, 222, 0.3)",
-          border: "none",
-          margin: window.innerWidth < 640 ? "0 16px" : "0 24px",
-          maxWidth: window.innerWidth < 640 ? "calc(100vw - 32px)" : "400px",
-          width: "100%",
-        },
-        progressClassName: "white-progress",
-        icon: false,
-      }
-    );
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLSf549241Gms3-iFXjXBV1mNrCrJ3QfgMvmVExA5geEQA_Z4WQ/viewform?usp=header', '_blank');
   };
 
   const handleLeaderboardLocked = () => {
