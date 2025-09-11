@@ -13,79 +13,21 @@ export default function Tasks() {
 
   const tasks = [
     
-    // Completed Tasks (past due dates)
-    // {
-    //   title: "Setup Development Environment",
-    //   status: "Completed",
-    //   desc: "Install and configure development tools, IDE, and project dependencies.",
-    //   due: "2025-01-05",
-    // },
-    // {
-    //   title: "Database Schema Design",
-    //   status: "Completed",
-    //   desc: "Design and implement the database structure for user management.",
-    //   due: "2025-01-08",
-    // },
-    // {
-    //   title: "User Authentication System",
-    //   status: "Completed",
-    //   desc: "Implement user login, registration, and session management.",
-    //   due: "2025-01-12",
-    // },
-
-    // // Active Tasks
-    // {
-    //   title: "Frontend Dashboard Design",
-    //   status: "Active",
-    //   desc: "Create responsive dashboard UI with modern design principles.",
-    //   due: "2025-01-20",
-    //   submissionLink: "https://forms.google.com/dashboard-task"
-    // },
-    // {
-    //   title: "API Integration",
-    //   status: "Active",
-    //   desc: "Connect frontend with backend APIs and handle data flow.",
-    //   due: "2025-01-22",
-    //   submissionLink: "https://forms.google.com/api-task"
-    // },
-    // {
-    //   title: "User Profile Management",
-    //   status: "Active",
-    //   desc: "Implement user profile editing and settings functionality.",
-    //   due: "2025-01-25",
-    // },
-
-    // // Upcoming Tasks (future due dates)
-    // {
-    //   title: "Performance Optimization",
-    //   status: "Upcoming",
-    //   desc: "Optimize application performance and reduce loading times.",
-    //   due: "2025-02-01",
-    // },
-    // {
-    //   title: "Testing & QA",
-    //   status: "Upcoming",
-    //   desc: "Conduct comprehensive testing and quality assurance.",
-    //   due: "2025-02-05",
-    // },
-    // {
-    //   title: "Security Implementation",
-    //   status: "Upcoming",
-    //   desc: "Implement security measures and vulnerability assessments.",
-    //   due: "2025-02-10",
-    // },
-    // {
-    //   title: "Documentation",
-    //   status: "Upcoming",
-    //   desc: "Create comprehensive project documentation and user guides.",
-    //   due: "2025-02-15",
-    // },
-    // {
-    //   title: "Deployment Setup",
-    //   status: "Upcoming",
-    //   desc: "Configure production environment and deployment pipelines.",
-    //   due: "2025-02-20",
-    // },
+    // ACTIVE TASKS
+    {
+      title: "Task Name",
+      status: "Active",
+      desc: "Task Description",
+      due: "2025-01-20", //Due Date || YYYY-MM-DD
+      submissionLink: "https://forms.google.com/"
+    },
+    // COMPLETED TASKS
+    {
+      title: "Task Name",
+      status: "Completed",
+      desc: "Task Description",
+      due: "2025-01-05", //Completion Date || YYYY-MM-DD
+    },
   ];
 
   const activeTasks = tasks.filter((task) => task.status === "Active");
@@ -346,13 +288,6 @@ export default function Tasks() {
                   </div>
                 </div>
               )}
-
-              {/* Upcoming Tasks Hidden */}
-              {/* 
-          {upcomingTasks.length > 0 && (
-            <div>...render upcoming tasks...</div>
-          )} 
-          */}
             </>
           )}
         </div>
