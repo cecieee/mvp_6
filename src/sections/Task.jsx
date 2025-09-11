@@ -1,40 +1,16 @@
 import React from "react";
-import { toast } from "react-toastify";
-import { FiClock } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+import { FiArrowRight } from "react-icons/fi";
 import GridBackground from "../components/GridBackground.jsx";
 
 export default function Task() {
-  const handleTasksComingSoon = () => {
-    toast(
-      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <FiClock size={20} />
-        <span>Tasks will be available soon!</span>
-      </div>,
-      {
-        position: "bottom-center",
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        className: "custom-toast",
-        style: {
-          background: "linear-gradient(135deg, #7152DE 0%, #4B3791 100%)",
-          color: "white",
-          borderRadius: "12px",
-          fontSize: window.innerWidth < 640 ? "14px" : "16px",
-          fontFamily: "Inter, system-ui, sans-serif",
-          fontWeight: "500",
-          boxShadow: "0 10px 30px rgba(113, 82, 222, 0.3)",
-          border: "none",
-          margin: window.innerWidth < 640 ? "0 16px" : "0 24px",
-          maxWidth: window.innerWidth < 640 ? "calc(100vw - 32px)" : "400px",
-          width: "100%",
-        },
-        progressClassName: "white-progress",
-        icon: false,
-      }
-    );
+  const navigate = useNavigate();
+
+  const handleViewTasks = () => {
+    navigate('/tasks', { replace: true, state: { scrollToTop: true } });
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }, 0);
   };
 
   return (
@@ -57,15 +33,15 @@ export default function Task() {
           className="text-xl md:text-2xl mb-8 text-[#4B3791] font-semibold"
           style={{ fontFamily: "JerseyM54, sans-serif" }}
         >
-          Tasks will be available soon - Stay tuned!
+          Discover exciting challenges and showcase your skills!
         </p>
 
         <button
-          onClick={handleTasksComingSoon}
+          onClick={handleViewTasks}
           className="group px-8 py-3 font-semibold rounded-full border-2 border-[#7152DE] text-[#7152DE] bg-white shadow-md hover:bg-[#7152DE] hover:text-white transition-all duration-300 flex items-center gap-3 mx-auto cursor-pointer"
         >
-          <span className="relative z-10">Coming Soon</span>
-          <FiClock className="w-5 h-5 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" />
+          <span className="relative z-10">View Tasks</span>
+          <FiArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
         </button>
       </div>
     </section>
