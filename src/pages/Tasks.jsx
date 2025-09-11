@@ -12,22 +12,17 @@ export default function Tasks() {
   const today = new Date();
 
   const tasks = [
-    
     // ACTIVE TASKS
     {
-      title: "Task Name",
+      title: "Follow IEEE SB CEC on Social Media",
       status: "Active",
-      desc: "Task Description",
-      due: "2025-01-20", //Due Date || YYYY-MM-DD
-      submissionLink: "https://forms.google.com/"
+      desc: "Stay updated with all the latest events, opportunities, and initiatives from IEEE SB CEC by following us on our official social media pages. Once you have followed, upload the screenshots as proof of completion through the given Submission Link. ",
+      due: "12 September 2025, 12.00 PM", //Due Date || YYYY-MM-DD
+      points:10,
+      submissionLink:
+        "https://docs.google.com/forms/d/e/1FAIpQLSe8DzjIhEHMrO9d2BV-FJ1ODAI6vw-QXsvlpwuYAeSCb2EHeg/viewform?usp=dialog",
     },
-    // COMPLETED TASKS
-    {
-      title: "Task Name",
-      status: "Completed",
-      desc: "Task Description",
-      due: "2025-01-05", //Completion Date || YYYY-MM-DD
-    },
+
   ];
 
   const activeTasks = tasks.filter((task) => task.status === "Active");
@@ -71,8 +66,7 @@ export default function Tasks() {
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
             letterSpacing: "2px",
-          }}
-        >
+          }}>
           TASKS
         </h1>
         <div className="w-24 h-1 bg-gradient-to-r from-[#7152DE] to-[#4B3791] mx-auto rounded-full"></div>
@@ -90,8 +84,7 @@ export default function Tasks() {
               <div className="w-28 h-28 relative mb-3">
                 <svg
                   className="absolute top-0 left-0 w-full h-full"
-                  viewBox="0 0 100 100"
-                >
+                  viewBox="0 0 100 100">
                   <circle
                     cx="50"
                     cy="50"
@@ -184,8 +177,7 @@ export default function Tasks() {
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
-                }}
-              >
+                }}>
                 No Tasks Available
               </h2>
               <p className="text-gray-600 text-center max-w-md mb-8 leading-relaxed">
@@ -218,13 +210,11 @@ export default function Tasks() {
                         key={index}
                         className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${
                           borderShadowStyles[task.status]
-                        } flex flex-col`}
-                      >
+                        } flex flex-col`}>
                         <span
                           className={`px-3 py-1 text-xs font-medium rounded-full self-start ${
                             statusStyles[task.status]
-                          }`}
-                        >
+                          }`}>
                           {task.status}
                         </span>
                         <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">
@@ -232,6 +222,9 @@ export default function Tasks() {
                         </h3>
                         <p className="text-gray-600 text-sm mb-4 flex-grow">
                           {task.desc}
+                        </p>
+                        <p className="text-gray-700 text-md mb-4 flex-grow">
+                          Points: {task.points} 
                         </p>
                         <div className="text-xs text-gray-500 mb-4">
                           Due: {task.due}
@@ -242,8 +235,7 @@ export default function Tasks() {
                           onClick={() =>
                             window.open(task.submissionLink || "#", "_blank")
                           }
-                          className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg cursor-pointer"
-                        >
+                          className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg cursor-pointer">
                           <FaClipboardList className="w-4 h-4" />
                           Submit Task
                         </button>
@@ -265,13 +257,11 @@ export default function Tasks() {
                         key={index}
                         className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${
                           borderShadowStyles[task.status]
-                        } opacity-90`}
-                      >
+                        } opacity-90`}>
                         <span
                           className={`px-3 py-1 text-xs font-medium rounded-full ${
                             statusStyles[task.status]
-                          }`}
-                        >
+                          }`}>
                           ✓ {task.status}
                         </span>
                         <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">

@@ -7,9 +7,9 @@ export default function Task() {
   const navigate = useNavigate();
 
   const handleViewTasks = () => {
-    navigate('/tasks', { replace: true, state: { scrollToTop: true } });
+    navigate("/tasks");
     setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      window.scrollTo({ top: 0, behavior: "instant" });
     }, 0);
   };
 
@@ -25,21 +25,18 @@ export default function Task() {
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
-          }}
-        >
+          }}>
           EXPLORE TASKS
         </h2>
         <p
           className="text-xl md:text-2xl mb-8 text-[#4B3791] font-semibold"
-          style={{ fontFamily: "JerseyM54, sans-serif" }}
-        >
+          style={{ fontFamily: "JerseyM54, sans-serif" }}>
           Discover exciting challenges and showcase your skills!
         </p>
 
         <button
           onClick={handleViewTasks}
-          className="group px-8 py-3 font-semibold rounded-full border-2 border-[#7152DE] text-[#7152DE] bg-white shadow-md hover:bg-[#7152DE] hover:text-white transition-all duration-300 flex items-center gap-3 mx-auto cursor-pointer"
-        >
+          className="group px-8 py-3 font-semibold rounded-full border-2 border-[#7152DE] text-[#7152DE] bg-white shadow-md hover:bg-[#7152DE] hover:text-white transition-all duration-300 flex items-center gap-3 mx-auto cursor-pointer">
           <span className="relative z-10">View Tasks</span>
           <FiArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
         </button>
