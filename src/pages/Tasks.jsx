@@ -15,12 +15,21 @@ export default function Tasks() {
     // ACTIVE TASKS
     {
       title: "Follow IEEE SB CEC on Social Media",
-      status: "Active",
+      status: "Completed",
       desc: "Stay updated with all the latest events, opportunities, and initiatives from IEEE SB CEC by following us on our official social media pages. Once you have followed, upload the screenshots as proof of completion through the given Submission Link. ",
       due: "12 September 2025, 12.00 PM", //Due Date || YYYY-MM-DD
       points:10,
       submissionLink:
         "https://docs.google.com/forms/d/e/1FAIpQLSe8DzjIhEHMrO9d2BV-FJ1ODAI6vw-QXsvlpwuYAeSCb2EHeg/viewform?usp=dialog",
+    },
+    {
+      title: "Create a LinkedIn Account & Share Your Profile",
+      status: "Active",
+      desc: "LinkedIn is the most effective and fastest professional networking platform that offers new opportunities every day. It connects people with their professional designations and helps in building essential relationships. Having a LinkedIn profile serves as a guide to quickly find a job and establish valuable professional connections.Your task is to create a LinkedIn account, set up your profile and share it as proof of completion.",
+      due: "14 September 2025, 12.00 PM", //Due Date || YYYY-MM-DD
+      points:15,
+      submissionLink:
+        "https://docs.google.com/forms/d/e/1FAIpQLSf-PANukYcEawQpAhRGPLqMOqo-gIT_vPvuQ9nDF1lkuQT2Ww/viewform?usp=dialog",
     },
 
   ];
@@ -39,7 +48,7 @@ export default function Tasks() {
 
   const statusStyles = {
     Active: "bg-blue-100 text-blue-800",
-    Completed: "bg-green-100 text-green-800",
+    Completed: "bg-red-100 text-red-800",
     Upcoming: "bg-orange-100 text-orange-800",
   };
 
@@ -47,7 +56,7 @@ export default function Tasks() {
     Active:
       "border-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.3)] hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]",
     Completed:
-      "border-green-500 shadow-[0_0_12px_rgba(34,197,94,0.3)] hover:shadow-[0_0_20px_rgba(34,197,94,0.5)]",
+      "border-red-600 shadow-[0_0_12px_rgba(239,68,68,0.3)] hover:shadow-red-00 hover:shadow-[0_0_20px_rgba(239,68,68,0.5)]",
     Upcoming:
       "border-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.3)] hover:shadow-[0_0_20px_rgba(249,115,22,0.5)]",
   };
@@ -76,7 +85,7 @@ export default function Tasks() {
         {/* Sidebar */}
         <div className="col-span-1 space-y-6">
           {/* Progress */}
-          <div className="bg-indigo-50 rounded-xl p-6 shadow-sm border border-indigo-200">
+          {/* <div className="bg-indigo-50 rounded-xl p-6 shadow-sm border border-indigo-200">
             <h2 className="text-lg font-semibold mb-4 text-indigo-700">
               Overall Progress
             </h2>
@@ -115,7 +124,7 @@ export default function Tasks() {
                 Completed: {completedTasks.length} / {totalTasks || 0}
               </p>
             </div>
-          </div>
+          </div> */}
 
           {/* Task Overview */}
           <div className="bg-purple-50 rounded-xl p-6 shadow-sm border border-purple-200">
@@ -135,17 +144,17 @@ export default function Tasks() {
                 </div>
               </li>
               <li className="flex items-center gap-3 text-gray-700">
-                <div className="p-2 bg-green-100 rounded-lg">
-                  <FaCheckCircle className="text-green-600" />
+                <div className="p-2 bg-red-100 rounded-lg">
+                  <FaCheckCircle className="text-red-600" />
                 </div>
                 <div>
-                  <p className="font-medium text-green-700">Completed</p>
+                  <p className="font-medium text-red-700">Expired</p>
                   <p className="text-sm text-gray-500">
                     {completedTasks.length} tasks
                   </p>
                 </div>
               </li>
-              <li className="flex items-center gap-3 text-gray-700">
+              {/* <li className="flex items-center gap-3 text-gray-700">
                 <div className="p-2 bg-orange-100 rounded-lg">
                   <FaClock className="text-orange-600" />
                 </div>
@@ -155,7 +164,7 @@ export default function Tasks() {
                     {upcomingTasks.length} tasks
                   </p>
                 </div>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
@@ -249,7 +258,7 @@ export default function Tasks() {
               {completedTasks.length > 0 && (
                 <div>
                   <h2 className="text-xl font-bold mb-4 text-gray-800">
-                    Completed Tasks
+                    Expired Tasks
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                     {completedTasks.map((task, index) => (
@@ -262,7 +271,7 @@ export default function Tasks() {
                           className={`px-3 py-1 text-xs font-medium rounded-full ${
                             statusStyles[task.status]
                           }`}>
-                          ✓ {task.status}
+                          ✓ Expired
                         </span>
                         <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">
                           {task.title}
