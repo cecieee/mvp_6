@@ -6,6 +6,5 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   // Base path for GitHub Pages (repository name). Adjust/remove if using custom domain root later.
-  base: "/mvp_6/",
 });
 

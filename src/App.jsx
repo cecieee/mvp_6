@@ -86,7 +86,7 @@ function App() {
   }
 
   return (
-    <Router basename="/mvp_6">
+    <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
