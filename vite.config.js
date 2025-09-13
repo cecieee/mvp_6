@@ -8,3 +8,4 @@ export default defineConfig({
   // Base path for GitHub Pages (repository name). Adjust/remove if using custom domain root later.
   base: "/mvp_6/",
 });
+
