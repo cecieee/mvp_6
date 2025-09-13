@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import PixelBlast from "../components/PixelBlast.jsx"
 import GridBackground from "../components/GridBackground.jsx"
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+  const navigate = useNavigate();
   const [smoothMousePosition, setSmoothMousePosition] = useState({ x: 0, y: 0 });
   const mousePositionRef = useRef({ x: 0, y: 0 });
   const [pixelBlastLoaded, setPixelBlastLoaded] = useState(false);
@@ -93,8 +95,8 @@ export default function Hero() {
     }
   };
 
-  const handleRegistrationClick = () => {
-    window.open('https://docs.google.com/forms/d/e/1FAIpQLSf549241Gms3-iFXjXBV1mNrCrJ3QfgMvmVExA5geEQA_Z4WQ/viewform?usp=header', '_blank');
+  const handleViewTasksClick = () => {
+    navigate('/tasks');
   };
 
   useEffect(() => {
@@ -189,10 +191,10 @@ export default function Hero() {
             style={{ animation: "fadeInUp 1.2s ease-out 0.6s both" }}
           >
             <button 
-              onClick={handleRegistrationClick}
+              onClick={handleViewTasksClick}
               className="group px-6 sm:px-8 py-3 font-semibold rounded-full border-2 border-[#7152DE] text-[#7152DE] bg-white shadow-md hover:bg-[#7152DE] hover:text-white transition-all duration-300 flex items-center gap-3 relative overflow-hidden cursor-pointer"
             >
-              <span className="relative z-10">Register Now</span>
+              <span className="relative z-10">View Tasks</span>
               <svg
                 className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110"
                 fill="none"
