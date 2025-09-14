@@ -14,6 +14,15 @@ export default function Tasks() {
   const tasks = [
     // ACTIVE TASKS
     {
+      title: "Download IEEE Application & Membership Card",
+      status: "Active",
+      desc: "Install IEEE mobile application from Play Store or App Store and upload a screenshot as proof of completion.Download your IEEE Membership Card and submit it as a PDF file.",
+      due: "15 September 2025, 12.00 PM", //Due Date || YYYY-MM-DD
+      points:10,
+      submissionLink:
+        "https://docs.google.com/forms/d/e/1FAIpQLSdOtZ4xAzO97a4aA6JYqADFYEELsdgvK0SpbUdSws8PTBud9g/viewform?usp=dialog",
+    },
+    {
       title: "Follow IEEE SB CEC on Social Media",
       status: "Completed",
       desc: "Stay updated with all the latest events, opportunities, and initiatives from IEEE SB CEC by following us on our official social media pages. Once you have followed, upload the screenshots as proof of completion through the given Submission Link. ",
@@ -24,7 +33,7 @@ export default function Tasks() {
     },
     {
       title: "Create a LinkedIn Account & Share Your Profile",
-      status: "Active",
+      status: "Completed",
       desc: "LinkedIn is the most effective and fastest professional networking platform that offers new opportunities every day. It connects people with their professional designations and helps in building essential relationships. Having a LinkedIn profile serves as a guide to quickly find a job and establish valuable professional connections.Your task is to create a LinkedIn account, set up your profile and share it as proof of completion.",
       due: "14 September 2025, 12.00 PM", //Due Date || YYYY-MM-DD
       points:15,
