@@ -22,24 +22,7 @@ export default function Tasks() {
       submissionLink:
         "https://docs.google.com/forms/d/e/1FAIpQLSdOtZ4xAzO97a4aA6JYqADFYEELsdgvK0SpbUdSws8PTBud9g/viewform?usp=dialog",
     },
-    {
-      title: "Follow IEEE SB CEC on Social Media",
-      status: "Completed",
-      desc: "Stay updated with all the latest events, opportunities, and initiatives from IEEE SB CEC by following us on our official social media pages. Once you have followed, upload the screenshots as proof of completion through the given Submission Link. ",
-      due: "12 September 2025, 12.00 PM", //Due Date || YYYY-MM-DD
-      points:10,
-      submissionLink:
-        "https://docs.google.com/forms/d/e/1FAIpQLSe8DzjIhEHMrO9d2BV-FJ1ODAI6vw-QXsvlpwuYAeSCb2EHeg/viewform?usp=dialog",
-    },
-    {
-      title: "Create a LinkedIn Account & Share Your Profile",
-      status: "Completed",
-      desc: "LinkedIn is the most effective and fastest professional networking platform that offers new opportunities every day. It connects people with their professional designations and helps in building essential relationships. Having a LinkedIn profile serves as a guide to quickly find a job and establish valuable professional connections.Your task is to create a LinkedIn account, set up your profile and share it as proof of completion.",
-      due: "14 September 2025, 12.00 PM", //Due Date || YYYY-MM-DD
-      points:15,
-      submissionLink:
-        "https://docs.google.com/forms/d/e/1FAIpQLSf-PANukYcEawQpAhRGPLqMOqo-gIT_vPvuQ9nDF1lkuQT2Ww/viewform?usp=dialog",
-    },
+   
 
   ];
 
