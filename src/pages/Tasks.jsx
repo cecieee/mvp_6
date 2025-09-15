@@ -14,11 +14,20 @@ export default function Tasks() {
   const tasks = [
     // ACTIVE TASKS
     {
-      title: "Download IEEE Application & Membership Card",
+      title: "Make 6 Connections in IEEE Collabratec",
       status: "Active",
+      desc: "IEEE Collabratec is an integrated online platform where technology professionals can network, collaborate and share resources. It provides opportunities to connect with peers, discover research and expand your professional circle within IEEE.Your task is to log in to IEEE Collabratec and build at least 6 new professional connections. Upload a screenshot showing your profile with 6+ connections as proof of completion.",
+      due: "17 September 2025, 12.00 PM", //Due Date || YYYY-MM-DD
+      points: 20,
+      submissionLink:
+        "https://docs.google.com/forms/d/e/1FAIpQLSfYcSlA3XEKOwmo8GhM2Abv3FAKhfSEW9Tfib6wWjRQ4GNvZQ/viewform?usp=dialog",
+    },
+    {
+      title: "Download IEEE Application & Membership Card",
+      status: "Completed",
       desc: "Install IEEE mobile application from Play Store or App Store and upload a screenshot as proof of completion.Download your IEEE Membership Card and submit it as a PDF file.",
       due: "15 September 2025, 12.00 PM", //Due Date || YYYY-MM-DD
-      points:10,
+      points: 10,
       submissionLink:
         "https://docs.google.com/forms/d/e/1FAIpQLSdOtZ4xAzO97a4aA6JYqADFYEELsdgvK0SpbUdSws8PTBud9g/viewform?usp=dialog",
     },
@@ -27,7 +36,7 @@ export default function Tasks() {
       status: "Completed",
       desc: "Stay updated with all the latest events, opportunities, and initiatives from IEEE SB CEC by following us on our official social media pages. Once you have followed, upload the screenshots as proof of completion through the given Submission Link. ",
       due: "12 September 2025, 12.00 PM", //Due Date || YYYY-MM-DD
-      points:10,
+      points: 10,
       submissionLink:
         "https://docs.google.com/forms/d/e/1FAIpQLSe8DzjIhEHMrO9d2BV-FJ1ODAI6vw-QXsvlpwuYAeSCb2EHeg/viewform?usp=dialog",
     },
@@ -36,11 +45,10 @@ export default function Tasks() {
       status: "Completed",
       desc: "LinkedIn is the most effective and fastest professional networking platform that offers new opportunities every day. It connects people with their professional designations and helps in building essential relationships. Having a LinkedIn profile serves as a guide to quickly find a job and establish valuable professional connections.Your task is to create a LinkedIn account, set up your profile and share it as proof of completion.",
       due: "14 September 2025, 12.00 PM", //Due Date || YYYY-MM-DD
-      points:15,
+      points: 15,
       submissionLink:
         "https://docs.google.com/forms/d/e/1FAIpQLSf-PANukYcEawQpAhRGPLqMOqo-gIT_vPvuQ9nDF1lkuQT2Ww/viewform?usp=dialog",
     },
-
   ];
 
   const activeTasks = tasks.filter((task) => task.status === "Active");
@@ -242,7 +250,7 @@ export default function Tasks() {
                           {task.desc}
                         </p>
                         <p className="text-gray-700 text-md mb-4 flex-grow">
-                          Points: {task.points} 
+                          Points: {task.points}
                         </p>
                         <div className="text-xs text-gray-500 mb-4">
                           Due: {task.due}
