@@ -14,8 +14,17 @@ export default function Tasks() {
   const tasks = [
     // ACTIVE TASKS
     {
-      title: "Make 6 Connections in IEEE Collabratec",
+      title: "Podcast Based on an IEEE Research Pape",
       status: "Active",
+      desc: "Prepare a podcast based on an IEEE research paper of your choice. The podcast should explain the core concepts, objectives, methodology and key findings of the paper in a simple and engaging way. Ensure that the content is well-structured, easy to follow and suitable for a general audience with basic technical understanding.",
+      due: "20 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
+      points: 15,
+      submissionLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLSd6VM6J7iPArv-VqnKcuBAR4Z5JmqtqCg_t7AS81K1uUnQRxA/viewform?usp=dialog"
+    },
+    {
+      title: "Make 6 Connections in IEEE Collabratec",
+      status: "Completed",
       desc: "IEEE Collabratec is an integrated online platform where technology professionals can network, collaborate and share resources. It provides opportunities to connect with peers, discover research and expand your professional circle within IEEE.Your task is to log in to IEEE Collabratec and build at least 6 new professional connections. Upload a screenshot showing your profile with 6+ connections as proof of completion.",
       due: "17 September 2025, 12.00 PM", //Due Date || YYYY-MM-DD
       points: 20,
