@@ -16,7 +16,7 @@ export default function Tasks() {
     {
       title: "Podcast Based on an IEEE Research Paper",
       status: "Active",
-      desc: "Prepare a podcast based on an IEEE research paper of your choice. The podcast should explain the core concepts, objectives, methodology and key findings of the paper in a simple and engaging way. Ensure that the content is well-structured, easy to follow and suitable for a general audience with basic technical understanding.",
+      desc: "Prepare a podcast based on an IEEE research paper of your choice. The podcast should explain the core concepts, objectives, methodology and key findings of the paper in a simple and engaging way. Ensure that the content is well-structured, easy to follow and suitable for a general audience with basic technical understanding. Upload your audio file or written podcast script through the provided Google Form link.",
       due: "20 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
       points: 15,
       submissionLink:
