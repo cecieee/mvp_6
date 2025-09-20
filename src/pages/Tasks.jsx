@@ -14,8 +14,21 @@ export default function Tasks() {
   const tasks = [
     // ACTIVE TASKS
     {
-      title: "Podcast Based on an IEEE Research Pape",
+      title: "Membership drive poster",
       status: "Active",
+      desc: "Design a poster to announce the upcoming Membership drive. A membership drive is an initiative to encourage students to join IEEE and learn about its benefits. It usually runs for 1-2 weeks, with a 1-hour session every day.
+
+Include all kind of details like Date, time and venue etc. You are free to use any design platform of your interest.
+
+Submission: Upload the poster through the provided Gform Link",
+      due: "23 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
+      points: 15,
+      submissionLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLSe6olQZVOYE4wGDUJ-4t9uf6MlK_WV0GsbMZ1biBG4Iz_ixZA/viewform?usp=sharing&ouid=107494690283106164237"
+    },
+    {
+      title: "Podcast Based on an IEEE Research Pape",
+      status: "Completed",
       desc: "Prepare a podcast based on an IEEE research paper of your choice. The podcast should explain the core concepts, objectives, methodology and key findings of the paper in a simple and engaging way. Ensure that the content is well-structured, easy to follow and suitable for a general audience with basic technical understanding.",
       due: "20 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
       points: 15,
