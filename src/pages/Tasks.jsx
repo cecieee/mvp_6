@@ -16,7 +16,7 @@ export default function Tasks() {
     {
       title: "Bucket List",
       status: "Active",
-      desc: "When you become a IEEE member ,it’s about making the most of the opportunities it provides. A bucket list for joining IEEE is a personal roadmap that helps you set goals and track achievements during your membership.Prepare a report on the roadmap and vision. Submission : Upload your report through the provided Google Form Link.",
+      desc: "**Your Vision and goal**\n\nWhen you become a IEEE member ,it's about making the most of the opportunities it provides. A bucket list for joining IEEE is a personal roadmap that helps you set goals and track achievements during your membership.Prepare a report on the roadmap and vision.\n\nSubmission : Upload your report through the provided Google Form Link.",
       due: "26 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
       points: 10,
       submissionLink:
@@ -274,7 +274,16 @@ export default function Tasks() {
                           {task.title}
                         </h3>
                         <p className="text-gray-600 text-sm mb-4 flex-grow">
-                          {task.desc}
+                          {task.desc.split('\n').map((line, i) => (
+                            <span key={i}>
+                              {line.startsWith('**') && line.endsWith('**') ? (
+                                <strong>{line.slice(2, -2)}</strong>
+                              ) : (
+                                line
+                              )}
+                              {i < task.desc.split('\n').length - 1 && <br />}
+                            </span>
+                          ))}
                         </p>
                         <p className="text-gray-700 text-md mb-4 flex-grow">
                           Points: {task.points}
@@ -321,7 +330,16 @@ export default function Tasks() {
                           {task.title}
                         </h3>
                         <p className="text-gray-600 text-sm mb-4">
-                          {task.desc}
+                          {task.desc.split('\n').map((line, i) => (
+                            <span key={i}>
+                              {line.startsWith('**') && line.endsWith('**') ? (
+                                <strong>{line.slice(2, -2)}</strong>
+                              ) : (
+                                line
+                              )}
+                              {i < task.desc.split('\n').length - 1 && <br />}
+                            </span>
+                          ))}
                         </p>
                         <div className="text-xs text-gray-500">
                           Completed: {task.due}
