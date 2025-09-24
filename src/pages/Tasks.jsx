@@ -14,8 +14,17 @@ export default function Tasks() {
   const tasks = [
     // ACTIVE TASK
     {
-      title: "Membership drive poster",
+      title: "Your Vision and goal",
       status: "Active",
+      desc: "When you become a IEEE member ,it’s about making the most of the opportunities it provides. A bucket list for joining IEEE is a personal roadmap that helps you set goals and track achievements during your membership.Prepare a report on the roadmap and vision. Submission : Upload your report through the provided Google Form Link.",
+      due: "26 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
+      points: 10,
+      submissionLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLSfColLERulfHsnIduFuh87lFHPBmhqWPdUi8YO1vBJyqcHoLA/viewform?usp=dialog"
+    },
+    {
+      title: "Membership drive poster",
+      status: "Completed",
       desc: "Design a poster to announce the upcoming Membership drive. A membership drive is an initiative to encourage students to join IEEE and learn about its benefits. It usually runs for 1-2 weeks, with a 1-hour session every day. Include all kind of details like Date, time and venue etc. You are free to use any design platform of your interest. Submission: Upload the poster through the provided Gform Link",
       due: "23 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
       points: 15,
