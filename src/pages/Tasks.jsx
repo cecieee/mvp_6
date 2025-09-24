@@ -14,7 +14,7 @@ export default function Tasks() {
   const tasks = [
     // ACTIVE TASK
     {
-      title: "Your Vision and goal",
+      title: "Bucket List",
       status: "Active",
       desc: "When you become a IEEE member ,it’s about making the most of the opportunities it provides. A bucket list for joining IEEE is a personal roadmap that helps you set goals and track achievements during your membership.Prepare a report on the roadmap and vision. Submission : Upload your report through the provided Google Form Link.",
       due: "26 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
