@@ -14,9 +14,18 @@ export default function Tasks() {
   const tasks = [
     // ACTIVE TASK
     {
-      title: "Bucket List",
+      title: "Dream IEEE position",
       status: "Active",
-      desc: "**Your Vision and goal**\n\nWhen you become a IEEE member ,it's about making the most of the opportunities it provides. A bucket list for joining IEEE is a personal roadmap that helps you set goals and track achievements during your membership.Prepare a report on the roadmap and vision.\n\nSubmission : Upload your report through the provided Google Form Link.",
+      desc: "**Your Aim and Mission**\nLooking at the wide range of opportunities and leadership roles that IEEE offers at the student branch, regional, and even global level, which position do you aspire to achieve in the future, and what motivates you to work toward that role? How do you think holding that position would help you grow personally, contribute to the IEEE community, and make an impact in your field of interest?\n\nSubmission : Upload your document through the provided Google Form Link.",
+      due: "29 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
+      points: 15,
+      submissionLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLSeixtaZOac5cGdCggbfjvsNeAjxjlnkQTb63Ug_1ygmjgciuw/viewform?usp=dialog"
+    },
+    {
+      title: "Bucket List",
+      status: "Completed",
+      desc: "**Your Vision and goal**\nWhen you become a IEEE member ,it's about making the most of the opportunities it provides. A bucket list for joining IEEE is a personal roadmap that helps you set goals and track achievements during your membership.Prepare a report on the roadmap and vision.\n\nSubmission : Upload your report through the provided Google Form Link.",
       due: "26 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
       points: 10,
       submissionLink:
