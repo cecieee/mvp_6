@@ -14,8 +14,17 @@ export default function Tasks() {
   const tasks = [
     // ACTIVE TASK
     {
-      title: "Membership drive poster",
+      title: "Bucket List",
       status: "Active",
+      desc: "**Your Vision and goal**\n\nWhen you become a IEEE member ,it's about making the most of the opportunities it provides. A bucket list for joining IEEE is a personal roadmap that helps you set goals and track achievements during your membership.Prepare a report on the roadmap and vision.\n\nSubmission : Upload your report through the provided Google Form Link.",
+      due: "26 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
+      points: 10,
+      submissionLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLSfColLERulfHsnIduFuh87lFHPBmhqWPdUi8YO1vBJyqcHoLA/viewform?usp=dialog"
+    },
+    {
+      title: "Membership drive poster",
+      status: "Completed",
       desc: "Design a poster to announce the upcoming Membership drive. A membership drive is an initiative to encourage students to join IEEE and learn about its benefits. It usually runs for 1-2 weeks, with a 1-hour session every day. Include all kind of details like Date, time and venue etc. You are free to use any design platform of your interest. Submission: Upload the poster through the provided Gform Link",
       due: "23 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
       points: 15,
@@ -24,7 +33,7 @@ export default function Tasks() {
     },
     {
       title: "Podcast Based on an IEEE Research Paper",
-      status: "Active",
+      status: "Completed",
       desc: "Prepare a podcast based on an IEEE research paper of your choice. The podcast should explain the core concepts, objectives, methodology and key findings of the paper in a simple and engaging way. Ensure that the content is well-structured, easy to follow and suitable for a general audience with basic technical understanding. Upload your audio file or written podcast script through the provided Google Form.",
       due: "20 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
       points: 15,
@@ -265,7 +274,16 @@ export default function Tasks() {
                           {task.title}
                         </h3>
                         <p className="text-gray-600 text-sm mb-4 flex-grow">
-                          {task.desc}
+                          {task.desc.split('\n').map((line, i) => (
+                            <span key={i}>
+                              {line.startsWith('**') && line.endsWith('**') ? (
+                                <strong>{line.slice(2, -2)}</strong>
+                              ) : (
+                                line
+                              )}
+                              {i < task.desc.split('\n').length - 1 && <br />}
+                            </span>
+                          ))}
                         </p>
                         <p className="text-gray-700 text-md mb-4 flex-grow">
                           Points: {task.points}
@@ -312,7 +330,16 @@ export default function Tasks() {
                           {task.title}
                         </h3>
                         <p className="text-gray-600 text-sm mb-4">
-                          {task.desc}
+                          {task.desc.split('\n').map((line, i) => (
+                            <span key={i}>
+                              {line.startsWith('**') && line.endsWith('**') ? (
+                                <strong>{line.slice(2, -2)}</strong>
+                              ) : (
+                                line
+                              )}
+                              {i < task.desc.split('\n').length - 1 && <br />}
+                            </span>
+                          ))}
                         </p>
                         <div className="text-xs text-gray-500">
                           Completed: {task.due}
