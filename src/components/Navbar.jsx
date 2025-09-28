@@ -59,117 +59,31 @@ const MainNavbar = () => {
   }, [isMobileMenuOpen]);
 
   const handleNavigation = (link) => {
+<<<<<<< HEAD
 
     
     if (link === "/tasks") {
       handleTasksComingSoon();
       return;
     }
+=======
+>>>>>>> 4184ba750b67e1a862295d84c4989f67da40e3a3
     navigate(link);
     setIsMobileMenuOpen(false);
   };
 
-  const handleRegistrationClick = () => {
-    toast(
-      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <FiClock size={20} />
-        <span>Registration will open soon!</span>
-      </div>,
-      {
-        position: "bottom-center",
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        className: "custom-toast",
-        style: {
-          background: "linear-gradient(135deg, #7152DE 0%, #4B3791 100%)",
-          color: "white",
-          borderRadius: "12px",
-          fontSize: window.innerWidth < 640 ? "14px" : "16px",
-          fontFamily: "Inter, system-ui, sans-serif",
-          fontWeight: "500",
-          boxShadow: "0 10px 30px rgba(113, 82, 222, 0.3)",
-          border: "none",
-          margin: window.innerWidth < 640 ? "0 16px" : "0 24px",
-          maxWidth: window.innerWidth < 640 ? "calc(100vw - 32px)" : "400px",
-          width: "100%",
-        },
-        progressClassName: "white-progress",
-        icon: false,
-      }
-    );
-  };
-
-  const handleLeaderboardLocked = () => {
-    toast(
-      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <FiClock size={20} />
-        <span>Leaderboard will open after the first task!</span>
-      </div>,
-      {
-        position: "bottom-center",
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        className: "custom-toast",
-        style: {
-          background: "linear-gradient(135deg, #7152DE 0%, #4B3791 100%)",
-          color: "white",
-          borderRadius: "12px",
-          fontSize: window.innerWidth < 640 ? "14px" : "16px",
-          fontFamily: "Inter, system-ui, sans-serif",
-          fontWeight: "500",
-          boxShadow: "0 10px 30px rgba(113, 82, 222, 0.3)",
-          border: "none",
-          margin: window.innerWidth < 640 ? "0 16px" : "0 24px",
-          maxWidth: window.innerWidth < 640 ? "calc(100vw - 32px)" : "400px",
-          width: "100%",
-        },
-        progressClassName: "white-progress",
-        icon: false,
-      }
-    );
-  };
-
-  const handleTasksComingSoon = () => {
-    toast(
-      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <FiClock size={20} />
-        <span>Tasks will be available soon!</span>
-      </div>,
-      {
-        position: "bottom-center",
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        className: "custom-toast",
-        style: {
-          background: "linear-gradient(135deg, #7152DE 0%, #4B3791 100%)",
-          color: "white",
-          borderRadius: "12px",
-          fontSize: window.innerWidth < 640 ? "14px" : "16px",
-          fontFamily: "Inter, system-ui, sans-serif",
-          fontWeight: "500",
-          boxShadow: "0 10px 30px rgba(113, 82, 222, 0.3)",
-          border: "none",
-          margin: window.innerWidth < 640 ? "0 16px" : "0 24px",
-          maxWidth: window.innerWidth < 640 ? "calc(100vw - 32px)" : "400px",
-          width: "100%",
-        },
-        progressClassName: "white-progress",
-        icon: false,
-      }
-    );
+  const handleTasksClick = () => {
+    navigate('/tasks');
+    setIsMobileMenuOpen(false);
   };
 
   return (
     <div className="relative w-full">
+      <style jsx global>{`
+        .custom-toast .Toastify__progress-bar {
+          background: white !important;
+        }
+      `}</style>
       <Navbar>
         {/* Desktop Navigation */}
         <NavBody>
@@ -181,8 +95,8 @@ const MainNavbar = () => {
           />
           <div className="flex items-center gap-4">
             {/* <NavbarButton variant="secondary">Login</NavbarButton> */}
-            <NavbarButton variant="primary" onClick={handleRegistrationClick}>
-              Register Now
+            <NavbarButton variant="primary" onClick={handleTasksClick}>
+              View Tasks
             </NavbarButton>
           </div>
         </NavBody>
@@ -205,22 +119,18 @@ const MainNavbar = () => {
               <button
                 key={`mobile-link-${idx}`}
                 onClick={() => handleNavigation(item.link)}
-                className={`relative text-[#1C1538] text-left w-full ${
-                  (item.link === "/leaderboard" || item.link === "/tasks")
-                    ? "opacity-60"
-                    : ""
-                }`}
+                className="relative text-[#1C1538] text-left w-full"
               >
                 <span className="block">{item.name}</span>
               </button>
             ))}
             <div className="flex w-full flex-col gap-4">
               <NavbarButton
-                onClick={handleRegistrationClick}
+                onClick={handleTasksClick}
                 variant="primary"
                 className="w-full mt-3"
               >
-                Register Now
+                View Tasks
               </NavbarButton>
             </div>
           </MobileNavMenu>

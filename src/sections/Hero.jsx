@@ -1,17 +1,31 @@
 import React, { useEffect, useState, useRef } from "react";
-import { toast } from 'react-toastify';
-import { FiClock } from 'react-icons/fi';
 import PixelBlast from "../components/PixelBlast.jsx"
 import GridBackground from "../components/GridBackground.jsx"
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+  const navigate = useNavigate();
   const [smoothMousePosition, setSmoothMousePosition] = useState({ x: 0, y: 0 });
   const mousePositionRef = useRef({ x: 0, y: 0 });
+  const [pixelBlastLoaded, setPixelBlastLoaded] = useState(false);
+  const [isMobileDevice, setIsMobileDevice] = useState(false);
 
   const [viewport, setViewport] = useState({
     width: typeof window !== "undefined" ? window.innerWidth : 375,
     height: typeof window !== "undefined" ? window.innerHeight : 667,
   });
+
+  // Detect if it's actually a mobile device regardless of viewport
+  useEffect(() => {
+    const checkMobileDevice = () => {
+      const userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : '';
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+      const hasTouch = typeof window !== 'undefined' && 'ontouchstart' in window;
+      setIsMobileDevice(isMobile || hasTouch);
+    };
+    
+    checkMobileDevice();
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -81,38 +95,16 @@ export default function Hero() {
     }
   };
 
-  const handleRegistrationClick = () => {
-    toast(
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-        <FiClock size={20} />
-        <span>Registration will open soon!</span>
-      </div>,
-      {
-        position: "bottom-center",
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        className: "custom-toast",
-        style: {
-          background: "linear-gradient(135deg, #7152DE 0%, #4B3791 100%)",
-          color: "white",
-          borderRadius: "12px",
-          fontSize: window.innerWidth < 640 ? "14px" : "16px",
-          fontFamily: "Inter, system-ui, sans-serif",
-          fontWeight: "500",
-          boxShadow: "0 10px 30px rgba(113, 82, 222, 0.3)",
-          border: "none",
-          margin: window.innerWidth < 640 ? "0 16px" : "0 24px",
-          maxWidth: window.innerWidth < 640 ? "calc(100vw - 32px)" : "400px",
-          width: "100%",
-        },
-        progressClassName: "white-progress",
-        icon: false,
-      }
-    );
+  const handleViewTasksClick = () => {
+    navigate('/tasks');
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPixelBlastLoaded(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section
@@ -125,44 +117,59 @@ export default function Hero() {
       {/* Grid background using component */}
       <GridBackground opacity={0.5} zIndex={0} />
 
-      {/* PixelBlast Background - Mobile First */}
+      {/* Fallback background gradient */}
       <div 
-        className="absolute z-10"
+        className="absolute inset-0 z-5"
         style={{
-          width: '100%',
-          height: '100%',
-          overflow: 'hidden',
-          pointerEvents: 'auto',
-          top: viewport.width >= 1024 ? '3%' : '80px',
-          left: viewport.width >= 1024 ? '-5%' : '0',
-          right: viewport.width >= 1024 ? 'auto' : '0',
-          bottom: viewport.width >= 1024 ? 'auto' : '0',
-          transform: viewport.width >= 1024 ? 'scale(1.1)' : 'none',
-          height: viewport.width >= 1024 ? '90%' : 'calc(100% - 80px)'
+          background: "linear-gradient(135deg, rgba(113, 82, 222, 0.05) 0%, rgba(75, 55, 145, 0.03) 100%)",
+          pointerEvents: "none"
         }}
-      >
-        <PixelBlast
-          variant="circle"
-          pixelSize={viewport.width < 640 ? 3 : viewport.width < 1024 ? 4 : 6}
-          color="#7152DE"
-          patternScale={viewport.width < 640 ? 2 : viewport.width < 1024 ? 2.5 : 3}
-          patternDensity={viewport.width < 640 ? 0.8 : viewport.width < 1024 ? 1.0 : 1.2}
-          pixelSizeJitter={viewport.width < 640 ? 0.3 : 0.5}
-          enableRipples={viewport.width >= 640}
-          rippleSpeed={0.3}
-          rippleThickness={0.1}
-          rippleIntensityScale={viewport.width < 640 ? 1.0 : 1.5}
-          liquid={viewport.width >= 768}
-          liquidStrength={viewport.width < 1024 ? 0.08 : 0.12}
-          liquidRadius={viewport.width < 1024 ? 1.0 : 1.2}
-          liquidWobbleSpeed={viewport.width < 640 ? 3 : 5}
-          speed={viewport.width < 640 ? 0.4 : 0.6}
-          edgeFade={viewport.width < 640 ? 0.4 : 0.25}
-          transparent
-          mousePosition={smoothMousePosition}
-          interactive
-        />
-      </div>
+      />
+
+      {/* PixelBlast Background - with better mobile handling */}
+      {pixelBlastLoaded && (
+        <div 
+          className="absolute z-10"
+          style={{
+            width: '100%',
+            height: '100%',
+            overflow: 'hidden',
+            pointerEvents: 'auto',
+            top: (!isMobileDevice && viewport.width >= 1024) ? '3%' : '80px',
+            left: (!isMobileDevice && viewport.width >= 1024) ? '-5%' : '0',
+            right: (!isMobileDevice && viewport.width >= 1024) ? 'auto' : '0',
+            bottom: (!isMobileDevice && viewport.width >= 1024) ? 'auto' : '0',
+            transform: (!isMobileDevice && viewport.width >= 1024) ? 'scale(1.1)' : 'none',
+            height: (!isMobileDevice && viewport.width >= 1024) ? '90%' : 'calc(100% - 80px)',
+            background: 'transparent'
+          }}
+          onError={() => {
+            console.warn('PixelBlast failed to render');
+          }}
+        >
+          <PixelBlast
+            variant="circle"
+            pixelSize={isMobileDevice ? 2 : (viewport.width < 640 ? 3 : viewport.width < 1024 ? 4 : 6)}
+            color="#7152DE"
+            patternScale={isMobileDevice ? 1.5 : (viewport.width < 640 ? 2 : viewport.width < 1024 ? 2.5 : 3)}
+            patternDensity={isMobileDevice ? 0.6 : (viewport.width < 640 ? 0.8 : viewport.width < 1024 ? 1.0 : 1.2)}
+            pixelSizeJitter={isMobileDevice ? 0.2 : (viewport.width < 640 ? 0.3 : 0.5)}
+            enableRipples={!isMobileDevice && viewport.width >= 640}
+            rippleSpeed={0.3}
+            rippleThickness={0.1}
+            rippleIntensityScale={isMobileDevice ? 0.8 : (viewport.width < 640 ? 1.0 : 1.5)}
+            liquid={!isMobileDevice && viewport.width >= 768}
+            liquidStrength={isMobileDevice ? 0.05 : (viewport.width < 1024 ? 0.08 : 0.12)}
+            liquidRadius={isMobileDevice ? 0.8 : (viewport.width < 1024 ? 1.0 : 1.2)}
+            liquidWobbleSpeed={isMobileDevice ? 2 : (viewport.width < 640 ? 3 : 5)}
+            speed={isMobileDevice ? 0.3 : (viewport.width < 640 ? 0.4 : 0.6)}
+            edgeFade={isMobileDevice ? 0.5 : (viewport.width < 640 ? 0.4 : 0.25)}
+            transparent
+            mousePosition={smoothMousePosition}
+            interactive={!isMobileDevice}
+          />
+        </div>
+      )}
 
       <div className="container mx-auto px-4 sm:px-6 relative z-30">
         <div className="text-center relative">
@@ -184,10 +191,10 @@ export default function Hero() {
             style={{ animation: "fadeInUp 1.2s ease-out 0.6s both" }}
           >
             <button 
-              onClick={handleRegistrationClick}
+              onClick={handleViewTasksClick}
               className="group px-6 sm:px-8 py-3 font-semibold rounded-full border-2 border-[#7152DE] text-[#7152DE] bg-white shadow-md hover:bg-[#7152DE] hover:text-white transition-all duration-300 flex items-center gap-3 relative overflow-hidden cursor-pointer"
             >
-              <span className="relative z-10">Register Now</span>
+              <span className="relative z-10">View Tasks</span>
               <svg
                 className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110"
                 fill="none"
@@ -261,35 +268,11 @@ export default function Hero() {
             opacity: 1;
           }
         }
-        
-        .white-progress {
-          background: white !important;
-        }
-        
-        .custom-toast .Toastify__progress-bar {
-          background: white !important;
-        }
 
-        /* Mobile performance optimizations */
+        /* Ensure no black backgrounds on mobile */
         @media (max-width: 639px) {
-          .custom-toast {
-            margin: 0 12px !important;
-            max-width: calc(100vw - 24px) !important;
-            font-size: 14px !important;
-            padding: 12px 16px !important;
-            border-radius: 10px !important;
-          }
-          
-          .custom-toast div {
-            gap: 6px !important;
-          }
-          
-          .Toastify__toast-container--bottom-center {
-            bottom: 20px !important;
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            width: calc(100% - 24px) !important;
-            max-width: none !important;
+          section {
+            background: #fff !important;
           }
 
           /* Reduce motion for mobile performance */
@@ -302,23 +285,10 @@ export default function Hero() {
           }
         }
 
-        /* Tablet responsive styles */
-        @media (min-width: 640px) and (max-width: 1024px) {
-          .custom-toast {
-            margin: 0 20px !important;
-            max-width: 350px !important;
-            font-size: 15px !important;
-          }
-          
-          .Toastify__toast-container--bottom-center {
-            bottom: 24px !important;
-          }
-        }
-
-        /* Desktop styles */
-        @media (min-width: 1025px) {
-          .Toastify__toast-container--bottom-center {
-            bottom: 32px !important;
+        /* Mobile device detection override */
+        @media (hover: none) and (pointer: coarse) {
+          section {
+            background: #fff !important;
           }
         }
       `}</style>

@@ -12,80 +12,79 @@ export default function Tasks() {
   const today = new Date();
 
   const tasks = [
-    
-    // Completed Tasks (past due dates)
-    // {
-    //   title: "Setup Development Environment",
-    //   status: "Completed",
-    //   desc: "Install and configure development tools, IDE, and project dependencies.",
-    //   due: "2025-01-05",
-    // },
-    // {
-    //   title: "Database Schema Design",
-    //   status: "Completed",
-    //   desc: "Design and implement the database structure for user management.",
-    //   due: "2025-01-08",
-    // },
-    // {
-    //   title: "User Authentication System",
-    //   status: "Completed",
-    //   desc: "Implement user login, registration, and session management.",
-    //   due: "2025-01-12",
-    // },
-
-    // // Active Tasks
-    // {
-    //   title: "Frontend Dashboard Design",
-    //   status: "Active",
-    //   desc: "Create responsive dashboard UI with modern design principles.",
-    //   due: "2025-01-20",
-    //   submissionLink: "https://forms.google.com/dashboard-task"
-    // },
-    // {
-    //   title: "API Integration",
-    //   status: "Active",
-    //   desc: "Connect frontend with backend APIs and handle data flow.",
-    //   due: "2025-01-22",
-    //   submissionLink: "https://forms.google.com/api-task"
-    // },
-    // {
-    //   title: "User Profile Management",
-    //   status: "Active",
-    //   desc: "Implement user profile editing and settings functionality.",
-    //   due: "2025-01-25",
-    // },
-
-    // // Upcoming Tasks (future due dates)
-    // {
-    //   title: "Performance Optimization",
-    //   status: "Upcoming",
-    //   desc: "Optimize application performance and reduce loading times.",
-    //   due: "2025-02-01",
-    // },
-    // {
-    //   title: "Testing & QA",
-    //   status: "Upcoming",
-    //   desc: "Conduct comprehensive testing and quality assurance.",
-    //   due: "2025-02-05",
-    // },
-    // {
-    //   title: "Security Implementation",
-    //   status: "Upcoming",
-    //   desc: "Implement security measures and vulnerability assessments.",
-    //   due: "2025-02-10",
-    // },
-    // {
-    //   title: "Documentation",
-    //   status: "Upcoming",
-    //   desc: "Create comprehensive project documentation and user guides.",
-    //   due: "2025-02-15",
-    // },
-    // {
-    //   title: "Deployment Setup",
-    //   status: "Upcoming",
-    //   desc: "Configure production environment and deployment pipelines.",
-    //   due: "2025-02-20",
-    // },
+    // ACTIVE TASK
+    {
+      title: "Dream IEEE position",
+      status: "Active",
+      desc: "**Your Aim and Mission**\nLooking at the wide range of opportunities and leadership roles that IEEE offers at the student branch, regional, and even global level, which position do you aspire to achieve in the future, and what motivates you to work toward that role? How do you think holding that position would help you grow personally, contribute to the IEEE community, and make an impact in your field of interest?\n\nSubmission : Upload your document through the provided Google Form Link.",
+      due: "29 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
+      points: 15,
+      submissionLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLSeixtaZOac5cGdCggbfjvsNeAjxjlnkQTb63Ug_1ygmjgciuw/viewform?usp=dialog"
+    },
+    {
+      title: "Bucket List",
+      status: "Completed",
+      desc: "**Your Vision and goal**\nWhen you become a IEEE member ,it's about making the most of the opportunities it provides. A bucket list for joining IEEE is a personal roadmap that helps you set goals and track achievements during your membership.Prepare a report on the roadmap and vision.\n\nSubmission : Upload your report through the provided Google Form Link.",
+      due: "26 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
+      points: 10,
+      submissionLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLSfColLERulfHsnIduFuh87lFHPBmhqWPdUi8YO1vBJyqcHoLA/viewform?usp=dialog"
+    },
+    {
+      title: "Membership drive poster",
+      status: "Completed",
+      desc: "Design a poster to announce the upcoming Membership drive. A membership drive is an initiative to encourage students to join IEEE and learn about its benefits. It usually runs for 1-2 weeks, with a 1-hour session every day. Include all kind of details like Date, time and venue etc. You are free to use any design platform of your interest. Submission: Upload the poster through the provided Gform Link",
+      due: "23 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
+      points: 15,
+      submissionLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLSe6olQZVOYE4wGDUJ-4t9uf6MlK_WV0GsbMZ1biBG4Iz_ixZA/viewform?usp=sharing&ouid=107494690283106164237"
+    },
+    {
+      title: "Podcast Based on an IEEE Research Paper",
+      status: "Completed",
+      desc: "Prepare a podcast based on an IEEE research paper of your choice. The podcast should explain the core concepts, objectives, methodology and key findings of the paper in a simple and engaging way. Ensure that the content is well-structured, easy to follow and suitable for a general audience with basic technical understanding. Upload your audio file or written podcast script through the provided Google Form.",
+      due: "20 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
+      points: 15,
+      submissionLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLSd6VM6J7iPArv-VqnKcuBAR4Z5JmqtqCg_t7AS81K1uUnQRxA/viewform?usp=dialog"
+    },
+    {
+      title: "Make 6 Connections in IEEE Collabratec",
+      status: "Completed",
+      desc: "IEEE Collabratec is an integrated online platform where technology professionals can network, collaborate and share resources. It provides opportunities to connect with peers, discover research and expand your professional circle within IEEE.Your task is to log in to IEEE Collabratec and build at least 6 new professional connections. Upload a screenshot showing your profile with 6+ connections as proof of completion.",
+      due: "17 September 2025, 12.00 PM", //Due Date || YYYY-MM-DD
+      points: 20,
+      submissionLink:
+        "https://docs.google.com/forms/d/e/1FAIpQLSfYcSlA3XEKOwmo8GhM2Abv3FAKhfSEW9Tfib6wWjRQ4GNvZQ/viewform?usp=dialog",
+    },
+    {
+      title: "Download IEEE Application & Membership Card",
+      status: "Completed",
+      desc: "Install IEEE mobile application from Play Store or App Store and upload a screenshot as proof of completion.Download your IEEE Membership Card and submit it as a PDF file.",
+      due: "15 September 2025, 12.00 PM", //Due Date || YYYY-MM-DD
+      points: 10,
+      submissionLink:
+        "https://docs.google.com/forms/d/e/1FAIpQLSdOtZ4xAzO97a4aA6JYqADFYEELsdgvK0SpbUdSws8PTBud9g/viewform?usp=dialog",
+    },
+    {
+      title: "Follow IEEE SB CEC on Social Media",
+      status: "Completed",
+      desc: "Stay updated with all the latest events, opportunities, and initiatives from IEEE SB CEC by following us on our official social media pages. Once you have followed, upload the screenshots as proof of completion through the given Submission Link. ",
+      due: "12 September 2025, 12.00 PM", //Due Date || YYYY-MM-DD
+      points: 10,
+      submissionLink:
+        "https://docs.google.com/forms/d/e/1FAIpQLSe8DzjIhEHMrO9d2BV-FJ1ODAI6vw-QXsvlpwuYAeSCb2EHeg/viewform?usp=dialog",
+    },
+    {
+      title: "Create a LinkedIn Account & Share Your Profile",
+      status: "Completed",
+      desc: "LinkedIn is the most effective and fastest professional networking platform that offers new opportunities every day. It connects people with their professional designations and helps in building essential relationships. Having a LinkedIn profile serves as a guide to quickly find a job and establish valuable professional connections.Your task is to create a LinkedIn account, set up your profile and share it as proof of completion.",
+      due: "14 September 2025, 12.00 PM", //Due Date || YYYY-MM-DD
+      points: 15,
+      submissionLink:
+        "https://docs.google.com/forms/d/e/1FAIpQLSf-PANukYcEawQpAhRGPLqMOqo-gIT_vPvuQ9nDF1lkuQT2Ww/viewform?usp=dialog",
+    },
   ];
 
   const activeTasks = tasks.filter((task) => task.status === "Active");
@@ -102,7 +101,7 @@ export default function Tasks() {
 
   const statusStyles = {
     Active: "bg-blue-100 text-blue-800",
-    Completed: "bg-green-100 text-green-800",
+    Completed: "bg-red-100 text-red-800",
     Upcoming: "bg-orange-100 text-orange-800",
   };
 
@@ -110,7 +109,7 @@ export default function Tasks() {
     Active:
       "border-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.3)] hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]",
     Completed:
-      "border-green-500 shadow-[0_0_12px_rgba(34,197,94,0.3)] hover:shadow-[0_0_20px_rgba(34,197,94,0.5)]",
+      "border-red-600 shadow-[0_0_12px_rgba(239,68,68,0.3)] hover:shadow-red-00 hover:shadow-[0_0_20px_rgba(239,68,68,0.5)]",
     Upcoming:
       "border-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.3)] hover:shadow-[0_0_20px_rgba(249,115,22,0.5)]",
   };
@@ -129,8 +128,7 @@ export default function Tasks() {
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
             letterSpacing: "2px",
-          }}
-        >
+          }}>
           TASKS
         </h1>
         <div className="w-24 h-1 bg-gradient-to-r from-[#7152DE] to-[#4B3791] mx-auto rounded-full"></div>
@@ -140,7 +138,7 @@ export default function Tasks() {
         {/* Sidebar */}
         <div className="col-span-1 space-y-6">
           {/* Progress */}
-          <div className="bg-indigo-50 rounded-xl p-6 shadow-sm border border-indigo-200">
+          {/* <div className="bg-indigo-50 rounded-xl p-6 shadow-sm border border-indigo-200">
             <h2 className="text-lg font-semibold mb-4 text-indigo-700">
               Overall Progress
             </h2>
@@ -148,8 +146,7 @@ export default function Tasks() {
               <div className="w-28 h-28 relative mb-3">
                 <svg
                   className="absolute top-0 left-0 w-full h-full"
-                  viewBox="0 0 100 100"
-                >
+                  viewBox="0 0 100 100">
                   <circle
                     cx="50"
                     cy="50"
@@ -180,7 +177,7 @@ export default function Tasks() {
                 Completed: {completedTasks.length} / {totalTasks || 0}
               </p>
             </div>
-          </div>
+          </div> */}
 
           {/* Task Overview */}
           <div className="bg-purple-50 rounded-xl p-6 shadow-sm border border-purple-200">
@@ -200,17 +197,17 @@ export default function Tasks() {
                 </div>
               </li>
               <li className="flex items-center gap-3 text-gray-700">
-                <div className="p-2 bg-green-100 rounded-lg">
-                  <FaCheckCircle className="text-green-600" />
+                <div className="p-2 bg-red-100 rounded-lg">
+                  <FaCheckCircle className="text-red-600" />
                 </div>
                 <div>
-                  <p className="font-medium text-green-700">Completed</p>
+                  <p className="font-medium text-red-700">Expired</p>
                   <p className="text-sm text-gray-500">
                     {completedTasks.length} tasks
                   </p>
                 </div>
               </li>
-              <li className="flex items-center gap-3 text-gray-700">
+              {/* <li className="flex items-center gap-3 text-gray-700">
                 <div className="p-2 bg-orange-100 rounded-lg">
                   <FaClock className="text-orange-600" />
                 </div>
@@ -220,7 +217,7 @@ export default function Tasks() {
                     {upcomingTasks.length} tasks
                   </p>
                 </div>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
@@ -242,8 +239,7 @@ export default function Tasks() {
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
-                }}
-              >
+                }}>
                 No Tasks Available
               </h2>
               <p className="text-gray-600 text-center max-w-md mb-8 leading-relaxed">
@@ -276,20 +272,30 @@ export default function Tasks() {
                         key={index}
                         className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${
                           borderShadowStyles[task.status]
-                        } flex flex-col`}
-                      >
+                        } flex flex-col`}>
                         <span
                           className={`px-3 py-1 text-xs font-medium rounded-full self-start ${
                             statusStyles[task.status]
-                          }`}
-                        >
+                          }`}>
                           {task.status}
                         </span>
                         <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">
                           {task.title}
                         </h3>
                         <p className="text-gray-600 text-sm mb-4 flex-grow">
-                          {task.desc}
+                          {task.desc.split('\n').map((line, i) => (
+                            <span key={i}>
+                              {line.startsWith('**') && line.endsWith('**') ? (
+                                <strong>{line.slice(2, -2)}</strong>
+                              ) : (
+                                line
+                              )}
+                              {i < task.desc.split('\n').length - 1 && <br />}
+                            </span>
+                          ))}
+                        </p>
+                        <p className="text-gray-700 text-md mb-4 flex-grow">
+                          Points: {task.points}
                         </p>
                         <div className="text-xs text-gray-500 mb-4">
                           Due: {task.due}
@@ -300,8 +306,7 @@ export default function Tasks() {
                           onClick={() =>
                             window.open(task.submissionLink || "#", "_blank")
                           }
-                          className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg cursor-pointer"
-                        >
+                          className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg cursor-pointer">
                           <FaClipboardList className="w-4 h-4" />
                           Submit Task
                         </button>
@@ -315,7 +320,7 @@ export default function Tasks() {
               {completedTasks.length > 0 && (
                 <div>
                   <h2 className="text-xl font-bold mb-4 text-gray-800">
-                    Completed Tasks
+                    Expired Tasks
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                     {completedTasks.map((task, index) => (
@@ -323,20 +328,27 @@ export default function Tasks() {
                         key={index}
                         className={`bg-white p-5 border rounded-tl-xl rounded-br-xl transition-shadow duration-300 ${
                           borderShadowStyles[task.status]
-                        } opacity-90`}
-                      >
+                        } opacity-90`}>
                         <span
                           className={`px-3 py-1 text-xs font-medium rounded-full ${
                             statusStyles[task.status]
-                          }`}
-                        >
-                          ✓ {task.status}
+                          }`}>
+                          ✓ Expired
                         </span>
                         <h3 className="text-lg font-semibold mt-3 mb-2 text-gray-900">
                           {task.title}
                         </h3>
                         <p className="text-gray-600 text-sm mb-4">
-                          {task.desc}
+                          {task.desc.split('\n').map((line, i) => (
+                            <span key={i}>
+                              {line.startsWith('**') && line.endsWith('**') ? (
+                                <strong>{line.slice(2, -2)}</strong>
+                              ) : (
+                                line
+                              )}
+                              {i < task.desc.split('\n').length - 1 && <br />}
+                            </span>
+                          ))}
                         </p>
                         <div className="text-xs text-gray-500">
                           Completed: {task.due}
@@ -346,13 +358,6 @@ export default function Tasks() {
                   </div>
                 </div>
               )}
-
-              {/* Upcoming Tasks Hidden */}
-              {/* 
-          {upcomingTasks.length > 0 && (
-            <div>...render upcoming tasks...</div>
-          )} 
-          */}
             </>
           )}
         </div>

@@ -29,6 +29,12 @@ const rules = [
     icon: <FaClipboardList className="text-2xl text-[#7152DE]" />,
   },
   {
+    title: "Social Media Engagement",
+    content:
+      "Student members who don’t have social media accounts can mention one or two accounts they manage or have access to, and follow the pages using those.",
+    icon: <FaUsers className="text-2xl text-[#7152DE]" />,
+  },
+  {
     title: "Rewards",
     content:
       "The successful completion of each task will reward you with points. Accumulate points to climb the leaderboard and unlock exclusive prizes and recognition.",
@@ -81,12 +87,16 @@ function Rules() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {rules.map((rule, index) => (
-            <RulesCard key={index} title={rule.title} index={index}>
-              <div className="flex items-start space-x-3">
-                <div className="mt-1">{rule.icon}</div>
-                <span>{rule.content}</span>
+            <div key={index} className={index === 4 ? "lg:col-span-2 lg:flex lg:justify-center" : ""}>
+              <div className={index === 4 ? "lg:max-w-lg" : ""}>
+                <RulesCard title={rule.title} index={index}>
+                  <div className="flex items-start space-x-3">
+                    <div className="mt-1">{rule.icon}</div>
+                    <span>{rule.content}</span>
+                  </div>
+                </RulesCard>
               </div>
-            </RulesCard>
+            </div>
           ))}
         </div>
       </div>
