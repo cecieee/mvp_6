@@ -151,8 +151,8 @@ const LandingLeaderboard = () => {
           {/* Centered title section */}
           <div className="text-center flex-1">
             <h3 
-              className="text-xl sm:text-2xl text-white mb-1 tracking-[2px]"
-              style={{ fontFamily: "Hypik, system-ui, sans-serif" }}
+              className="text-xl font-extrabold sm:text-2xl text-white mb-1 tracking-[2px]"
+              style={{ fontFamily: "Poppins, system-ui, sans-serif" }}
             >
               🏆 Live Rankings
             </h3>
