@@ -59,6 +59,7 @@ const MainNavbar = () => {
   }, [isMobileMenuOpen]);
 
   const handleNavigation = (link) => {
+
     navigate(link);
     setIsMobileMenuOpen(false);
   };
@@ -209,7 +210,7 @@ const NavItems = ({ items, className, onItemClick, currentPath }) => {
           onClick={() => onItemClick(item.link)}
           className={`relative px-4 py-2 text-[#1C1538] hover:text-[#7152DE] transition-colors duration-200 cursor-pointer ${
             currentPath === item.link ? "text-[#7152DE]" : ""
-          }`}
+          } ${(item.link === "/leaderboard" || item.link === "/tasks") ? "opacity-100" : ""}`}
           key={`link-${idx}`}
         >
           {hovered === idx && (
