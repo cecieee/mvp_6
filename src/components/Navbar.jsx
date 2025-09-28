@@ -8,7 +8,7 @@ import {
   useMotionValueEvent,
 } from "motion/react";
 import { toast } from "react-toastify";
-import { FiClock } from "react-icons/fi";
+import { FiX } from "react-icons/fi";
 
 import React, { useRef, useState, useEffect } from "react";
 
@@ -59,15 +59,7 @@ const MainNavbar = () => {
   }, [isMobileMenuOpen]);
 
   const handleNavigation = (link) => {
-<<<<<<< HEAD
 
-    
-    if (link === "/tasks") {
-      handleTasksComingSoon();
-      return;
-    }
-=======
->>>>>>> 4184ba750b67e1a862295d84c4989f67da40e3a3
     navigate(link);
     setIsMobileMenuOpen(false);
   };
