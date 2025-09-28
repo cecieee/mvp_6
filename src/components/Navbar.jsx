@@ -59,10 +59,8 @@ const MainNavbar = () => {
   }, [isMobileMenuOpen]);
 
   const handleNavigation = (link) => {
-    if (link === "/leaderboard") {
-      handleLeaderboardLocked();
-      return;
-    }
+
+    
     if (link === "/tasks") {
       handleTasksComingSoon();
       return;
