@@ -14,8 +14,17 @@ export default function Tasks() {
   const tasks = [
     // ACTIVE TASK
     {
-      title: "Dream IEEE position",
+      title: "Create a Resume",
       status: "Active",
+      desc: "Create a professional and effective resume that highlights your skills, projects, education, and experience aligned with opportunities in your field.\n\nSubmission: Upload your resume through the provided google form link.",
+      due: "2 October 2025, 11.59 PM", //Due Date || YYYY-MM-DD
+      points: 10,
+      submissionLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLScZR1f8A3SwwMiMClwYmZeqkGPYu5zp9VlyvH0vZVy6aykIvQ/viewform?usp=dialog"
+    },
+    {
+      title: "Dream IEEE position",
+      status: "Completed",
       desc: "**Your Aim and Mission**\nLooking at the wide range of opportunities and leadership roles that IEEE offers at the student branch, regional, and even global level, which position do you aspire to achieve in the future, and what motivates you to work toward that role? How do you think holding that position would help you grow personally, contribute to the IEEE community, and make an impact in your field of interest?\n\nSubmission : Upload your document through the provided Google Form Link.",
       due: "29 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
       points: 15,
