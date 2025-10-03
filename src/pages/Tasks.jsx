@@ -14,8 +14,17 @@ export default function Tasks() {
   const tasks = [
     // ACTIVE TASK
     {
-      title: "Create a Resume",
+      title: "Idea Pitching Competition",
       status: "Active",
+      desc: "Showcase your creativity and innovation!\n\nRecord a video describing a unique and innovative non-existent lEEE event, and explain how it could make an impact.Along with the video, submit a detailed report explaining the concept, objectives, and execution plan of your proposed event.\n\nSubmit your entries via the provided Google Form link.",
+      due: "6 October 2025, 11.59 PM", //Due Date || YYYY-MM-DD
+      points: 15,
+      submissionLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLSeex_tnyri2BQGAsZTbwbb8CNJzCRlH4AFMg5uavGqsVnCKYQ/viewform?usp=dialog"
+    },
+    {
+      title: "Create a Resume",
+      status: "Completed",
       desc: "Create a professional and effective resume that highlights your skills, projects, education, and experience aligned with opportunities in your field.\n\nSubmission: Upload your resume through the provided google form link.",
       due: "2 October 2025, 11.59 PM", //Due Date || YYYY-MM-DD
       points: 10,
