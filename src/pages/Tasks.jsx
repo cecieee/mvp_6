@@ -14,8 +14,26 @@ export default function Tasks() {
   const tasks = [
     // ACTIVE TASK
     {
-      title: "Dream IEEE position",
+      title: "Idea Pitching Competition",
       status: "Active",
+      desc: "Showcase your creativity and innovation!\n\nRecord a video describing a unique and innovative non-existent lEEE event, and explain how it could make an impact.Along with the video, submit a detailed report explaining the concept, objectives, and execution plan of your proposed event.\n\nSubmit your entries via the provided Google Form link.",
+      due: "6 October 2025, 11.59 PM", //Due Date || YYYY-MM-DD
+      points: 15,
+      submissionLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLSeex_tnyri2BQGAsZTbwbb8CNJzCRlH4AFMg5uavGqsVnCKYQ/viewform?usp=dialog"
+    },
+    {
+      title: "Create a Resume",
+      status: "Completed",
+      desc: "Create a professional and effective resume that highlights your skills, projects, education, and experience aligned with opportunities in your field.\n\nSubmission: Upload your resume through the provided google form link.",
+      due: "2 October 2025, 11.59 PM", //Due Date || YYYY-MM-DD
+      points: 10,
+      submissionLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLScZR1f8A3SwwMiMClwYmZeqkGPYu5zp9VlyvH0vZVy6aykIvQ/viewform?usp=dialog"
+    },
+    {
+      title: "Dream IEEE position",
+      status: "Completed",
       desc: "**Your Aim and Mission**\nLooking at the wide range of opportunities and leadership roles that IEEE offers at the student branch, regional, and even global level, which position do you aspire to achieve in the future, and what motivates you to work toward that role? How do you think holding that position would help you grow personally, contribute to the IEEE community, and make an impact in your field of interest?\n\nSubmission : Upload your document through the provided Google Form Link.",
       due: "29 September 2025, 11.59 PM", //Due Date || YYYY-MM-DD
       points: 15,
