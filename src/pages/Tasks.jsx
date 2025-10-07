@@ -12,10 +12,19 @@ export default function Tasks() {
   const today = new Date();
 
   const tasks = [
-    // ACTIVE TASK
+    // ACTIVE 
+    {
+      title: "Patent Analysis",
+      status: "Active",
+      desc: "Choose a patent related to a real-world problem, study it, and analyze its working, weaknesses, and scope for improvement. Create a short animation or presentation covering the problem addressed, how the patent works, gaps/weaknesses, and your improvement suggestions. Finally, record a 5-10 minute seminar video presenting your analysis.\n\nSubmission : Upload your video through the provided Google Form Link.",
+      due: "11 October 2025, 11.59 PM", //Due Date || YYYY-MM-DD
+      points: 20,
+      submissionLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLSeYjA0TIkDN0CgYGLIh0rhMuBc6lYODbu-EeE8Kw3-80cpiEg/viewform?usp=dialog"
+    },
     {
       title: "Idea Pitching Competition",
-      status: "Active",
+      status: "Completed",
       desc: "Showcase your creativity and innovation!\n\nRecord a video describing a unique and innovative non-existent lEEE event, and explain how it could make an impact.Along with the video, submit a detailed report explaining the concept, objectives, and execution plan of your proposed event.\n\nSubmit your entries via the provided Google Form link.",
       due: "6 October 2025, 11.59 PM", //Due Date || YYYY-MM-DD
       points: 15,
