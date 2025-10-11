@@ -15,7 +15,7 @@ export default function Tasks() {
     // ACTIVE 
     {
       title: "Patent Analysis",
-      status: "Active",
+      status: "Completed",
       desc: "Choose a patent related to a real-world problem, study it, and analyze its working, weaknesses, and scope for improvement. Create a short animation or presentation covering the problem addressed, how the patent works, gaps/weaknesses, and your improvement suggestions. Finally, record a 5-10 minute seminar video presenting your analysis.\n\nSubmission : Upload your video through the provided Google Form Link.",
       due: "11 October 2025, 11.59 PM", //Due Date || YYYY-MM-DD
       points: 20,
